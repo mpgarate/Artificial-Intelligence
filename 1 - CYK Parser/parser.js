@@ -8,17 +8,23 @@ var RuleSet = function(path){
   this.contents = require(path);
 }
 
-grammar = new RuleSet('./grammar.json');
-lexicon = new RuleSet('./lexicon.json');
+var grammar = new RuleSet('./grammar.json');
+var lexicon = new RuleSet('./lexicon.json');
 
 
 // Get input sentences in JSON format
 var SentenceSet = function(path){
   this.contents = require(path);
 }
+var sentences = new SentenceSet('./sentences.json');
 
-sentences = new SentenceSet('./sentences.json');
+var Sentence = function(sentence){
+  this.contents = sentence;
+  this.words = this.contents.split(" "); //array of words 
+  this.wordCount = this.words.length;
+}
 
+var sentence = new Sentence(sentences.contents[0]); //temporary hard code
 
 // Outline our Tree Node Object
 var Tree = function(){
@@ -31,13 +37,4 @@ var Tree = function(){
   this.prob;           // probability
 }
 
-
-// Supporting methods
-
-/*
-var i;
-for(i = 0; i< 1; i++){
-  console.log(grammar.S[i]);
-}
-*/
-console.log(sentences);
+console.log(sentence.wordCount);
