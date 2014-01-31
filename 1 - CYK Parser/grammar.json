@@ -1,89 +1,92 @@
 {
-  "S": [
+  "rules": [
     {
+      "pos":"S",
       "sequence": "Noun Verb",
       "weight": 0.2
     },
     {
+      "pos":"S",
       "sequence": "Noun VerbAndObject",
       "weight": 0.3
     },
     {
+      "pos":"S",
       "sequence": "Noun VPWithPPList",
       "weight": 0.1
     },
     {
+      "pos":"S",
       "sequence": "NP Verb",
       "weight": 0.2
     },
     {
+      "pos":"S",
       "sequence": "NP VerbAndObject",
       "weight": 0.1
     },
     {
+      "pos":"S",
       "sequence": "NP VPWithPPList",
       "weight": 0.1
-    }
-  ],
-
-  "NP": [
+    },
     {
+      "pos":"NP",
       "sequence": "Noun PP",
       "weight": 0.8
     },
     {
+      "pos":"NP",
       "sequence": "Noun PPList",
       "weight": 0.2
-    }
-  ],
-
-  "PP": [
+    },
     {
+      "pos":"PP",
       "sequence": "Prep Noun",
       "weight": 0.6
     },
     {
+      "pos":"PP",
       "sequence": "Prep NP",
       "weight": 0.4
-    }
-  ],
-
-  "PPList": [
+    },
     {
+      "pos":"PPList",
       "sequence": "PP PP",
       "weight": 0.6
     },
     {
+      "pos":"PPList",
       "sequence": "PP PPList",
       "weight": 0.4
-    }
-  ],
-
-  "VerbAndObject": [
+    },
     {
+      "pos": "VerbAndObject",
       "sequence": "Verb Noun",
       "weight": 0.5
     },
     {
+      "pos": "VerbAndObject",
       "sequence": "Verb NP",
       "weight": 0.5
-    }
-  ],
-
-  "VPWithPPList": [
+    },
     {
+      "pos": "VPWithPPList",
       "sequence": "Verb PP",
       "weight": 0.3
     },
     {
+      "pos": "VPWithPPList",
       "sequence": "Verb PPList",
       "weight": 0.1
     },
     {
+      "pos": "VPWithPPList",
       "sequence": "VerbAndObject PP",
       "weight": 0.4
     },
     {
+      "pos": "VPWithPPList",
       "sequence": "VerbAndObject PPList",
       "weight": 0.2
     }
