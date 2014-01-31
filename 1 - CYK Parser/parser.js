@@ -3,15 +3,24 @@ process.argv.forEach(function (val, index, array) {
   console.log(index + ': ' + val);
 });
 
-var RuleSet = function(grammar_path, lexicon_path){
-  this.grammar = require(grammar_path);
-  this.lexicon = require(lexicon_path);
+// Get the grammar and lexicon rules for our parser in JSON format
+var RuleSet = function(path){
+  this.contents = require(path);
 }
-rules = new RuleSet('./grammar.json', './lexicon.json');
+
+grammar = new RuleSet('./grammar.json');
+lexicon = new RuleSet('./lexicon.json');
+
+
+// Get input sentences in JSON format
+var SentenceSet = function(path){
+  this.contents = require(path);
+}
+
+sentences = new SentenceSet('./sentences.json');
 
 
 // Outline our Tree Node Object
-
 var Tree = function(){
   this.phrase;         // The non-terminal
   this.startPhrase;    // index of starting word
@@ -31,4 +40,4 @@ for(i = 0; i< 1; i++){
   console.log(grammar.S[i]);
 }
 */
-console.log(rules.lexicon);
+console.log(sentences);
