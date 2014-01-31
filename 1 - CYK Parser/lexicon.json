@@ -1,0 +1,58 @@
+{
+  "Noun": [
+    {
+      "word": "amy",
+      "weight": 0.1
+    },
+    {
+      "word": "dinner",
+      "weight": 0.2
+    },
+    {
+      "word": "fish",
+      "weight": 0.2
+    },
+    {
+      "word": "streams",
+      "weight": 0.1
+    },
+    {
+      "word": "swims",
+      "weight": 0.2
+    },
+    {
+      "word": "tuesday",
+      "weight": 0.2
+    }
+  ],
+
+  "Prep": [
+    {
+      "word": "for",
+      "weight": 0.5
+    },
+    {
+      "word": "in",
+      "weight": 0.3
+    },
+    {
+      "word": "on",
+      "weight": 0.2
+    }
+  ],
+
+  "Verb": [
+    {
+      "word": "ate",
+      "weight": 0.7
+    },
+    {
+      "word": "streams",
+      "weight": 0.1
+    },
+    {
+      "word": "swim",
+      "weight": 0.2
+    }
+  ]
+}
