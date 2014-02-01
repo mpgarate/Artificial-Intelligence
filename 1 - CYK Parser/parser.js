@@ -33,6 +33,7 @@ var TreeNode = function(POS, start, end, word, right, left, prob){
   this.prob = prob;           // probability
 }
 
+// Create an object to handle the multiarray
 var MultiArray = function(){
   this.initialize = function(POS,i){
     if (this[POS] === undefined){
@@ -44,6 +45,7 @@ var MultiArray = function(){
   }
 }
 
+// Parse a sentence to a tree 
 var parse = function(sentence){
   // Initialize the array
   var P = new MultiArray(new Array(new Array()));
