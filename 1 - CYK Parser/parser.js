@@ -1,10 +1,13 @@
 // Get the grammar and lexicon rules for our parser in JSON format
 var Grammar = function(path){
-  this.rules = require(path).rules;
+  this.contents = require(path);
+  this.rules = this.contents.rules;
   this.ruleCount = this.rules.length;
 }
 var Lexicon = function(path){
-  this.rules = require(path).rules;
+  this.contents = require(path);
+  this.rules = this.contents.rules;
+  this.parts_of_speech = this.contents.parts_of_speech;
   this.ruleCount = this.rules.length;
 }
 var grammar = new Grammar('./grammar.json');
@@ -34,6 +37,8 @@ var TreeNode = function(POS, start, end, word, right, left, prob){
 }
 
 // Create an object to handle the multiarray
+// The first level can be used like a hash
+// POS is a string, ie 'Noun', which is a key
 var MultiArray = function(){
   this.initialize = function(POS,i){
     if (this[POS] === undefined){
@@ -58,7 +63,19 @@ var parse = function(sentence){
       var prob = lexicon.rules[t].weight;
       P.initialize(POS,i);
       P[POS][i][i] = new TreeNode(POS,i,i,word,null,null,prob);
-      console.log(P[POS][i][i]);
+    }
+  }
+
+  // Evaluate probabilities
+
+  for(var length = 2; length < N; length++){
+    for(var i = 1; i < length; i++){
+      var j = i + length - 1;
+      for(var p = 0; p < lexicon.parts_of_speech.length; p++){
+        var M = lexicon.parts_of_speech[p];
+        P[M,i,j] = new TreeNode(M, i, j, null, null, null, 0.0);
+      }
+
     }
   }
 }
