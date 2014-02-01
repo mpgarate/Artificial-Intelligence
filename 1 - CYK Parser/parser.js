@@ -23,27 +23,40 @@ var Sentence = function(sentence){
 var sentence = new Sentence(sentences[0]); //temporary hard code
 
 // Outline our Tree Node Object
-var TreeNode = function(){
-  this.phrase;         // The non-terminal
-  this.startPhrase;    // index of starting word
-  this.endPhrase;      // index of ending word
-  this.word;           // If a leaf, then the word
-  this.right;
-  this.left;
-  this.prob;           // probability
+var TreeNode = function(POS, start, end, word, right, left, prob){
+  this.phrase = POS;         // The non-terminal
+  this.startPhrase = start;    // index of starting word
+  this.endPhrase = end;      // index of ending word
+  this.word = word;           // If a leaf, then the word
+  this.right = right;
+  this.left = left;
+  this.prob = prob;           // probability
+}
+
+var MultiArray = function(){
+  this.initialize = function(POS,i){
+    if (this[POS] === undefined){
+      this[POS] = [];
+    }
+    if (this[POS][i] === undefined){
+      this[POS][i] = [];
+    }
+  }
 }
 
 var parse = function(sentence){
   // Initialize the array
-  var P = [];
+  var P = new MultiArray(new Array(new Array()));
   var N = sentence.wordCount;
   for(var i = 0; i < N + 1; i++){
     word = sentence[i];
     for (var t = 0; t < lexicon.ruleCount; t++){
       var POS = lexicon.rules[t].pos;
       var word = lexicon.rules[t].word;
-      P[POS][i][i] = new TreeNode(POS,i,i);
-      console.log(POS);
+      var prob = lexicon.rules[t].weight;
+      P.initialize(POS,i);
+      P[POS][i][i] = new TreeNode(POS,i,i,word,null,null,prob);
+      console.log(P[POS][i][i]);
     }
   }
 }
