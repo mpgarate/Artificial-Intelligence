@@ -67,15 +67,18 @@ var parse = function(sentence){
   }
 
   // Evaluate probabilities
-
   for(var length = 2; length < N; length++){
     for(var i = 1; i < length; i++){
       var j = i + length - 1;
       for(var p = 0; p < lexicon.parts_of_speech.length; p++){
         var M = lexicon.parts_of_speech[p];
-        P[M,i,j] = new TreeNode(M, i, j, null, null, null, 0.0);
-      }
+        P[M,i,j] = new TreeNode(M, i, j, null, null, null, 0.0);  
+        for(var k = i; k < j-1; k++){
+          {
 
+          }
+        }
+      }
     }
   }
 }
