@@ -2,13 +2,11 @@
 var Grammar = function(path){
   this.contents = require(path);
   this.rules = this.contents.rules;
-  this.ruleCount = this.rules.length;
 }
 var Lexicon = function(path){
   this.contents = require(path);
   this.rules = this.contents.rules;
   this.parts_of_speech = this.contents.parts_of_speech;
-  this.ruleCount = this.rules.length;
 }
 var grammar = new Grammar('./grammar.json');
 var lexicon = new Lexicon('./lexicon.json');
@@ -53,11 +51,11 @@ var MultiArray = function(){
 // Parse a sentence to a tree 
 var parse = function(sentence){
   // Initialize the array
-  var P = new MultiArray(new Array(new Array()));
+  var P = new MultiArray();
   var N = sentence.wordCount;
   for(var i = 0; i < N + 1; i++){
     word = sentence[i];
-    for (var t = 0; t < lexicon.ruleCount; t++){
+    for (var t = 0; t < lexicon.rules.length; t++){
       var POS = lexicon.rules[t].pos;
       var word = lexicon.rules[t].word;
       var prob = lexicon.rules[t].weight;
@@ -72,10 +70,13 @@ var parse = function(sentence){
       var j = i + length - 1;
       for(var p = 0; p < lexicon.parts_of_speech.length; p++){
         var M = lexicon.parts_of_speech[p];
-        P[M,i,j] = new TreeNode(M, i, j, null, null, null, 0.0);  
+        P[M][i][j] = new TreeNode(M, i, j, null, null, null, 0.0);  
         for(var k = i; k < j-1; k++){
-          {
-
+          for(var t = 0; t < grammar.rules.length; t++){
+            var children = grammar.rules[t].split(" ");
+            var Y = children[0];
+            var 
+            var newProb = P[Y,i,k]
           }
         }
       }
