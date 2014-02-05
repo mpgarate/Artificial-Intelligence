@@ -21,7 +21,7 @@ var Sentence = function(sentence){
   this.wordCount = this.words.length;
 }
 
-var sentence = new Sentence(sentences[0]); //temporary hard code
+//var P[S,1,N] = new Sentence(sentences[0]); //temporary hard code
 
 // Outline our Tree Node Object
 var TreeNode = function(POS, start, end, word, right, left, prob){
@@ -50,19 +50,19 @@ var TreeNode = function(POS, start, end, word, right, left, prob){
 }
 
 // Create an object to handle the multiarray
-// The first level can be used like a hashf
+// The first level can be used like a hash
 // POS is a string, ie 'Noun', which is a key
 var MultiArray = function(){
-  this.initialize = function(POS,i,j){
+  this.initialize = function(POS,i){
     if (this[POS] === undefined){
       this[POS] = [];
     }
     if (this[POS][i] === undefined){
       this[POS][i] = [];
     }
-    if (j !== undefined && this[POS][i][j] === undefined ){
-      this[POS][i][j] = new TreeNode(POS, i, j, null, null, null, 0);
-    }
+    //if (j !== undefined && this[POS][i][j] === undefined ){
+    //  this[POS][i][j] = new TreeNode(POS, i, j, null, null, null, 0);
+    //}
   }
 }
 
@@ -94,8 +94,6 @@ var parse = function(sentence){
             var children = grammar.rules[t].sequence.split(" ");
             var Y = children[0];
             var Z = children[1];
-            P.initialize(Y,i,k);
-            P.initialize(Z,k+1,j);
             var newProb = P[Y][i][k].prob * P[Z][k+1][j].prob * prob;
             if (newProb > P[M][i][j].prob) {
               P[M][i][j].left = P[Y][i][k];
@@ -107,6 +105,7 @@ var parse = function(sentence){
       }
     }
   }
+  console.log(P);
 }
 
 // loop through all of our sentences and parse each
