@@ -32,18 +32,36 @@ var TreeNode = function(POS, start, end, word, right, left, prob){
   this.right = right;
   this.left = left;
   this.prob = prob;           // probability
+
+  var printTree = function(tree, indent){
+    var space = " ";
+    if (tree != null) {
+      console.log(space.repeat(indent));
+      console.log(tree.phrase);
+      if (tree.word != null) console.log(tree.word);
+      printTree(tree.left, indent+3);
+      printTree(tree.right, indent+3);
+    }
+  }
+
+  this.print = function(){
+    printTree(this[S,1,N],0);
+  }
 }
 
 // Create an object to handle the multiarray
-// The first level can be used like a hash
+// The first level can be used like a hashf
 // POS is a string, ie 'Noun', which is a key
 var MultiArray = function(){
-  this.initialize = function(POS,i){
+  this.initialize = function(POS,i,j){
     if (this[POS] === undefined){
       this[POS] = [];
     }
     if (this[POS][i] === undefined){
       this[POS][i] = [];
+    }
+    if (j !== undefined && this[POS][i][j] === undefined ){
+      this[POS][i][j] = new TreeNode(POS, i, j, null, null, null, 0);
     }
   }
 }
@@ -53,7 +71,7 @@ var parse = function(sentence){
   // Initialize the array
   var P = new MultiArray();
   var N = sentence.wordCount;
-  for(var i = 0; i < N + 1; i++){
+  for(var i = 1; i < N; i++){
     word = sentence[i];
     for (var t = 0; t < lexicon.rules.length; t++){
       var POS = lexicon.rules[t].pos;
@@ -66,17 +84,24 @@ var parse = function(sentence){
 
   // Evaluate probabilities
   for(var length = 2; length < N; length++){
-    for(var i = 1; i < length; i++){
+    for(var i = 1; i < N + 1 - length; i++){
       var j = i + length - 1;
       for(var p = 0; p < lexicon.parts_of_speech.length; p++){
         var M = lexicon.parts_of_speech[p];
-        P[M][i][j] = new TreeNode(M, i, j, null, null, null, 0.0);  
+        P[M][i][j] = new TreeNode(M, i, j, null, null, null, 0);  
         for(var k = i; k < j-1; k++){
           for(var t = 0; t < grammar.rules.length; t++){
-            var children = grammar.rules[t].split(" ");
+            var children = grammar.rules[t].sequence.split(" ");
             var Y = children[0];
-            var 
-            var newProb = P[Y,i,k]
+            var Z = children[1];
+            P.initialize(Y,i,k);
+            P.initialize(Z,k+1,j);
+            var newProb = P[Y][i][k].prob * P[Z][k+1][j].prob * prob;
+            if (newProb > P[M][i][j].prob) {
+              P[M][i][j].left = P[Y][i][k];
+              P[M][i][j].right = P[Z][k+1][j];
+              P[M][i][j].prob = newProb;
+            }
           }
         }
       }
