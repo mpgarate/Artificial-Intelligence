@@ -1,10 +1,4 @@
-{
-  "parts_of_speech":[
-    "Noun",
-    "Prep",
-    "Verb"
-  ],
-  
+{  
   "rules": [
     {
       "pos": "Noun",

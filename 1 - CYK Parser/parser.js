@@ -1,15 +1,7 @@
 // Get the grammar and lexicon rules for our parser in JSON format
-var Grammar = function(path){
-  this.contents = require(path);
-  this.rules = this.contents.rules;
-}
-var Lexicon = function(path){
-  this.contents = require(path);
-  this.rules = this.contents.rules;
-  this.parts_of_speech = this.contents.parts_of_speech;
-}
-var grammar = new Grammar('./grammar.json');
-var lexicon = new Lexicon('./lexicon.json');
+
+var grammar = require('./grammar.json');
+var lexicon = require('./lexicon.json');
 
 
 // Get input sentences in JSON format
@@ -34,18 +26,21 @@ var TreeNode = function(POS, start, end, word, right, left, prob){
   this.prob = prob;           // probability
 
   var printTree = function(tree, indent){
-    var space = " ";
-    if (tree != null) {
-      console.log(space.repeat(indent));
-      console.log(tree.phrase);
-      if (tree.word != null) console.log(tree.word);
-      printTree(tree.left, indent+3);
-      printTree(tree.right, indent+3);
+    if (tree === null) return;
+    var spaces = indent;
+    console.log("spaces is: " + spaces);
+    while(spaces > 0){
+      console.log(" ");
+      spaces--;
     }
+    console.log(tree.phrase);
+    if (tree.word != null) console.log(tree.word);
+    printTree(tree.left, indent+3);
+    printTree(tree.right, indent+3);
   }
 
   this.print = function(){
-    printTree(this[S,1,N],0);
+    printTree(this,0);
   }
 }
 
@@ -63,6 +58,21 @@ var MultiArray = function(){
     //if (j !== undefined && this[POS][i][j] === undefined ){
     //  this[POS][i][j] = new TreeNode(POS, i, j, null, null, null, 0);
     //}
+  }
+
+  this.getProb = function(POS, i, j){
+    if(this[POS] === undefined){
+      return 0;
+    }
+    else if (this[POS][i] === undefined){
+      return 0;
+    }
+    else if (this[POS][i][j] === undefined){
+      return 0;
+    }
+    else{
+      return this[POS][i][j].prob;
+    }
   }
 }
 
@@ -82,20 +92,40 @@ var parse = function(sentence){
     }
   }
 
+
   // Evaluate probabilities
+
+  // Vary the phrase length 
   for(var length = 2; length < N; length++){
+
+    // Set start and end of phrase by current length
     for(var i = 1; i < N + 1 - length; i++){
       var j = i + length - 1;
-      for(var p = 0; p < lexicon.parts_of_speech.length; p++){
-        var M = lexicon.parts_of_speech[p];
-        P[M][i][j] = new TreeNode(M, i, j, null, null, null, 0);  
+
+      // Loop through NonTerms in Grammar
+      for(var p = 0; p < grammar.nonterms.length; p++){
+        var M = grammar.nonterms[p];
+        P.initialize(M,i);
+        P[M][i][j] = new TreeNode(M, i, j, null, null, null, 0);
+
+        // Loop through words in phrase
         for(var k = i; k < j-1; k++){
-          for(var t = 0; t < grammar.rules.length; t++){
-            var children = grammar.rules[t].sequence.split(" ");
+
+          // Visit possible rules for current nonterm
+          for(var t = 0; t < grammar[M].length; t++){
+            var prob = grammar[M][t].weight;
+            var children = grammar[M][t].sequence.split(" ");
             var Y = children[0];
-            var Z = children[1];
-            var newProb = P[Y][i][k].prob * P[Z][k+1][j].prob * prob;
+            var Z = children[1]; 
+            var PYik_prob = P.getProb(Y,i,k);
+            var PZk1j_prob = P.getProb(Z,k+1,j);
+            //console.log(PYik_prob);
+
+            console.log(PYik_prob + "*" + PZk1j_prob + "*" + prob);
+            var newProb = PYik_prob * PZk1j_prob * prob;
+            console.log("newProb: " + newProb);
             if (newProb > P[M][i][j].prob) {
+              console.log("----in the if----");
               P[M][i][j].left = P[Y][i][k];
               P[M][i][j].right = P[Z][k+1][j];
               P[M][i][j].prob = newProb;
@@ -105,7 +135,7 @@ var parse = function(sentence){
       }
     }
   }
-  console.log(P);
+  //console.log(P["S"][1][N]);
 }
 
 // loop through all of our sentences and parse each
