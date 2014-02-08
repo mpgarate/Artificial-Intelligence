@@ -27,10 +27,12 @@ var TreeNode = function (POS, start, end, word, right, left, prob) {
     var printTree = function (tree, indent) {
         if (tree === null) { return; }
         printSpaces(indent);        
-        console.log(tree.phrase);
+        process.stdout.write(tree.phrase);
         if (tree.word !== null) {
-            printSpaces(indent);        
-            console.log(tree.word);
+            console.log(" " + tree.word);
+        }
+        else{
+          console.log("");
         }
         printTree(tree.left, indent + 3);
         printTree(tree.right, indent + 3);
