@@ -3,62 +3,62 @@
     {
       "pos": "Noun",
       "word": "amy",
-      "weight": 0.1
+      "prob": 0.1
     },
     {
       "pos": "Noun",
       "word": "dinner",
-      "weight": 0.2
+      "prob": 0.2
     },
     {
       "pos": "Noun",
       "word": "fish",
-      "weight": 0.2
+      "prob": 0.2
     },
     {
       "pos": "Noun",
       "word": "streams",
-      "weight": 0.1
+      "prob": 0.1
     },
     {
       "pos": "Noun",
       "word": "swims",
-      "weight": 0.2
+      "prob": 0.2
     },
     {
       "pos": "Noun",
       "word": "tuesday",
-      "weight": 0.2
+      "prob": 0.2
     },
     {
       "pos": "Prep",
       "word": "for",
-      "weight": 0.5
+      "prob": 0.5
     },
     {
       "pos": "Prep",
       "word": "in",
-      "weight": 0.3
+      "prob": 0.3
     },
     {
       "pos": "Prep",
       "word": "on",
-      "weight": 0.2
+      "prob": 0.2
     },
     {
       "pos": "Verb",
       "word": "ate",
-      "weight": 0.7
+      "prob": 0.7
     },
     {
       "pos": "Verb",
       "word": "streams",
-      "weight": 0.1
+      "prob": 0.1
     },
     {
       "pos": "Verb",
       "word": "swim",
-      "weight": 0.2
+      "prob": 0.2
     }
   ]
 }

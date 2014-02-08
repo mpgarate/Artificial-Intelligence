@@ -17,6 +17,7 @@ var TreeNode = function (POS, start, end, word, right, left, prob) {
     this.left = left;
     this.prob = prob; // probability
 
+    // Helper for spacing tree print output
     var printSpaces = function (count){
       while (count > 0) {
             process.stdout.write(" ");
@@ -24,6 +25,7 @@ var TreeNode = function (POS, start, end, word, right, left, prob) {
         }
     }
 
+    // Pre-order tree print 
     var printTree = function (tree, indent) {
         if (tree === null) { return; }
         printSpaces(indent);        
@@ -38,6 +40,7 @@ var TreeNode = function (POS, start, end, word, right, left, prob) {
         printTree(tree.right, indent + 3);
     };
 
+    // Begin the tree print
     this.print = function () {
         if (this.prob > 0){
           console.log("probability: " + this.prob);
@@ -89,7 +92,7 @@ var parse = function (sentence) {
         for (var t = 0; t < lexicon.rules.length; t++) {
             var POS = lexicon.rules[t].pos;
             var lex_word = lexicon.rules[t].word;
-            var prob = lexicon.rules[t].weight;
+            var prob = lexicon.rules[t].prob;
             if (word === lex_word) {
                 P.initialize(POS, i);
                 P[POS][i][i] = new TreeNode(POS, i, i, word, null, null, prob);
@@ -112,16 +115,16 @@ var parse = function (sentence) {
             // Loop through NonTerms in sentence
             for (var p = 0; p < grammar.nonterms.length; p++) {
                 var M = grammar.nonterms[p];
-                //console.log(M);
                 P.initialize(M, i);
                 P[M][i][j] = new TreeNode(M, i, j, null, null, null, 0);
+
                 // Loop through words in subphrase
                 for (var k = i; k < j; k++) {
 
                     // Visit possible rules for current nonterm
                     for (var t = 0; t < grammar[M].length; t++) {
 
-                        var prob = grammar[M][t].weight;
+                        var prob = grammar[M][t].prob;
                         var children = grammar[M][t].sequence.split(" ");
                         var Y = children[0];
                         var Z = children[1];
@@ -144,6 +147,7 @@ var parse = function (sentence) {
             }
         }
     }
+    // Call print on the most probable parse
     P["S"][0][N-1].print();
 }
 
