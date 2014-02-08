@@ -37,8 +37,14 @@ var TreeNode = function (POS, start, end, word, right, left, prob) {
     };
 
     this.print = function () {
-        printTree(this, 0);
-        console.log("");
+        if (this.prob > 0){
+          console.log("probability: " + this.prob);
+          printTree(this, 0);
+          console.log(""); 
+        }
+        else{
+          console.log("This sentence cannot be parsed");
+        }
     };
 };
 
@@ -140,5 +146,9 @@ var parse = function (sentence) {
 }
 
 // loop through all of our sentences and parse each
-var sentence = sentences[0].toLowerCase().split(" ");
-parse(sentence);
+
+for (var i = 0; i < sentences.length; i++){
+  console.log("----- sentence: " + i + " -----");
+  var sentence = sentences[i].toLowerCase().split(" ");
+  parse(sentence);  
+}
