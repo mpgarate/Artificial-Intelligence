@@ -82,6 +82,7 @@ var parse = function(sentence){
       if (word === lex_word){
         P.initialize(POS,i);
         P[POS][i][i] = new TreeNode(POS,i,i,word,null,null,prob);
+        //P[POS][i][i].print();
       }
     }
   }
@@ -101,9 +102,8 @@ var parse = function(sentence){
         var M = grammar.nonterms[p];
         P.initialize(M,i);
         P[M][i][j] = new TreeNode(M, i, j, null, null, null, 0);
-
         // Loop through words in subphrase
-        for(var k = i; k < j - 1; k++){
+        for(var k = i; k < j; k++){
 
           // Visit possible rules for current nonterm
           for(var t = 0; t < grammar[M].length; t++){
@@ -114,7 +114,7 @@ var parse = function(sentence){
             var PYik_prob = P.getProb(Y,i,k);
             var PZk1j_prob = P.getProb(Z,k+1,j);
 
-            //console.log(PYik_prob + "*" + PZk1j_prob + "*" + prob);
+            console.log(PYik_prob + "*" + PZk1j_prob + "*" + prob);
             var newProb = PYik_prob * PZk1j_prob * prob;
             //console.log("newProb: " + newProb);
             if (newProb > P[M][i][j].prob) {
@@ -135,5 +135,5 @@ var parse = function(sentence){
 }
 
 // loop through all of our sentences and parse each
-var sentence = sentences[0].split(" ");
+var sentence = sentences[0].toLowerCase().split(" ");
 parse(sentence);
