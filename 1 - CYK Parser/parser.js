@@ -1,3 +1,10 @@
+/*
+ *  CYK Parser
+ *  Michael Garate
+ *  February 2014
+ *  
+ */
+
 // Get the grammar and lexicon rules for our parser in JSON format
 
 var grammar = require('./grammar.json');
