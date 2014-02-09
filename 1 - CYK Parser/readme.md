@@ -44,7 +44,7 @@ S
       PP
          Prep in
          Noun streams
-probability = 0.0000216
+probability = 0.0000216 (2.16e-5)
 
 ----- sentence: 2 -----
 S
@@ -54,7 +54,7 @@ S
          Prep in
          Noun streams
    Verb swim
-probability = 0.0001152
+probability = 0.0001152 (1.152e-4)
 
 ----- sentence: 3 -----
 S
@@ -66,7 +66,7 @@ S
          PP
             Prep for
             Noun dinner
-probability = 0.0001008
+probability = 0.0001008 (1.008e-4)
 
 ----- sentence: 4 -----
 S
@@ -82,7 +82,7 @@ S
                PP
                   Prep on
                   Noun tuesday
-probability = 0.00000129024
+probability = 0.00000129024 (1.29024e-6)
 
 ----- sentence: 5 -----
 This sentence cannot be parsed
