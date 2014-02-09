@@ -3,7 +3,6 @@
 var grammar = require('./grammar.json');
 var lexicon = require('./lexicon.json');
 
-
 // Get input sentences in JSON format
 var sentences = require('./sentences.json');
 
@@ -18,23 +17,24 @@ var TreeNode = function (POS, start, end, word, right, left, prob) {
     this.prob = prob; // probability
 
     // Helper for spacing tree print output
-    var printSpaces = function (count){
-      while (count > 0) {
+    var printSpaces = function (count) {
+        while (count > 0) {
             process.stdout.write(" ");
             count--;
         }
-    }
+    };
 
     // Pre-order tree print 
     var printTree = function (tree, indent) {
-        if (tree === null) { return; }
-        printSpaces(indent);        
+        if (tree === null) {
+            return;
+        }
+        printSpaces(indent);
         process.stdout.write(tree.phrase);
         if (tree.word !== null) {
             console.log(" " + tree.word);
-        }
-        else{
-          console.log("");
+        } else {
+            console.log("");
         }
         printTree(tree.left, indent + 3);
         printTree(tree.right, indent + 3);
@@ -42,13 +42,15 @@ var TreeNode = function (POS, start, end, word, right, left, prob) {
 
     // Begin the tree print
     this.print = function () {
-        if (this.prob > 0){
-          console.log("probability: " + this.prob);
-          printTree(this, 0);
-          console.log(""); 
-        }
-        else{
-          console.log("This sentence cannot be parsed");
+        if (this.prob > 0) {
+            printTree(this, 0);
+
+            // print probability rounding out floating point error margin
+            var power = 10000000000000000;
+            console.log("probability = " + Math.round(this.prob * power) / power);
+            console.log("");
+        } else {
+            console.log("This sentence cannot be parsed");
         }
     };
 };
@@ -57,6 +59,8 @@ var TreeNode = function (POS, start, end, word, right, left, prob) {
 // The first level can be used like a hash
 // POS is a string, ie 'Noun', which is a key
 var MultiArray = function () {
+
+    // Create blank arrays for given indices
     this.initialize = function (POS, i) {
         if (this[POS] === undefined) {
             this[POS] = [];
@@ -66,6 +70,8 @@ var MultiArray = function () {
         }
     };
 
+    // Get the probability for a node or return
+    // 0 if it is defined
     this.getProb = function (POS, i, j) {
         if (this[POS] === undefined) {
             return 0;
@@ -81,20 +87,19 @@ var MultiArray = function () {
 
 // Parse a sentence to a tree 
 var parse = function (sentence) {
+
     // Initialize the array with sentence words
     var P = new MultiArray();
     var N = sentence.length;
-    for (var i = 0; i < N; i++) {
-        word = sentence[i];
-        for (var t = 0; t < lexicon.rules.length; t++) {
-            var POS = lexicon.rules[t].pos;
-            var lex_word = lexicon.rules[t].word;
-            var prob = lexicon.rules[t].prob;
+    for (var h = 0; h < N; h++) {
+        var word = sentence[h];
+        for (var s = 0; s < lexicon.rules.length; s++) {
+            var POS = lexicon.rules[s].pos;
+            var lex_word = lexicon.rules[s].word;
+            var prob = lexicon.rules[s].prob;
             if (word === lex_word) {
-                P.initialize(POS, i);
-                P[POS][i][i] = new TreeNode(POS, i, i, word, null, null, prob);
-                //console.log("POS:" + POS + " i:" + i);
-                //P[POS][i][i].print();
+                P.initialize(POS, h);
+                P[POS][h][h] = new TreeNode(POS, h, h, word, null, null, prob);
             }
         }
     }
@@ -122,7 +127,7 @@ var parse = function (sentence) {
                     // Visit possible rules for current nonterm
                     for (var t = 0; t < grammar[M].length; t++) {
 
-                        var prob = grammar[M][t].prob;
+                        var probability = grammar[M][t].prob;
 
                         var children = grammar[M][t].sequence.split(" ");
                         var Y = children[0];
@@ -131,17 +136,12 @@ var parse = function (sentence) {
                         var PYik_prob = P.getProb(Y, i, k);
                         var PZk1j_prob = P.getProb(Z, k + 1, j);
 
-                        //console.log(Y + " " + Z + " " + i + " " + (k+1));
-                        //console.log(PYik_prob + "*" + PZk1j_prob + "*" + prob);
-                        var newProb = PYik_prob * PZk1j_prob * prob;
-                        //console.log("newProb: " + newProb);
+                        var newProb = PYik_prob * PZk1j_prob * probability;
+
                         if (newProb > P[M][i][j].prob) {
-                            //console.log("FOUND BETTER PROB");
                             P[M][i][j].left = P[Y][i][k];
                             P[M][i][j].right = P[Z][k + 1][j];
                             P[M][i][j].prob = newProb;
-                            //console.log("[" + M + "][" + i + "][" + j + "] prob: " + newProb);
-                            //P[M][i][j].print();
                         }
                     }
                 }
@@ -149,13 +149,17 @@ var parse = function (sentence) {
         }
     }
     // Call print on the most probable parse
-    P["S"][0][N-1].print();
-}
+    P["S"][0][N - 1].print();
+};
 
 // loop through all of our sentences and parse each
 
-for (var i = 0; i < sentences.length; i++){
-  console.log("----- sentence: " + i + " -----");
-  var sentence = sentences[i].toLowerCase().split(" ");
-  parse(sentence);  
+for (var i = 0; i < sentences.length; i++) {
+
+    if (sentences.length > 1) {
+        console.log("----- sentence: " + (i + 1) + " -----");
+    }
+
+    var sentence = sentences[i].toLowerCase().split(" ");
+    parse(sentence);
 }
