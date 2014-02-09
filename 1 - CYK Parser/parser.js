@@ -64,9 +64,6 @@ var MultiArray = function () {
         if (this[POS][i] === undefined) {
             this[POS][i] = [];
         }
-        //if (j !== undefined && this[POS][i][j] === undefined ){
-        //  this[POS][i][j] = new TreeNode(POS, i, j, null, null, null, 0);
-        //}
     };
 
     this.getProb = function (POS, i, j) {
@@ -84,7 +81,7 @@ var MultiArray = function () {
 
 // Parse a sentence to a tree 
 var parse = function (sentence) {
-    // Initialize the array
+    // Initialize the array with sentence words
     var P = new MultiArray();
     var N = sentence.length;
     for (var i = 0; i < N; i++) {
@@ -112,8 +109,9 @@ var parse = function (sentence) {
         for (var i = 0; i < N - length + 1; i++) {
             var j = i + length - 1;
 
-            // Loop through NonTerms in sentence
+            // Loop through NonTerms in grammar
             for (var p = 0; p < grammar.nonterms.length; p++) {
+
                 var M = grammar.nonterms[p];
                 P.initialize(M, i);
                 P[M][i][j] = new TreeNode(M, i, j, null, null, null, 0);
@@ -125,11 +123,14 @@ var parse = function (sentence) {
                     for (var t = 0; t < grammar[M].length; t++) {
 
                         var prob = grammar[M][t].prob;
+
                         var children = grammar[M][t].sequence.split(" ");
                         var Y = children[0];
                         var Z = children[1];
+
                         var PYik_prob = P.getProb(Y, i, k);
                         var PZk1j_prob = P.getProb(Z, k + 1, j);
+
                         //console.log(Y + " " + Z + " " + i + " " + (k+1));
                         //console.log(PYik_prob + "*" + PZk1j_prob + "*" + prob);
                         var newProb = PYik_prob * PZk1j_prob * prob;
