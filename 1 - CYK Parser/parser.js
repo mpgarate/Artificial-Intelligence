@@ -53,7 +53,7 @@ var TreeNode = function (POS, start, end, word, right, left, prob) {
             printTree(this, 0);
 
             // print probability rounding out floating point error margin
-            var power = 10000000000000000;
+            var power = 10000000000000;
             var rounded_prob = Math.round(this.prob * power) / power;
             console.log("probability = " + rounded_prob + " (" + rounded_prob.toExponential() + ")" );
             console.log("");
