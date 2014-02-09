@@ -47,7 +47,8 @@ var TreeNode = function (POS, start, end, word, right, left, prob) {
 
             // print probability rounding out floating point error margin
             var power = 10000000000000000;
-            console.log("probability = " + Math.round(this.prob * power) / power);
+            var rounded_prob = Math.round(this.prob * power) / power;
+            console.log("probability = " + rounded_prob + " (" + rounded_prob.toExponential() + ")" );
             console.log("");
         } else {
             console.log("This sentence cannot be parsed");
