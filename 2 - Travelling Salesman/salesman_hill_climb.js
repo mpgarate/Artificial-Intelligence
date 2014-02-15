@@ -16,7 +16,7 @@ function printPath(path){
   console.log();
 }
 
-// Get distance between two points
+// Get distance between two point pairs
 function getPointsDistance(a, b){
   var sum = Math.pow((b[0] - a[0]),2) + Math.pow((b[1] - a[1]),2);
   return Math.sqrt(sum);
@@ -55,7 +55,7 @@ function printPathIteration(path, swap, distance){
 }
 
 // Primary algorithm function
-function travellingSalesman(path){
+function simpleTravellingSalesman(path){
   var best_distance = getTotalDistance(path);
   
   var new_distance;
@@ -94,4 +94,87 @@ function travellingSalesman(path){
   }
 }
 
-travellingSalesman(path);
+function getWrappedIndex(length,index){
+  if (index === -1){
+    return length - 1;
+  }
+  if (index === length){
+    return 0;
+  }
+  return index;
+}
+
+function calculateLengthChange(path,U,V){
+  var difference = 0;
+  var length = path.length;
+  console.log("length: " + path.length);
+  console.log("U: " + U + " V: " + V);
+
+  U = Number(U);
+  V = Number(V);
+
+  var U_minus_1 = getWrappedIndex(length, (U-1));
+  var V_minus_1 = getWrappedIndex(length, (V-1));
+  var U_plus_1 = getWrappedIndex(length, (U+1));
+  var V_plus_1 = getWrappedIndex(length, (V+1));
+
+  console.log("U_minus_1 " + U_minus_1);
+  console.log("V_minus_1 " + V_minus_1);
+  console.log("U_plus_1 " + U_plus_1);
+  console.log("V_plus_1 " + V_plus_1);
+
+  // If locations in sequence
+  if(Math.abs(U - V) == 1){
+    difference -= getPointsDistance(U_minus_1, U);
+    difference -= getPointsDistance(V_plus_1, V);
+
+    difference += getPointsDistance(U_minus_1,U_plus_1);
+    difference += getPointsDistance(V_minus_1,V_plus_1);
+  }
+  else{
+    difference -= getPointsDistance(U_minus_1, U);
+    difference -= getPointsDistance(U, U_plus_1);
+    difference -= getPointsDistance(V_minus_1,V);
+    difference -= getPointsDistance(V, V_plus_1);
+
+    difference += getPointsDistance(U_minus_1, V);
+    difference += getPointsDistance(V, U_plus_1);
+    difference += getPointsDistance(V_minus_1, U);
+    difference += getPointsDistance(U, V_plus_1);
+  }
+  return difference;
+}
+
+function improvedTravellingSalesman(path){
+  var best_distance = getTotalDistance(path);
+
+  var difference;
+  var best_difference;
+  var best_swap = [];
+  while(true){
+    best_difference = 0;
+    for(var U in path){
+      for(var V in path){
+        difference = calculateLengthChange(path,U,V);
+        console.log(difference);
+        if (difference < best_difference){
+          best_difference = difference;
+          best_swap[0] = U;
+          best_swap[1] = V;
+        }
+      }
+    }
+
+    if(best_difference === 0){
+      return path;
+    }
+    path = swap(path,best_swap[0],best_swap[1]);
+    length += best_difference;
+
+    // Print out this iteration
+    printPathIteration(path,best_swap,best_distance);
+  }
+}
+
+//simpleTravellingSalesman(path);
+improvedTravellingSalesman(path);
