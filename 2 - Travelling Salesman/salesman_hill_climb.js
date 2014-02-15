@@ -25,10 +25,52 @@ function getTotalDistance(path){
   return total_distance;
 }
 
+function swap(path, a, b){
+  var tmp = path[a];
+  path[a] = path[b];
+  path[b] = tmp;
+  
+  return path;
+}
+
+function swapForImprovedDistance(path, best, j){
+  var best_distance = best;
+  var best_path = path;
+  var best_swap = [];
+  for(var i in path){
+    for(var j in path){
+      new_path = swap(path, i, j);
+      var new_distance = getTotalDistance(new_path);
+      if (new_distance < best_distance){
+        console.log("found " + new_distance);
+        best_distance = new_distance;
+        best_path = new_path;
+        best_swap = [i, j];
+      }
+    }
+  }
+  console.log(best_swap);
+  return [best_distance, best_path];
+}
+
 // Primary algorithm function
 function travellingSalesman(path){
-  var initial_distance = getTotalDistance(path);
-  console.log(initial_distance);
+  var best_distance = getTotalDistance(path);
+  var best_path = path;
+  while(true){
+    var result = swapForImprovedDistance(best_path, best_distance);
+    var new_distance = result[0];
+    var new_path = result[1];
+
+    console.log("best: " + best_distance + " new: " + new_distance);
+    if (best_distance <= new_distance){
+      return new_path;
+    }
+    else{
+      best_distance = new_distance;
+      best_path = new_path;
+    }
+  }
 }
 
 travellingSalesman(path);
