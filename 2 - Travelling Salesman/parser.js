@@ -29,8 +29,8 @@ function inputStringToArray(points_string){
     var points = [];
     for (var i = 0; i < split_points[0].length; i++){
       points[i] = [];
-      points[i][0] = split_points[0][i];
-      points[i][1] = split_points[1][i];
+      points[i][0] = parseFloat(split_points[0][i]);
+      points[i][1] = parseFloat(split_points[1][i]);
     } 
     return points;
 }
