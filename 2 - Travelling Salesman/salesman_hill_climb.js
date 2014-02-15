@@ -29,47 +29,44 @@ function swap(path, a, b){
   var tmp = path[a];
   path[a] = path[b];
   path[b] = tmp;
-  
   return path;
-}
-
-function swapForImprovedDistance(path, best, j){
-  var best_distance = best;
-  var best_path = path;
-  var best_swap = [];
-  for(var i in path){
-    for(var j in path){
-      new_path = swap(path, i, j);
-      var new_distance = getTotalDistance(new_path);
-      if (new_distance < best_distance){
-        console.log("found " + new_distance);
-        best_distance = new_distance;
-        best_path = new_path;
-        best_swap = [i, j];
-      }
-    }
-  }
-  console.log(best_swap);
-  return [best_distance, best_path];
 }
 
 // Primary algorithm function
 function travellingSalesman(path){
   var best_distance = getTotalDistance(path);
   var best_path = path;
+
+  var new_path;
+  var new_distance;
+  var new_best_distance = best_distance;
+  var best_swap;
   while(true){
-    var result = swapForImprovedDistance(best_path, best_distance);
-    var new_distance = result[0];
-    var new_path = result[1];
+    for(var U in path){
+      for (var V in path){
+        new_path = best_path;
+        swap(new_path,U,V);
+        // calculate new distance
+        new_distance = getTotalDistance(new_path);
+        if(new_distance < new_best_distance){
+          new_best_distance = new_distance;
+          best_swap = [U,V];
+        }
+        // undo the swap for future iterations
+        swap(new_path,U,V);
+      }
+    }
+
+    if (new_best_distance === best_distance){
+      console.log(new_best_distance + " == " + best_distance);
+      return path;
+    }
+    console.log("distances were not equal.");
+    best_distance = new_best_distance;
+    best_path = new_path;
+    path = swap(path,best_swap[0],best_swap[1]);
 
     console.log("best: " + best_distance + " new: " + new_distance);
-    if (best_distance <= new_distance){
-      return new_path;
-    }
-    else{
-      best_distance = new_distance;
-      best_path = new_path;
-    }
   }
 }
 
