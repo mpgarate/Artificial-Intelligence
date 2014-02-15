@@ -1,7 +1,7 @@
 // Node.js module to allow reading from file
 fs = require('fs');
 
-// Determine which use of \n or \r for newline
+// Determine which use of \n or \r for newline in file
 function getNewlineType(points_string){
     if (points_string.indexOf("\r\n") > 0){
       newline = "\r\n";
