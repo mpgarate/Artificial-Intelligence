@@ -1,37 +1,477 @@
 DIFF: 0
-DIFF: 0.763932023
-DIFF: -1.236067977
-DIFF: -0.407640853
-DIFF: -1.821854415
-DIFF: -1.414213562
+in sequence for 0 [0,0] 1 [1,2]
+points: 1,0 | 0,0 : 1
+points: 1,2 | 2,0 : 2.23606797749979
+points: 1,0 | 1,2 : 2
+points: 0,0 | 2,0 : 2
+DIFF: 0.7639320225
+out of sequence for 0 2
+DIFF: -1.2360679775
+out of sequence for 0 3
+DIFF: -0.407640852754
+out of sequence for 0 4
+DIFF: -1.821854415127
+in sequence for 5 [1,0] 0 [0,0]
+points: 2,1 | 1,0 : 1.4142135623730951
+points: 0,0 | 1,2 : 2.23606797749979
+points: 2,1 | 0,0 : 2.23606797749979
+points: 1,0 | 1,2 : 2
+DIFF: 0.585786437627
+in sequence for 0 [0,0] 1 [1,2]
+points: 1,0 | 0,0 : 1
+points: 1,2 | 2,0 : 2.23606797749979
+points: 1,0 | 1,2 : 2
+points: 0,0 | 2,0 : 2
+DIFF: 0.7639320225
+DIFF: 0
+in sequence for 1 [1,2] 2 [2,0]
+points: 0,0 | 1,2 : 2.23606797749979
+points: 2,0 | 0,1 : 2.23606797749979
+points: 0,0 | 2,0 : 2
+points: 1,2 | 0,1 : 1.4142135623730951
+DIFF: -1.057922392626
+out of sequence for 1 3
+DIFF: -1.821854415127
+out of sequence for 1 4
+DIFF: -1.2360679775
+out of sequence for 1 5
+DIFF: -1.2360679775
+out of sequence for 0 2
+DIFF: -1.2360679775
+in sequence for 1 [1,2] 2 [2,0]
+points: 0,0 | 1,2 : 2.23606797749979
+points: 2,0 | 0,1 : 2.23606797749979
+points: 0,0 | 2,0 : 2
+points: 1,2 | 0,1 : 1.4142135623730951
+DIFF: -1.057922392626
+DIFF: 0
+in sequence for 2 [2,0] 3 [0,1]
+points: 1,2 | 2,0 : 2.23606797749979
+points: 0,1 | 2,1 : 2
+points: 1,2 | 0,1 : 1.4142135623730951
+points: 2,0 | 2,1 : 1
+DIFF: -1.821854415127
+out of sequence for 2 4
+DIFF: -1.2360679775
+out of sequence for 2 5
 DIFF: -0.472135955
+out of sequence for 0 3
+DIFF: -0.407640852754
+out of sequence for 1 3
+DIFF: -1.821854415127
+in sequence for 2 [2,0] 3 [0,1]
+points: 1,2 | 2,0 : 2.23606797749979
+points: 0,1 | 2,1 : 2
+points: 1,2 | 0,1 : 1.4142135623730951
+points: 2,0 | 2,1 : 1
+DIFF: -1.821854415127
 DIFF: 0
-DIFF: -1.057922393
-DIFF: -1.821854415
-DIFF: -1.236067977
-DIFF: -1.236067977
-DIFF: -1.236067977
-DIFF: -1.057922393
+in sequence for 3 [0,1] 4 [2,1]
+points: 2,0 | 0,1 : 2.23606797749979
+points: 2,1 | 1,0 : 1.4142135623730951
+points: 2,0 | 2,1 : 1
+points: 0,1 | 1,0 : 1.4142135623730951
+DIFF: -1.2360679775
+out of sequence for 3 5
+DIFF: -1.2360679775
+out of sequence for 0 4
+DIFF: -1.821854415127
+out of sequence for 1 4
+DIFF: -1.2360679775
+out of sequence for 2 4
+DIFF: -1.2360679775
+in sequence for 3 [0,1] 4 [2,1]
+points: 2,0 | 0,1 : 2.23606797749979
+points: 2,1 | 1,0 : 1.4142135623730951
+points: 2,0 | 2,1 : 1
+points: 0,1 | 1,0 : 1.4142135623730951
+DIFF: -1.2360679775
 DIFF: 0
-DIFF: -1.821854415
-DIFF: -1.236067977
+in sequence for 4 [2,1] 5 [1,0]
+points: 0,1 | 2,1 : 2
+points: 1,0 | 0,0 : 1
+points: 0,1 | 1,0 : 1.4142135623730951
+points: 2,1 | 0,0 : 2.23606797749979
+DIFF: 0.650281539873
+in sequence for 5 [1,0] 0 [0,0]
+points: 2,1 | 1,0 : 1.4142135623730951
+points: 0,0 | 1,2 : 2.23606797749979
+points: 2,1 | 0,0 : 2.23606797749979
+points: 1,0 | 1,2 : 2
+DIFF: 0.585786437627
+out of sequence for 1 5
+DIFF: -1.2360679775
+out of sequence for 2 5
 DIFF: -0.472135955
-DIFF: -0.407640853
-DIFF: -1.821854415
-DIFF: -2.057922393
+out of sequence for 3 5
+DIFF: -1.2360679775
+in sequence for 4 [2,1] 5 [1,0]
+points: 0,1 | 2,1 : 2
+points: 1,0 | 0,0 : 1
+points: 0,1 | 1,0 : 1.4142135623730951
+points: 2,1 | 0,0 : 2.23606797749979
+DIFF: 0.650281539873
 DIFF: 0
-DIFF: -1.236067977
-DIFF: -1.236067977
-DIFF: -1.821854415
-DIFF: -1.236067977
-DIFF: -1.236067977
-DIFF: -1.585786438
+Swap 1 and 5
+
+2.0  1.0  2.0  0.0  0.0  1.0  
+1.0  2.0  0.0  1.0  0.0  0.0  
+
+Length = 9.3006
+
 DIFF: 0
-DIFF: 0.65028154
-DIFF: -1.414213562
-DIFF: -1.236067977
+in sequence for 0 [2,1] 1 [1,2]
+points: 1,0 | 2,1 : 1.4142135623730951
+points: 1,2 | 2,0 : 2.23606797749979
+points: 1,0 | 1,2 : 2
+points: 2,1 | 2,0 : 1
+DIFF: -0.650281539873
+out of sequence for 0 2
+DIFF: -0.650281539873
+out of sequence for 0 3
+DIFF: 0
+out of sequence for 0 4
+DIFF: 1.821854415127
+in sequence for 5 [1,0] 0 [2,1]
+points: 0,0 | 1,0 : 1
+points: 2,1 | 1,2 : 1.4142135623730951
+points: 0,0 | 2,1 : 2.23606797749979
+points: 1,0 | 1,2 : 2
+DIFF: 1.821854415127
+in sequence for 0 [2,1] 1 [1,2]
+points: 1,0 | 2,1 : 1.4142135623730951
+points: 1,2 | 2,0 : 2.23606797749979
+points: 1,0 | 1,2 : 2
+points: 2,1 | 2,0 : 1
+DIFF: -0.650281539873
+DIFF: 0
+in sequence for 1 [1,2] 2 [2,0]
+points: 2,1 | 1,2 : 1.4142135623730951
+points: 2,0 | 0,1 : 2.23606797749979
+points: 2,1 | 2,0 : 1
+points: 1,2 | 0,1 : 1.4142135623730951
+DIFF: -1.2360679775
+out of sequence for 1 3
+DIFF: 1.821854415127
+out of sequence for 1 4
+DIFF: 2
+out of sequence for 1 5
+DIFF: 0
+out of sequence for 0 2
+DIFF: -0.650281539873
+in sequence for 1 [1,2] 2 [2,0]
+points: 2,1 | 1,2 : 1.4142135623730951
+points: 2,0 | 0,1 : 2.23606797749979
+points: 2,1 | 2,0 : 1
+points: 1,2 | 0,1 : 1.4142135623730951
+DIFF: -1.2360679775
+DIFF: 0
+in sequence for 2 [2,0] 3 [0,1]
+points: 1,2 | 2,0 : 2.23606797749979
+points: 0,1 | 0,0 : 1
+points: 1,2 | 0,1 : 1.4142135623730951
+points: 2,0 | 0,0 : 2
+DIFF: 0.178145584873
+out of sequence for 2 4
+DIFF: 0
+out of sequence for 2 5
 DIFF: -0.472135955
-DIFF: -1.236067977
-DIFF: 0.821854415
+out of sequence for 0 3
 DIFF: 0
-9.064495101872465!==9.30056307974577
+out of sequence for 1 3
+DIFF: 1.821854415127
+in sequence for 2 [2,0] 3 [0,1]
+points: 1,2 | 2,0 : 2.23606797749979
+points: 0,1 | 0,0 : 1
+points: 1,2 | 0,1 : 1.4142135623730951
+points: 2,0 | 0,0 : 2
+DIFF: 0.178145584873
+DIFF: 0
+in sequence for 3 [0,1] 4 [0,0]
+points: 2,0 | 0,1 : 2.23606797749979
+points: 0,0 | 1,0 : 1
+points: 2,0 | 0,0 : 2
+points: 0,1 | 1,0 : 1.4142135623730951
+DIFF: 0.178145584873
+out of sequence for 3 5
+DIFF: -0.650281539873
+out of sequence for 0 4
+DIFF: 1.821854415127
+out of sequence for 1 4
+DIFF: 2
+out of sequence for 2 4
+DIFF: 0
+in sequence for 3 [0,1] 4 [0,0]
+points: 2,0 | 0,1 : 2.23606797749979
+points: 0,0 | 1,0 : 1
+points: 2,0 | 0,0 : 2
+points: 0,1 | 1,0 : 1.4142135623730951
+DIFF: 0.178145584873
+DIFF: 0
+in sequence for 4 [0,0] 5 [1,0]
+points: 0,1 | 0,0 : 1
+points: 1,0 | 2,1 : 1.4142135623730951
+points: 0,1 | 1,0 : 1.4142135623730951
+points: 0,0 | 2,1 : 2.23606797749979
+DIFF: 1.2360679775
+in sequence for 5 [1,0] 0 [2,1]
+points: 0,0 | 1,0 : 1
+points: 2,1 | 1,2 : 1.4142135623730951
+points: 0,0 | 2,1 : 2.23606797749979
+points: 1,0 | 1,2 : 2
+DIFF: 1.821854415127
+out of sequence for 1 5
+DIFF: 0
+out of sequence for 2 5
+DIFF: -0.472135955
+out of sequence for 3 5
+DIFF: -0.650281539873
+in sequence for 4 [0,0] 5 [1,0]
+points: 0,1 | 0,0 : 1
+points: 1,0 | 2,1 : 1.4142135623730951
+points: 0,1 | 1,0 : 1.4142135623730951
+points: 0,0 | 2,1 : 2.23606797749979
+DIFF: 1.2360679775
+DIFF: 0
+Swap 2 and 3
+
+2.0  2.0  1.0  0.0  0.0  1.0  
+1.0  0.0  2.0  1.0  0.0  0.0  
+
+Length = 8.0645
+
+DIFF: 0
+in sequence for 0 [2,1] 1 [2,0]
+points: 1,0 | 2,1 : 1.4142135623730951
+points: 2,0 | 1,2 : 2.23606797749979
+points: 1,0 | 2,0 : 1
+points: 2,1 | 1,2 : 1.4142135623730951
+DIFF: -1.2360679775
+out of sequence for 0 2
+DIFF: 1.171572875254
+out of sequence for 0 3
+DIFF: 2.472135955
+out of sequence for 0 4
+DIFF: 2
+in sequence for 5 [1,0] 0 [2,1]
+points: 0,0 | 1,0 : 1
+points: 2,1 | 2,0 : 1
+points: 0,0 | 2,1 : 2.23606797749979
+points: 1,0 | 2,0 : 1
+DIFF: 1.2360679775
+in sequence for 0 [2,1] 1 [2,0]
+points: 1,0 | 2,1 : 1.4142135623730951
+points: 2,0 | 1,2 : 2.23606797749979
+points: 1,0 | 2,0 : 1
+points: 2,1 | 1,2 : 1.4142135623730951
+DIFF: -1.2360679775
+DIFF: 0
+in sequence for 1 [2,0] 2 [1,2]
+points: 2,1 | 2,0 : 1
+points: 1,2 | 0,1 : 1.4142135623730951
+points: 2,1 | 1,2 : 1.4142135623730951
+points: 2,0 | 0,1 : 2.23606797749979
+DIFF: 1.2360679775
+out of sequence for 1 3
+DIFF: 2
+out of sequence for 1 4
+DIFF: 2.472135955
+out of sequence for 1 5
+DIFF: 0.7639320225
+out of sequence for 0 2
+DIFF: 1.171572875254
+in sequence for 1 [2,0] 2 [1,2]
+points: 2,1 | 2,0 : 1
+points: 1,2 | 0,1 : 1.4142135623730951
+points: 2,1 | 1,2 : 1.4142135623730951
+points: 2,0 | 0,1 : 2.23606797749979
+DIFF: 1.2360679775
+DIFF: 0
+in sequence for 2 [1,2] 3 [0,1]
+points: 2,0 | 1,2 : 2.23606797749979
+points: 0,1 | 0,0 : 1
+points: 2,0 | 0,1 : 2.23606797749979
+points: 1,2 | 0,0 : 2.23606797749979
+DIFF: 1.2360679775
+out of sequence for 2 4
+DIFF: 0.7639320225
+out of sequence for 2 5
+DIFF: 0
+out of sequence for 0 3
+DIFF: 2.472135955
+out of sequence for 1 3
+DIFF: 2
+in sequence for 2 [1,2] 3 [0,1]
+points: 2,0 | 1,2 : 2.23606797749979
+points: 0,1 | 0,0 : 1
+points: 2,0 | 0,1 : 2.23606797749979
+points: 1,2 | 0,0 : 2.23606797749979
+DIFF: 1.2360679775
+DIFF: 0
+in sequence for 3 [0,1] 4 [0,0]
+points: 1,2 | 0,1 : 1.4142135623730951
+points: 0,0 | 1,0 : 1
+points: 1,2 | 0,0 : 2.23606797749979
+points: 0,1 | 1,0 : 1.4142135623730951
+DIFF: 1.2360679775
+out of sequence for 3 5
+DIFF: 1.171572875254
+out of sequence for 0 4
+DIFF: 2
+out of sequence for 1 4
+DIFF: 2.472135955
+out of sequence for 2 4
+DIFF: 0.7639320225
+in sequence for 3 [0,1] 4 [0,0]
+points: 1,2 | 0,1 : 1.4142135623730951
+points: 0,0 | 1,0 : 1
+points: 1,2 | 0,0 : 2.23606797749979
+points: 0,1 | 1,0 : 1.4142135623730951
+DIFF: 1.2360679775
+DIFF: 0
+in sequence for 4 [0,0] 5 [1,0]
+points: 0,1 | 0,0 : 1
+points: 1,0 | 2,1 : 1.4142135623730951
+points: 0,1 | 1,0 : 1.4142135623730951
+points: 0,0 | 2,1 : 2.23606797749979
+DIFF: 1.2360679775
+in sequence for 5 [1,0] 0 [2,1]
+points: 0,0 | 1,0 : 1
+points: 2,1 | 2,0 : 1
+points: 0,0 | 2,1 : 2.23606797749979
+points: 1,0 | 2,0 : 1
+DIFF: 1.2360679775
+out of sequence for 1 5
+DIFF: 0.7639320225
+out of sequence for 2 5
+DIFF: 0
+out of sequence for 3 5
+DIFF: 1.171572875254
+in sequence for 4 [0,0] 5 [1,0]
+points: 0,1 | 0,0 : 1
+points: 1,0 | 2,1 : 1.4142135623730951
+points: 0,1 | 1,0 : 1.4142135623730951
+points: 0,0 | 2,1 : 2.23606797749979
+DIFF: 1.2360679775
+DIFF: 0
+Swap 1 and 2
+
+2.0  2.0  1.0  0.0  0.0  1.0  
+0.0  1.0  2.0  1.0  0.0  0.0  
+
+Length = 6.8284
+
+DIFF: 0
+in sequence for 0 [2,0] 1 [2,1]
+points: 1,0 | 2,0 : 1
+points: 2,1 | 1,2 : 1.4142135623730951
+points: 1,0 | 2,1 : 1.4142135623730951
+points: 2,0 | 1,2 : 2.23606797749979
+DIFF: 1.2360679775
+out of sequence for 0 2
+DIFF: 1.821854415127
+out of sequence for 0 3
+DIFF: 3.2360679775
+out of sequence for 0 4
+DIFF: 2.472135955
+in sequence for 5 [1,0] 0 [2,0]
+points: 0,0 | 1,0 : 1
+points: 2,0 | 2,1 : 1
+points: 0,0 | 2,0 : 2
+points: 1,0 | 2,1 : 1.4142135623730951
+DIFF: 1.414213562373
+in sequence for 0 [2,0] 1 [2,1]
+points: 1,0 | 2,0 : 1
+points: 2,1 | 1,2 : 1.4142135623730951
+points: 1,0 | 2,1 : 1.4142135623730951
+points: 2,0 | 1,2 : 2.23606797749979
+DIFF: 1.2360679775
+DIFF: 0
+in sequence for 1 [2,1] 2 [1,2]
+points: 2,0 | 2,1 : 1
+points: 1,2 | 0,1 : 1.4142135623730951
+points: 2,0 | 1,2 : 2.23606797749979
+points: 2,1 | 0,1 : 2
+DIFF: 1.821854415127
+out of sequence for 1 3
+DIFF: 2.472135955
+out of sequence for 1 4
+DIFF: 3.2360679775
+out of sequence for 1 5
+DIFF: 1.821854415127
+out of sequence for 0 2
+DIFF: 1.821854415127
+in sequence for 1 [2,1] 2 [1,2]
+points: 2,0 | 2,1 : 1
+points: 1,2 | 0,1 : 1.4142135623730951
+points: 2,0 | 1,2 : 2.23606797749979
+points: 2,1 | 0,1 : 2
+DIFF: 1.821854415127
+DIFF: 0
+in sequence for 2 [1,2] 3 [0,1]
+points: 2,1 | 1,2 : 1.4142135623730951
+points: 0,1 | 0,0 : 1
+points: 2,1 | 0,1 : 2
+points: 1,2 | 0,0 : 2.23606797749979
+DIFF: 1.821854415127
+out of sequence for 2 4
+DIFF: 1.821854415127
+out of sequence for 2 5
+DIFF: 2.472135955
+out of sequence for 0 3
+DIFF: 3.2360679775
+out of sequence for 1 3
+DIFF: 2.472135955
+in sequence for 2 [1,2] 3 [0,1]
+points: 2,1 | 1,2 : 1.4142135623730951
+points: 0,1 | 0,0 : 1
+points: 2,1 | 0,1 : 2
+points: 1,2 | 0,0 : 2.23606797749979
+DIFF: 1.821854415127
+DIFF: 0
+in sequence for 3 [0,1] 4 [0,0]
+points: 1,2 | 0,1 : 1.4142135623730951
+points: 0,0 | 1,0 : 1
+points: 1,2 | 0,0 : 2.23606797749979
+points: 0,1 | 1,0 : 1.4142135623730951
+DIFF: 1.2360679775
+out of sequence for 3 5
+DIFF: 1.821854415127
+out of sequence for 0 4
+DIFF: 2.472135955
+out of sequence for 1 4
+DIFF: 3.2360679775
+out of sequence for 2 4
+DIFF: 1.821854415127
+in sequence for 3 [0,1] 4 [0,0]
+points: 1,2 | 0,1 : 1.4142135623730951
+points: 0,0 | 1,0 : 1
+points: 1,2 | 0,0 : 2.23606797749979
+points: 0,1 | 1,0 : 1.4142135623730951
+DIFF: 1.2360679775
+DIFF: 0
+in sequence for 4 [0,0] 5 [1,0]
+points: 0,1 | 0,0 : 1
+points: 1,0 | 2,0 : 1
+points: 0,1 | 1,0 : 1.4142135623730951
+points: 0,0 | 2,0 : 2
+DIFF: 1.414213562373
+in sequence for 5 [1,0] 0 [2,0]
+points: 0,0 | 1,0 : 1
+points: 2,0 | 2,1 : 1
+points: 0,0 | 2,0 : 2
+points: 1,0 | 2,1 : 1.4142135623730951
+DIFF: 1.414213562373
+out of sequence for 1 5
+DIFF: 1.821854415127
+out of sequence for 2 5
+DIFF: 2.472135955
+out of sequence for 3 5
+DIFF: 1.821854415127
+in sequence for 4 [0,0] 5 [1,0]
+points: 0,1 | 0,0 : 1
+points: 1,0 | 2,0 : 1
+points: 0,1 | 1,0 : 1.4142135623730951
+points: 0,0 | 2,0 : 2
+DIFF: 1.414213562373
+DIFF: 0
