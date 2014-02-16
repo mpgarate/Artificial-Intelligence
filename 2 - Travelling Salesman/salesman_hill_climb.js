@@ -106,11 +106,13 @@ function getWrappedIndex(length,index){
 
 function calculateLengthChange(path,U,V){
   if(U === V) return 0;
+  
   var difference = 0;
   var length = path.length;
-
   var index_abs_difference = Math.abs(U - V);
-  // Make sure V is the higher index if there is wrapping
+
+  // Swap U and V to ensure V > U except when index-
+  // wrapping is necessary
   if ((index_abs_difference === length-1) && (V > U)){
     var tmp = U;
     U = V;
@@ -121,7 +123,6 @@ function calculateLengthChange(path,U,V){
     U = V;
     V = tmp;
   }
-
 
   var U_minus_1 = path[getWrappedIndex(length, (U-1))];
   var V_minus_1 = path[getWrappedIndex(length, (V-1))];
@@ -138,26 +139,12 @@ function calculateLengthChange(path,U,V){
 
   // If locations in sequence
   if(index_abs_difference === 1 || index_abs_difference === length-1){
-    console.log("in sequence for " + U_val + " [" + U + "] " + V_val + " [" + V + "]");
-
-    distance = getPointsDistance(U_minus_1, U);
-    console.log("points: " + U_minus_1 + " | " + U + " : " + distance);
-    difference -= distance;
-
-    distance = getPointsDistance(V, V_plus_1);
-    console.log("points: " + V + " | " + V_plus_1 + " : " + distance);
-    difference -= distance;
-
-    distance = getPointsDistance(U_minus_1,V);
-    console.log("points: " + U_minus_1 + " | " + V + " : " + distance);
-    difference += distance;
-
-    distance = getPointsDistance(U,V_plus_1);
-    console.log("points: " + U + " | " + V_plus_1 + " : " + distance);
-    difference += distance;
+    difference -= getPointsDistance(U_minus_1, U);
+    difference -= getPointsDistance(V, V_plus_1);
+    difference += getPointsDistance(U_minus_1,V);
+    difference += getPointsDistance(U,V_plus_1);
   }
   else{
-    console.log("out of sequence for " + U_val + " " + V_val);
     difference -= getPointsDistance(U_minus_1, U);
     difference -= getPointsDistance(U, U_plus_1);
     difference -= getPointsDistance(V_minus_1,V);
@@ -177,19 +164,16 @@ function improvedTravellingSalesman(path){
   var difference;
   var best_difference;
   var best_swap = [];
+
+  // Print out the initial path state
+  console.log("Path:");
+  printPathIteration(path,best_swap,best_distance);
+
   while(true){
     best_difference = 0;
     for(var U in path){
       for(var V in path){
         difference = calculateLengthChange(path,U,V);
-        console.log("DIFF: " + difference);
-        
-        swap_x_y(path,U,V);
-        if((difference + best_distance).toFixed(8) !== getTotalDistance(path,U,V).toFixed(8)){
-          console.log(difference + best_distance + "!==" + getTotalDistance(path,U,V));
-        }
-        swap_x_y(path,U,V);
-        
         if (difference < best_difference){
           best_difference = difference;
           best_swap[0] = U;
@@ -199,16 +183,11 @@ function improvedTravellingSalesman(path){
     }
 
     if(best_difference === 0){
+      console.log("End of hill climbing");
       return path;
     }
     path = swap_x_y(path,best_swap[0],best_swap[1]);
     best_distance += best_difference;
-
-    calculated_distance = getTotalDistance(path);
-    if(best_distance.toFixed(8) !== calculated_distance.toFixed(8)){
-      console.log(best_distance + "!==" + calculated_distance);
-      break;
-    }
 
     // Print out this iteration
     printPathIteration(path,best_swap,best_distance);
