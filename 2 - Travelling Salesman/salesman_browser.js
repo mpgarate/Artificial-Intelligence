@@ -44,8 +44,12 @@ function getCoordinatesFromPage(){
 }
 
 function printPath(path){
+  clear_path_segments(path);
   for(var i in path){
     LOG.append(path[i][0].toFixed(1) + "  ");
+    var next_point = (i + 1) % path[i].length;
+    console.log("index: " + i + " next: " +  next_point + " : " + path[next_point]);
+    draw_path_segment(path[i], path[next_point]);
   }
   LOG.append("<br />");
   for(var i in path){
@@ -240,10 +244,16 @@ function improvedTravellingSalesman(path){
 
 $( document ).ready(function() {
 
+  draw_grid();
+  var path = getCoordinatesFromPage();
+  draw_path(path);
+
+
   $(".draw-button").click(function(){
+    draw_grid();
     var path = getCoordinatesFromPage();
     LOG.empty();
-
+    draw_path(path);
   });
 
   $(".solve-button").click(function(){
