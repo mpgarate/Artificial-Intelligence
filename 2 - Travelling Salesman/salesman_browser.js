@@ -1,5 +1,5 @@
 // global variable for output log
-var output_log = $(".output-log");
+var LOG = $(".output-log");
 
 // Determine which use of \n or \r for newline in file
 function getNewlineType(points_string){
@@ -45,13 +45,13 @@ function getCoordinatesFromPage(){
 
 function printPath(path){
   for(var i in path){
-    output_log.append(path[i][0].toFixed(1) + "  ");
+    LOG.append(path[i][0].toFixed(1) + "  ");
   }
-  output_log.append("<br />");
+  LOG.append("<br />");
   for(var i in path){
-    output_log.append(path[i][1].toFixed(1) + "  ");
+    LOG.append(path[i][1].toFixed(1) + "  ");
   }
-  output_log.append("<br />");
+  LOG.append("<br />");
 }
 
 // Get distance between two point pairs
@@ -83,13 +83,13 @@ function printPathIteration(path, swap, distance){
   if (swap[0] !== undefined){
     var swap_x = parseFloat(swap[0]) + 1;
     var swap_y = parseFloat(swap[1]) + 1;
-    output_log.append("Swap " + swap_x + " and " + swap_y);
-    output_log.append("<br />");
+    LOG.append("Swap " + swap_x + " and " + swap_y);
+    LOG.append("<br />");
   }
   printPath(path);
-  output_log.append("<br />");
-  output_log.append("Length = " + distance.toFixed(4));
-  output_log.append("<br />");
+  LOG.append("<br />");
+  LOG.append("Length = " + distance.toFixed(4));
+  LOG.append("<br />");
 }
 
 // Primary algorithm function
@@ -101,7 +101,7 @@ function simpleTravellingSalesman(path){
   var best_swap = [];
 
   // Print out the initial path state
-  console.log("Path:");
+  LOG.append("Path:");
   printPathIteration(path,best_swap,best_distance);
 
   while(true){
@@ -121,7 +121,7 @@ function simpleTravellingSalesman(path){
     }
 
     if (new_best_distance === best_distance){
-      console.log("End of hill climbing");
+      LOG("End of hill climbing");
       return path;
     }
     best_distance = new_best_distance;
@@ -159,8 +159,6 @@ function calculateLengthChange(path,U,V){
     V = tmp;
   }
   else if ((index_abs_difference !== length-1) && (V < U)){
-    //console.log("swapping " + V + " and " + U);
-    //console.log(V < U);
     var tmp = U;
     U = V;
     V = tmp;
@@ -181,14 +179,12 @@ function calculateLengthChange(path,U,V){
 
   // If locations in sequence
   if(index_abs_difference === 1 || index_abs_difference === length-1){
-    //console.log("locations in sequence: "  + U_val + "[" + U + "] : " + V_val + "[" + V + "]");
     difference -= getPointsDistance(U_minus_1, U);
     difference -= getPointsDistance(V, V_plus_1);
     difference += getPointsDistance(U_minus_1,V);
     difference += getPointsDistance(U,V_plus_1);
   }
   else{
-    //console.log("locations not in sequence: "  + U_val + "[" + U + "] : " + V_val + "[" + V + "]");
     difference -= getPointsDistance(U_minus_1, U);
     difference -= getPointsDistance(U, U_plus_1);
     difference -= getPointsDistance(V_minus_1,V);
@@ -218,15 +214,6 @@ function improvedTravellingSalesman(path){
     for(var U in path){
       for(var V in path){
         difference = calculateLengthChange(path,U,V);
-/*
-        swap_x_y(path,U,V);
-        if((difference + best_distance).toFixed(8) !== getTotalDistance(path).toFixed(8)){
-          console.log((difference + best_distance) + " !== " + getTotalDistance(path));
-          swap_x_y(U,V);
-          break;
-        }
-        swap_x_y(path,U,V);
-*/
         if (difference < best_difference){
           best_difference = difference;
           best_swap[0] = U;
@@ -244,12 +231,6 @@ function improvedTravellingSalesman(path){
 
     // Print out this iteration
     printPathIteration(path,best_swap,best_distance);
-/*
-    if(best_distance !== getTotalDistance(path)){
-      console.log(best_distance + " !== " + getTotalDistance(path));
-      break;
-    }
-*/
     if (best_distance < 0) break;
   }
 }
@@ -259,11 +240,17 @@ function improvedTravellingSalesman(path){
 
 $( document ).ready(function() {
 
-  // Parse file to coordinate path
-  var path = getCoordinatesFromPage();
-  //improvedTravellingSalesman(path);
+  $(".draw-button").click(function(){
+    var path = getCoordinatesFromPage();
+    LOG.empty();
+
+  });
 
   $(".solve-button").click(function(){
+    var path = getCoordinatesFromPage();
+    LOG.empty();
+
     improvedTravellingSalesman(path);
   });
+
 });
