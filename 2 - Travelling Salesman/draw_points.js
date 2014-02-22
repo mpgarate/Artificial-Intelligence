@@ -40,7 +40,6 @@ function draw_path(path, context, canvas) {
 }
 
 function draw_path_segment(co_1,co_2){
-  console.log(co_2);
   var canvas = document.getElementById("canvas_a");
   var context = canvas.getContext("2d");
 

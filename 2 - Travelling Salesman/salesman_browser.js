@@ -47,7 +47,10 @@ function printPath(path){
   clear_path_segments(path);
   for(var i in path){
     LOG.append(path[i][0].toFixed(1) + "  ");
-    var next_point = (i + 1) % path[i].length;
+    var next_point = (parseInt(i) + 1);
+    if (next_point === path.length){
+      next_point = 0;
+    }
     console.log("index: " + i + " next: " +  next_point + " : " + path[next_point]);
     draw_path_segment(path[i], path[next_point]);
   }
