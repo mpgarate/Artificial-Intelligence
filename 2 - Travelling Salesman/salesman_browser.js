@@ -37,9 +37,11 @@ function inputStringToArray(split_points){
 
 function getCoordinatesFromPage(){
   // Read file synchronously
-  var split_points = []
+  var split_points = [];
   split_points[0] = $(".x-coordinates input").val();
   split_points[1] = $(".y-coordinates input").val();
+
+  console.log(split_points);
   return inputStringToArray(split_points);
 }
 
