@@ -6,7 +6,6 @@ var path = parser.parseFileToCoordinates("./points_coordinates.txt");
 
 function printPath(path){
   for(var i in path){
-    //console.log(path[i][0]);
     process.stdout.write(path[i][0].toFixed(1) + "  ");
   }
   console.log();
@@ -121,8 +120,6 @@ function calculateLengthChange(path,U,V){
     V = tmp;
   }
   else if ((index_abs_difference !== length-1) && (V < U)){
-    //console.log("swapping " + V + " and " + U);
-    //console.log(V < U);
     var tmp = U;
     U = V;
     V = tmp;
@@ -143,14 +140,12 @@ function calculateLengthChange(path,U,V){
 
   // If locations in sequence
   if(index_abs_difference === 1 || index_abs_difference === length-1){
-    //console.log("locations in sequence: "  + U_val + "[" + U + "] : " + V_val + "[" + V + "]");
     difference -= getPointsDistance(U_minus_1, U);
     difference -= getPointsDistance(V, V_plus_1);
     difference += getPointsDistance(U_minus_1,V);
     difference += getPointsDistance(U,V_plus_1);
   }
   else{
-    //console.log("locations not in sequence: "  + U_val + "[" + U + "] : " + V_val + "[" + V + "]");
     difference -= getPointsDistance(U_minus_1, U);
     difference -= getPointsDistance(U, U_plus_1);
     difference -= getPointsDistance(V_minus_1,V);
@@ -180,15 +175,6 @@ function improvedTravellingSalesman(path){
     for(var U in path){
       for(var V in path){
         difference = calculateLengthChange(path,U,V);
-/*
-        swap_x_y(path,U,V);
-        if((difference + best_distance).toFixed(8) !== getTotalDistance(path).toFixed(8)){
-          console.log((difference + best_distance) + " !== " + getTotalDistance(path));
-          swap_x_y(U,V);
-          break;
-        }
-        swap_x_y(path,U,V);
-*/
         if (difference < best_difference){
           best_difference = difference;
           best_swap[0] = U;
@@ -206,20 +192,9 @@ function improvedTravellingSalesman(path){
 
     // Print out this iteration
     printPathIteration(path,best_swap,best_distance);
-/*
-    if(best_distance !== getTotalDistance(path)){
-      console.log(best_distance + " !== " + getTotalDistance(path));
-      break;
-    }
-*/
     if (best_distance < 0) break;
   }
 }
 
-var T1 = Date.now();
 //simpleTravellingSalesman(path);
-var T2 = Date.now();
 improvedTravellingSalesman(path);
-var T3 = Date.now();
-console.log("Simple took " + (T2-T1) + " ms");
-console.log("Improved took " + (T3-T2) + " ms");
