@@ -1,3 +1,5 @@
+Traveling Salesman Hill Climbing
+=======================
 Salesman Hill Climbing written in Javascript.
 Written by Michael Garate for the NYU Artificial Intelligence course.
 
