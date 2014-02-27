@@ -89,6 +89,7 @@ function swap_x_y(path, a, b){
 }
 
 function printPathIteration(path, swap, distance){
+  LOG.html("");
   if (swap[0] !== undefined){
     var swap_x = parseFloat(swap[0]) + 1;
     var swap_y = parseFloat(swap[1]) + 1;
@@ -255,6 +256,7 @@ $( document ).ready(function() {
   draw_grid();
   var path = getCoordinatesFromPage();
   draw_path(path);
+  printPathIteration(path,getTotalDistance(path),0);
 
   var steps = 1;
 
@@ -263,7 +265,7 @@ $( document ).ready(function() {
     var path = getCoordinatesFromPage();
     LOG.empty();
     draw_path(path);
-
+    printPathIteration(path,getTotalDistance(path),0);
     steps = 1;
   });
 
