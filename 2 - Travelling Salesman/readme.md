@@ -3,6 +3,8 @@ Traveling Salesman Hill Climbing
 Salesman Hill Climbing written in Javascript.
 Written by Michael Garate for the NYU Artificial Intelligence course.
 
+Includes animation visible by opening ```./animated_salesman/index.html``` in a browser.
+
 Store points in the file ```points_coordinates.txt```.
 
 Run ```salesman_hill_climb.js``` with Node.js from the terminal
