@@ -207,7 +207,7 @@ function calculateLengthChange(path,U,V){
   return parseFloat(difference.toFixed(12));
 }
 
-function improvedTravellingSalesman(path){
+function improvedTravellingSalesman(path, steps){
   var best_distance = getTotalDistance(path);
 
   var difference;
@@ -220,8 +220,8 @@ function improvedTravellingSalesman(path){
 
   while(true){
     best_difference = 0;
-    for(var U in path){
-      for(var V in path){
+    for(var U = 0; U < path.length; U++){
+      for(var V = 0; V < path.length; V++){
         difference = calculateLengthChange(path,U,V);
         if (difference < best_difference){
           best_difference = difference;
@@ -238,8 +238,11 @@ function improvedTravellingSalesman(path){
     path = swap_x_y(path,best_swap[0],best_swap[1]);
     best_distance += best_difference;
 
-    // Print out this iteration
-    printPathIteration(path,best_swap,best_distance);
+    // Print out this iteration after waiting
+    if (steps > 0){
+      printPathIteration(path,best_swap,best_distance);
+      steps--;
+    }
     if (best_distance < 0) break;
   }
 }
@@ -253,19 +256,23 @@ $( document ).ready(function() {
   var path = getCoordinatesFromPage();
   draw_path(path);
 
+  var steps = 1;
 
   $(".draw-button").click(function(){
     draw_grid();
     var path = getCoordinatesFromPage();
     LOG.empty();
     draw_path(path);
+
+    steps = 1;
   });
 
-  $(".solve-button").click(function(){
+  $(".step-button").click(function(){
     var path = getCoordinatesFromPage();
     LOG.empty();
 
-    improvedTravellingSalesman(path);
+    improvedTravellingSalesman(path,steps);
+    steps++;
   });
 
 });
