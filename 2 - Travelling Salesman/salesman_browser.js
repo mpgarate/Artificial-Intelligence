@@ -256,7 +256,8 @@ $( document ).ready(function() {
   draw_grid();
   var path = getCoordinatesFromPage();
   draw_path(path);
-  printPathIteration(path,getTotalDistance(path),0);
+  console.log(getTotalDistance(path));
+  printPathIteration(path,0,getTotalDistance(path));
 
   var steps = 1;
 
@@ -265,7 +266,7 @@ $( document ).ready(function() {
     var path = getCoordinatesFromPage();
     LOG.empty();
     draw_path(path);
-    printPathIteration(path,getTotalDistance(path),0);
+    printPathIteration(path,0,getTotalDistance(path));
     steps = 1;
   });
 
