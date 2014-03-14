@@ -41,10 +41,12 @@ class Solver
         return nil
       elsif s.has_pure_literal?
         literal = s.pure_literal
+        puts "pure literal. #{literal.name} must be #{literal.value}"
         v.assign(literal.name, literal.value)
         s.delete_every(literal)
       elsif s.has_singleton_clause?
         literal = s.singleton_clause.literals.first
+        puts "singleton clause. #{literal.name} must be #{literal.value}"
         v.assign(literal.name, literal.value)
         s.dup.propagate(literal,v)
       else
@@ -55,7 +57,7 @@ class Solver
     # try an assignment true
     _atom = v.get_unbound_atom
     a = Literal.new(_atom[0]) #true
-
+    puts "trying #{a} true"
     v.assign(a.name,true)
 
     s1 = s.dup.propagate(a,v)
@@ -67,6 +69,7 @@ class Solver
     _atom = v.get_unbound_atom
     a = Literal.new("-#{_atom[0]}") #false
 
+    puts "trying #{a} false"
     v.assign(a.name,false)
 
     s1 = s.dup.propagate(a,v)
@@ -77,11 +80,24 @@ class Solver
 
   def finish_recursion(atoms)
     nil_keys = []
-    atoms.each do |atom|
-      if atom[1] == nil
-        atom[1] = true # arbitrary
+    puts "done recursion. atoms: #{atoms}"
+    atoms.each do |key,value|
+      if value == nil
+        nil_keys << key
       end
     end
+    
+    puts "nil_keys: #{nil_keys} #{nil_keys.length}"
+    puts "atoms: #{atoms}"
+    if nil_keys.length > 0
+      nil_keys.each do |key|
+        puts "SETTING KEY #{key}"
+        atoms[key] = true # arbitrary
+      end
+    end
+
+    puts "finalized atoms. atoms: #{atoms}"
+    return atoms
   end
 
   def initialize_atoms
