@@ -27,16 +27,12 @@ class OutputFile
   def write_end_lines
     lines = []
 
-    @infile.file.each_line do |line|
-      lines << line
-    end
-
-    puts lines
 
     File.open(@out_path, 'a') do |f|
       f.puts "0"
-      lines.each do |line|
-        f.puts(line)
+
+      @infile.file.each_line do |line|
+        f.puts line
       end
     end
 
