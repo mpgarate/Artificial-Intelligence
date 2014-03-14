@@ -22,13 +22,13 @@ class Solver
   def solve!
     v = Valuation.new(@atoms)
     s = State.new(@clauses)
-    dp1(@atoms,s,v)
+    @atoms = dp1(@atoms,s,v)
   end
 
   private
   
   def dp1(atoms,s,v)
-    handle_easy_cases(atoms,s,v)
+    return handle_easy_cases(atoms,s,v)
   end
 
   def handle_easy_cases(atoms,s,v)
@@ -36,27 +36,32 @@ class Solver
     while true
       # base of recursion
       if s.is_empty?
-        finish_recursion(atoms)
+        #puts v.atoms
+        @clauses = s.clauses
+        return finish_recursion(atoms)
       elsif s.has_empty_clause?
         return nil
       elsif s.has_pure_literal?
         literal = s.pure_literal
+        v.assign(literal.name, literal.value)
         s.delete_every(literal)
       elsif s.has_singleton_clause?
         literal = s.singleton_clause.literals.first
         v.assign(literal.name, literal.value)
         s.propagate(literal, s,v)
+      else
+        break
       end
     end
   end
 
   def finish_recursion(atoms)
+    nil_keys = []
     atoms.each do |atom|
-      if atoms[atom] == nil
-        atoms[atom] = true
+      if atom[1] == nil
+        atom[1] = true # arbitrary
       end
     end
-    return atoms
   end
 
   def initialize_atoms

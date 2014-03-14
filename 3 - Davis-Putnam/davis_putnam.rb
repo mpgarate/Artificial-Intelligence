@@ -19,6 +19,8 @@ require_relative 'davis_putnam/valuation'
 
 file = InputFile.new("dp_input.txt")
 solver = Solver.new(file.clauses)
-puts solver.atoms
 puts solver.clauses
+puts solver.atoms
 solver.solve!
+puts solver.clauses
+puts solver.atoms

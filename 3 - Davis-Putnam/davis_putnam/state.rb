@@ -9,7 +9,6 @@ class State
   # clauses.class => Array
   def initialize(clauses)
       @clauses = clauses
-      puts "made state with #{@clauses}"
   end
 
   def is_empty?
@@ -35,7 +34,12 @@ class State
     end
 
     if literals.length > 1
-      @pure_literal = literals.first
+      str = literals.first[0]
+      if literals[str] == false
+        str = "-#{str}" 
+      end
+
+      @pure_literal = Literal.new(str)
       return true
     else
       @pure_literal = nil
