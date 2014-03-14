@@ -1,3 +1,5 @@
+require 'set'
+
 # atom = Atom.new("-4")
 # atom.name => "4"
 # atom.value => false
@@ -9,13 +11,33 @@
 # atom.to_s => "2 T"
 class Atom
   attr_accessor :name, :value
+
+  @value = nil
+
+  def initialize(str)
+    @name = str.delete("-")
+  end
+
+  def to_s
+    string = @name
+
+    unless @value == nil then
+      if (@value == false) then
+        string << " F"
+      else
+        string << " T"
+      end
+    end
+
+    return string
+  end
 end
 
 # lit = Literal.new("-4")
 # lit.name => "4"
 # lit.value => false
 # lit.to_s => "-4"
-class Literal < Atom
+class Literal
   attr_accessor :name, :value
 
   def initialize(str)
@@ -58,6 +80,17 @@ class Clause
   end
 end
 
+# state = State.new([1][-3,4])
+# state.clauses => [1][-3,4]
+
+class State
+  attr_accessor :clauses
+
+  def initialize(clauses)
+      @clauses = clauses
+  end
+end
+
 # solver = Solver.new("dp_input.txt")
 # solver.clauses
 #   => [[1,2,3],[-2,3],[-3]]
@@ -67,7 +100,28 @@ end
 # solver.atoms
 #   => ["1","2","3"]
 class Solver
+  attr_accessor :clauses, :atoms
+
   def initialize(clauses)
+    @clauses = clauses
+    initialize_atoms
+  end
+
+  private
+  
+  def initialize_atoms
+    @atoms = Set.new
+    atom_names = Set.new
+
+    @clauses.each do |clause|
+      clause.literals.each do |literal|
+        atom_names.add(literal.name)
+      end
+    end
+
+    atom_names.each do |name|
+      @atoms.add(Atom.new(name))
+    end
   end
 end
 
@@ -80,7 +134,7 @@ class InputFile
 
   def initialize(filename)
     @clauses = []
-    
+
     f = File.open(filename)
     f.each_line do |line|
       break if line.include? "0"
@@ -92,5 +146,5 @@ end
 ### Instantiate and call Solver
 
 file = InputFile.new("dp_input.txt")
-puts file.clauses
 solver = Solver.new(file.clauses)
+puts solver.atoms.inspect
