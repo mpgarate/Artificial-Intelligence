@@ -24,4 +24,15 @@ class TestDP < Test::Unit::TestCase
 
     assert FileUtils.compare_file(produced, solution)
   end
+
+  def test_c_sample_midterm
+    input_path = "test/dp_sample_midterm.txt"
+
+    produced = "dp_output.txt"
+    solution = "test/dp_sample_midterm_out.txt"
+
+    DavisPutnam.solve_file(input_path)
+
+    assert FileUtils.compare_file(produced, solution)
+  end
 end

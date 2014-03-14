@@ -48,7 +48,7 @@ class Solver
         literal = s.singleton_clause.literals.first
         puts "singleton clause. #{literal.name} must be #{literal.value}"
         v.assign(literal.name, literal.value)
-        s.dup.propagate(literal,v)
+        s.dup.propagate(literal)
       else
         break
       end
@@ -60,7 +60,7 @@ class Solver
     puts "trying #{a} true"
     v.assign(a.name,true)
 
-    s1 = s.dup.propagate(a,v)
+    s1 = s.dup.propagate(a)
     vnew = dp1(atoms,s1,v)
     return vnew unless vnew == nil
 
@@ -72,7 +72,7 @@ class Solver
     puts "trying #{a} false"
     v.assign(a.name,false)
 
-    s1 = s.dup.propagate(a,v)
+    s1 = s.dup.propagate(a)
     vnew = dp1(atoms,s1,v)
     return vnew unless vnew == nil
 
