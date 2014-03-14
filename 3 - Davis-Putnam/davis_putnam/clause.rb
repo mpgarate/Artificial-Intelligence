@@ -17,4 +17,32 @@ class Clause
   def to_s
     @literals.to_s
   end
+
+  def is_singleton?
+    if literals.length == 1
+      return true
+    else
+      return false
+    end
+  end
+
+  # contains a literal?
+  def contains?(target)
+    @literals.each do |literal|
+      if literal == target
+        return true
+      end
+    end
+
+    return false
+  end
+
+  # delete a literal
+  def delete(target)
+    @literals.each do |literal|
+      if literal == target
+        @literals.delete literal
+      end
+    end
+  end
 end
