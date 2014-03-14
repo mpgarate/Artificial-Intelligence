@@ -8,4 +8,12 @@ class Valuation
   def assign(key,val)
     @atoms[key] = val
   end
+
+  def get_unbound_atom
+    @atoms.each do |atom|
+      if atom[1] == nil
+        return atom
+      end
+    end
+  end
 end

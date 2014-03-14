@@ -50,10 +50,12 @@ class State
   def has_singleton_clause?
     @clauses.each do |clause|
       if clause.is_singleton? then
+        puts "setting singleton_clause: #{clause}"
         @singleton_clause = clause
         return true
       end
     end
+    return false
   end
 
   def has_empty_clause?
@@ -79,5 +81,6 @@ class State
         clause.delete(literal.negate)
       end
     end
+    return self
   end
 end

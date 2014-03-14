@@ -22,17 +22,13 @@ class Solver
   def solve!
     v = Valuation.new(@atoms)
     s = State.new(@clauses)
-    @atoms = dp1(@atoms,s,v)
+    dp1(@atoms,s,v)
   end
 
   private
   
   def dp1(atoms,s,v)
-    return handle_easy_cases(atoms,s,v)
-  end
-
-  def handle_easy_cases(atoms,s,v)
-     # loop as long as there are easy cases
+    # loop as long as there are easy cases
     while true
       # base of recursion
       if s.is_empty?
@@ -53,6 +49,28 @@ class Solver
         break
       end
     end
+
+    # try an assignment
+    _atom = v.get_unbound_atom
+    a = Literal.new(_atom[0]) #true
+
+    v.assign(a,true)
+
+    s1 = s.propagate(a,s,v)
+    vnew = dp1(atoms,s1,v)
+    return vnew unless vnew == nil
+
+
+    # try an assignment
+    _atom = v.get_unbound_atom
+    a = Literal.new("-#{_atom[0]}") #true
+
+    v.assign(a,false)
+
+    s1 = s.propagate(a,s,v)
+    vnew = dp1(atoms,s1,v)
+    return vnew unless vnew == nil
+
   end
 
   def finish_recursion(atoms)
