@@ -15,6 +15,7 @@ class Solver
     initialize_atoms
   end
 
+
   # Davis-Putnam (DPLL) procedure
   # Martin Davis and Hillary Putnam, 1961
   #
@@ -57,8 +58,8 @@ class Solver
     v.assign(a,true)
 
     s1 = s.propagate(a,s,v)
-    vnew = dp1(atoms,s1,v)
-    return vnew unless vnew == nil
+    # vnew = dp1(atoms,s1,v)
+    # return vnew unless vnew == nil
 
 
     # try an assignment
@@ -68,8 +69,8 @@ class Solver
     v.assign(a,false)
 
     s1 = s.propagate(a,s,v)
-    vnew = dp1(atoms,s1,v)
-    return vnew unless vnew == nil
+    # vnew = dp1(atoms,s1,v)
+    # return vnew unless vnew == nil
 
   end
 

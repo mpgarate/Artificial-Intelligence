@@ -1,6 +1,7 @@
 require 'set'
 require_relative 'davis_putnam/clause'
 require_relative 'davis_putnam/input_file'
+require_relative 'davis_putnam/output_file'
 require_relative 'davis_putnam/literal'
 require_relative 'davis_putnam/solver'
 require_relative 'davis_putnam/state'

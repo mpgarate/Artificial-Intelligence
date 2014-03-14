@@ -3,13 +3,13 @@
 #   => [[1,2,3],[-2,3],[-3]]
 
 class InputFile
-  attr_accessor :clauses
+  attr_accessor :clauses, :file
 
   def initialize(filename)
     @clauses = []
 
-    f = File.open(filename)
-    f.each_line do |line|
+    @file = File.open(filename)
+    @file.each_line do |line|
       break if line.include? "0"
       @clauses << Clause.new(line)
     end
