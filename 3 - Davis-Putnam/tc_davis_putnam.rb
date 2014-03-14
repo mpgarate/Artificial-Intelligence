@@ -14,7 +14,6 @@ class TestDP < Test::Unit::TestCase
     assert FileUtils.compare_file(produced, solution)
   end
 
-
   def test_b_normal
     input_path = "test/dp_normal.txt"
 

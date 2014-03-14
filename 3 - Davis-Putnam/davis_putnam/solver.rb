@@ -52,22 +52,22 @@ class Solver
       end
     end
 
-    # try an assignment
+    # try an assignment true
     _atom = v.get_unbound_atom
     a = Literal.new(_atom[0]) #true
 
-    v.assign(a,true)
+    v.assign(a.name,true)
 
     s1 = s.dup.propagate(a,v)
     vnew = dp1(atoms,s1,v)
     return vnew unless vnew == nil
 
 
-    # try an assignment
+    # try an assignment false
     _atom = v.get_unbound_atom
-    a = Literal.new("-#{_atom[0]}") #true
+    a = Literal.new("-#{_atom[0]}") #false
 
-    v.assign(a,false)
+    v.assign(a.name,false)
 
     s1 = s.dup.propagate(a,v)
     vnew = dp1(atoms,s1,v)
