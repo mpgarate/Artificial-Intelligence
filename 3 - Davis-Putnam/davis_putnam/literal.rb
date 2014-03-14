@@ -23,7 +23,7 @@ class Literal
   def ==(object)
 
     if object == nil then
-      if @value = nil
+      if @value == nil
         return true
       else
         return false

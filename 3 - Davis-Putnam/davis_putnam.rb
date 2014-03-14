@@ -32,3 +32,9 @@ class DavisPutnam
     out_file.write_atoms!(solver.atoms)
   end 
 end
+
+# When running from command line
+if __FILE__ == $0 then
+  file_path = ARGV.first
+  DavisPutnam.solve_file(file_path)
+end
