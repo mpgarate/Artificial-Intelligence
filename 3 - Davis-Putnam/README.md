@@ -1,9 +1,9 @@
-== Adventure Game w/ Davis Putnam
+# Adventure Game w/ Davis Putnam
 
-=== Usage: Davis Putnam Algorithm
+### Usage: Davis Putnam Algorithm
 
 ~~~sh
-  ruby davis_putnam.rb path/to/input_file.txt
+  $ ruby davis_putnam.rb path/to/input_file.txt
 ~~~
 
 or
@@ -20,7 +20,7 @@ Input file conventionally stored in ```dp_input.txt```
 -2 3 
 -3 
 0 
-Comments allowed here.
+This is a simple example with 3 clauses and 3 atoms.
 ```
 
 Produces the following output in ```dp_output.txt```
