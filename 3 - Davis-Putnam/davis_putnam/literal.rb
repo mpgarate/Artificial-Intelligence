@@ -22,6 +22,14 @@ class Literal
 
   def ==(object)
 
+    if object == nil then
+      if @value = nil
+        return true
+      else
+        return false
+      end
+    end
+
     if @name == object.name and @value == object.value
       return true
     end

@@ -37,6 +37,7 @@ class Solver
         @clauses = s.clauses
         return finish_recursion(atoms)
       elsif s.has_empty_clause?
+        "STATE HAS EMPTY CLAUSE"
         return nil
       elsif s.has_pure_literal?
         literal = s.pure_literal
@@ -45,7 +46,7 @@ class Solver
       elsif s.has_singleton_clause?
         literal = s.singleton_clause.literals.first
         v.assign(literal.name, literal.value)
-        s.propagate(literal, s,v)
+        s.dup.propagate(literal,v)
       else
         break
       end
@@ -57,9 +58,9 @@ class Solver
 
     v.assign(a,true)
 
-    s1 = s.propagate(a,s,v)
-    # vnew = dp1(atoms,s1,v)
-    # return vnew unless vnew == nil
+    s1 = s.dup.propagate(a,v)
+    vnew = dp1(atoms,s1,v)
+    return vnew unless vnew == nil
 
 
     # try an assignment
@@ -68,9 +69,9 @@ class Solver
 
     v.assign(a,false)
 
-    s1 = s.propagate(a,s,v)
-    # vnew = dp1(atoms,s1,v)
-    # return vnew unless vnew == nil
+    s1 = s.dup.propagate(a,v)
+    vnew = dp1(atoms,s1,v)
+    return vnew unless vnew == nil
 
   end
 

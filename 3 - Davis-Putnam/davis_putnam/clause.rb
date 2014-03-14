@@ -29,8 +29,10 @@ class Clause
   # contains a literal?
   def contains?(target)
     @literals.each do |literal|
-      if target == literal
+      if target.to_s == literal.to_s
         return true
+      else
+        #puts "contains? : #{target} is not #{literal}"
       end
     end
 
@@ -39,9 +41,16 @@ class Clause
 
   # delete a literal
   def delete(target)
-    @literals.each do |literal|
-      if literal == target
+    puts "delete #{target} from #{@literals}"
+    @literals.each_with_index do |literal, index|
+      if target.to_s == literal.to_s
         @literals.delete literal
+        if index == 0 && @literals.length == 1
+          puts "ADD NIL TO LITERALS"
+          @literals << nil
+        end
+      else
+        #puts "delete : #{target} is not #{literal}"
       end
     end
   end

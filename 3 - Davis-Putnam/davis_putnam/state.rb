@@ -71,9 +71,11 @@ class State
         @clauses.delete(clause)
       end
     end
+
+    puts "deleted every #{literal} from #{@clauses}"
   end
 
-  def propagate(literal, s, v)
+  def propagate(literal, v)
     @clauses.each do |clause|
       if clause.contains? literal
         @clauses.delete(clause)
