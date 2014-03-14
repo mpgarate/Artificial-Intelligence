@@ -23,13 +23,13 @@ class State
   def has_pure_literal?
     literals = Hash.new
     @clauses.each do |clause|
-      clause.each do |literal|
+      clause.literals.each do |literal|
         if literals.has_key? literal.name
           if literals[literal.name] != literal.value
             literals.delete(literal.name)
           end
         else
-          literals.add(literal.name, literal.value)
+          literals[literal.name] =  literal.value
         end
       end
     end

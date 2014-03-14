@@ -43,13 +43,10 @@ class Solver
         literal = s.pure_literal
         s.delete_every(literal)
       elsif s.has_singleton_clause?
-        literal = s.singleton_clause.first
-        literal_value = s.singleton_clause.first.value
+        literal = s.singleton_clause.literals.first
         v.assign(literal.name, literal.value)
-        state.propagate(literal, s,v)
+        s.propagate(literal, s,v)
       end
-
-
     end
   end
 

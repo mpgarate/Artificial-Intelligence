@@ -21,6 +21,7 @@ class Literal
   end
 
   def ==(object)
+
     if @name == object.name and @value == object.value
       return true
     end
