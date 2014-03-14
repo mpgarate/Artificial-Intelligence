@@ -1,5 +1,5 @@
 require 'set'
-
+=begin
 # atom = Atom.new("-4")
 # atom.name => "4"
 # atom.value => false
@@ -32,6 +32,7 @@ class Atom
     return string
   end
 end
+=end
 
 # lit = Literal.new("-4")
 # lit.name => "4"
@@ -89,39 +90,75 @@ class State
   def initialize(clauses)
       @clauses = clauses
   end
+
+  def has_empty_clause?
+    @clauses.each do |clause|
+      return true if clause == nil
+    end
+    return false
+  end
 end
 
-# solver = Solver.new("dp_input.txt")
+# solver = Solver.new(clauses)
 # solver.clauses
-#   => [[1,2,3],[-2,3],[-3]]
+#   => [1,2,3],[-2,3],[-3]
 # solver.atoms
-#   => ["1","2","3"]
+#   => ["1"=>nil,"2"=>nil,"3"=>nil]
 # solver.solve!
 # solver.atoms
-#   => ["1","2","3"]
+#   => ["1"=>T,"2"=>T,"3"=>F]
 class Solver
   attr_accessor :clauses, :atoms
 
   def initialize(clauses)
-    @clauses = clauses
+    @state = State.new(clauses)
     initialize_atoms
+  end
+
+  # Davis-Putnam (DPLL) procedure
+  # Martin Davis and Hillary Putnam, 1961
+  #
+  # V := array of atoms
+  def solve!
+    dp1
   end
 
   private
   
+  def dp1
+    handle_easy_cases
+  end
+
+  def handle_easy_cases
+     # loop as long as there are easy cases
+    while true
+      # base of recursion
+      if clauses.isEmpty?
+        finish_recursion
+      elsif clauses.hasEmpty
+      end
+
+    end
+  end
+
+  def finish_recursion
+    atoms.each do |atom|
+      if atoms[atom] == nil
+        atoms[atom] = true
+      end
+    end
+    return atoms
+  end
+
   def initialize_atoms
-    @atoms = Set.new
-    atom_names = Set.new
+    @atoms = Hash.new
 
     @clauses.each do |clause|
       clause.literals.each do |literal|
-        atom_names.add(literal.name)
+        @atoms[literal.name] = nil
       end
     end
 
-    atom_names.each do |name|
-      @atoms.add(Atom.new(name))
-    end
   end
 end
 
@@ -147,4 +184,5 @@ end
 
 file = InputFile.new("dp_input.txt")
 solver = Solver.new(file.clauses)
-puts solver.atoms.inspect
+puts solver.atoms
+puts solver.clauses
