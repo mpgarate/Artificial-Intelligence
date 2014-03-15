@@ -68,4 +68,18 @@ class TestDP < Test::Unit::TestCase
 
     assert state.has_no_literal? literal
   end
+
+  def test_state_has_empty_clause
+    clause = Clause.new("1")
+    clause.delete("1")
+    state = State.new([clause])
+    assert state.has_empty_clause?
+  end
+
+  def test_state_is_empty
+    clause = Clause.new("1")
+    clause.delete("1")
+    state = State.new([clause])
+    assert !state.is_empty?
+  end
 end
