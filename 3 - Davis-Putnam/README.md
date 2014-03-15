@@ -31,3 +31,14 @@ Produces the following output in ```dp_output.txt```
 0
 This is a simple example with 3 clauses and 3 atoms.
 ```
+
+### Tests
+Run all tests with 
+~~~sh
+ruby test_david_putnam.rb
+~~~
+
+Run an individual test with
+~~~sh
+ruby 
+~~~
