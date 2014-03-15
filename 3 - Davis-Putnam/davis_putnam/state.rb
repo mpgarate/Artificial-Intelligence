@@ -34,8 +34,8 @@ class State
     end
 
     if literals.length > 1
-      str = literals.first[0]
-      if literals[str] == false
+      str = literals.first[0] 
+      if literals.first[1] == false
         str = "-#{str}" 
       end
 
@@ -65,26 +65,52 @@ class State
     return false
   end
 
+  def has_any_literal?(literal)
+    @clauses.each do |clause|
+      return true if clause.contains? literal
+    end
+    return false
+  end
+
+  def has_no_literal?(literal)
+    return !has_any_literal?(literal)
+  end
+
   def delete_every(literal)
+    clauses_to_delete = []
+
     @clauses.each do |clause|
       if clause.contains? literal then
-        @clauses.delete(clause)
+        clauses_to_delete << clause
       end
+    end
+
+    clauses_to_delete.each do |c|
+      @clauses.delete(c)
     end
 
     puts "deleted every #{literal} from #{@clauses}"
   end
 
   def propagate(literal)
+    clauses_to_delete = []
+
     @clauses.each do |clause|
-      puts "literal: #{literal}"
-      puts "negated: #{literal.negate}"
       if clause.contains? literal
-        @clauses.delete(clause)
+        clauses_to_delete << clause
       elsif clause.contains? literal.negate
         clause.delete(literal.negate)
       end
     end
+
+    puts "About to delete:"
+    puts "#{clauses_to_delete}"
+    clauses_to_delete.each do |c|
+      puts "DELETING #{c}"
+      @clauses.delete(c)
+      puts @clauses
+    end
+
     return self
   end
 end

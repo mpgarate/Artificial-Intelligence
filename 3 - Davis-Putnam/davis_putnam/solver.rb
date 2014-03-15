@@ -29,6 +29,16 @@ class Solver
   private
   
   def dp1(atoms,s,v)
+    puts ""
+    puts "----- dp1 called -----"
+    puts "--- atoms ---"
+    puts "#{atoms}"
+    puts "--- v.atoms ---"
+    puts "#{v.atoms}"
+    puts "--- s.clauses ---"
+    puts "#{clauses}"
+    puts "---------------------------"
+    puts ""
     # loop as long as there are easy cases
     while true
       # base of recursion
@@ -41,14 +51,15 @@ class Solver
         return nil
       elsif s.has_pure_literal?
         literal = s.pure_literal
-        puts "pure literal. #{literal.name} must be #{literal.value}"
+        puts "pure literal #{literal}. #{literal.name} must be #{literal.value}"
         v.assign(literal.name, literal.value)
         s.delete_every(literal)
+        puts "----------FAILED TO DELETE #{literal} ----------" if s.has_any_literal? literal
       elsif s.has_singleton_clause?
         literal = s.singleton_clause.literals.first
         puts "singleton clause. #{literal.name} must be #{literal.value}"
         v.assign(literal.name, literal.value)
-        s.dup.propagate(literal)
+        s.dup.propagate(literal) #remove the dup?
       else
         break
       end

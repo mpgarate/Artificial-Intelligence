@@ -40,5 +40,5 @@ ruby test_david_putnam.rb
 
 Run an individual test with
 ~~~sh
-ruby 
+ruby test_dp_functions.rb -n test_clause_contains_1
 ~~~
