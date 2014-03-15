@@ -31,8 +31,6 @@ class Clause
     @literals.each do |literal|
       if target.to_s == literal.to_s
         return true
-      else
-        #puts "contains? : #{target} is not #{literal}"
       end
     end
 
@@ -45,13 +43,13 @@ class Clause
     @literals.each_with_index do |literal, index|
       if target.to_s == literal.to_s
         @literals.delete literal
-        if index == 0 && @literals.length == 1
+        if @literals.length == 0
           puts "ADD NIL TO LITERALS"
           @literals << nil
         end
-      else
-        #puts "delete : #{target} is not #{literal}"
       end
     end
+
+    puts "deleted #{target} from #{@literals}"
   end
 end

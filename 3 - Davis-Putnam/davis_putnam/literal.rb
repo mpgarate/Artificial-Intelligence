@@ -41,7 +41,7 @@ class Literal
 
   def negate
     str = ""
-    str << "-" if @value == false
+    str << "-" if @value == true
     str << @name
     return Literal.new(str)
   end

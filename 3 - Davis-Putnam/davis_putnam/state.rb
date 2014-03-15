@@ -77,6 +77,8 @@ class State
 
   def propagate(literal)
     @clauses.each do |clause|
+      puts "literal: #{literal}"
+      puts "negated: #{literal.negate}"
       if clause.contains? literal
         @clauses.delete(clause)
       elsif clause.contains? literal.negate

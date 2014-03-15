@@ -3,7 +3,7 @@ require 'test/unit'
 require 'fileutils'
 
 class TestDP < Test::Unit::TestCase
-  def test_a_trivial
+  def test_trivial
     input_path = "test/dp_trivial.txt"
 
     produced = "dp_output.txt"
@@ -14,7 +14,7 @@ class TestDP < Test::Unit::TestCase
     assert FileUtils.compare_file(produced, solution)
   end
 
-  def test_b_normal
+  def test_normal
     input_path = "test/dp_normal.txt"
 
     produced = "dp_output.txt"
@@ -25,7 +25,7 @@ class TestDP < Test::Unit::TestCase
     assert FileUtils.compare_file(produced, solution)
   end
 
-  def test_c_sample_midterm
+  def test_sample_midterm
     input_path = "test/dp_sample_midterm.txt"
 
     produced = "dp_output.txt"
