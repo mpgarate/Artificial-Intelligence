@@ -55,8 +55,8 @@ class Solver
     end
 
     # try an assignment true
-    _atom = v.get_unbound_atom
-    a = Literal.new(_atom[0]) #true
+    a = v.get_unbound_atom
+    a.value = true
     puts "trying #{a} true"
     v.assign(a.name,true)
 
@@ -66,8 +66,8 @@ class Solver
 
 
     # try an assignment false
-    _atom = v.get_unbound_atom
-    a = Literal.new("-#{_atom[0]}") #false
+    a = v.get_unbound_atom
+    a.value = false
 
     puts "trying #{a} false"
     v.assign(a.name,false)
@@ -89,11 +89,9 @@ class Solver
     
     puts "nil_keys: #{nil_keys} #{nil_keys.length}"
     puts "atoms: #{atoms}"
-    if nil_keys.length > 0
-      nil_keys.each do |key|
-        puts "SETTING KEY #{key}"
-        atoms[key] = true # arbitrary
-      end
+    nil_keys.each do |key|
+      puts "SETTING KEY #{key}"
+      atoms[key] = true # arbitrary
     end
 
     puts "finalized atoms. atoms: #{atoms}"

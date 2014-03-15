@@ -12,7 +12,7 @@ class Valuation
   def get_unbound_atom
     @atoms.each do |atom|
       if atom[1] == nil
-        return atom
+        return Literal.new(atom[0])
       end
     end
   end

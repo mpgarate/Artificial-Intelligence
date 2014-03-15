@@ -6,7 +6,6 @@ class Literal
   attr_accessor :name, :value, :string
 
   def initialize(str)
-    @string = str
     @name = str.delete("-")
 
     if str.include? '-' then
@@ -17,7 +16,10 @@ class Literal
   end
 
   def to_s
-    @string
+    str = ""
+    str << "-" if @value == false
+    str << @name
+    return str
   end
 
   def ==(object)
