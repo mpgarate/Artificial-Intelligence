@@ -1,0 +1,504 @@
+Run options: -n test_normal
+
+# Running tests:
+
+--- starting state ---
+[1, 2, 3]
+[1, -2, -3]
+[1, -4]
+[-2, -3, -4]
+[-1, -2, 3]
+[5, 6]
+[5, -6]
+[2, -5]
+[-3, -5]
+{"1"=>nil, "2"=>nil, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+
+----- dp1 called -----
+--- atoms ---
+{"1"=>nil, "2"=>nil, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+--- v.atoms ---
+{"1"=>nil, "2"=>nil, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+--- s.clauses ---
+[[1, 2, 3], [1, -2, -3], [1, -4], [-2, -3, -4], [-1, -2, 3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+---------------------------
+
+starting while loop
+checking if empty [[1, 2, 3], [1, -2, -3], [1, -4], [-2, -3, -4], [-1, -2, 3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+checking for nil in [[1, 2, 3], [1, -2, -3], [1, -4], [-2, -3, -4], [-1, -2, 3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+checking for pure literal in [[1, 2, 3], [1, -2, -3], [1, -4], [-2, -3, -4], [-1, -2, 3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+breaking from while loop
+getting unbound atom from {"1"=>nil, "2"=>nil, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+trying a true assignment
+trying 1 true
+propagating 1 to state:
+[1, 2, 3]
+[1, -2, -3]
+[1, -4]
+[-2, -3, -4]
+[-1, -2, 3]
+[5, 6]
+[5, -6]
+[2, -5]
+[-3, -5]
+delete -1 from [-1, -2, 3]
+deleted -1 from [-2, 3]
+new_clause: [-2, 3]
+About to delete:
+[[1, 2, 3], [1, -2, -3], [1, -4]]
+DELETING [1, 2, 3]
+[1, -2, -3]
+[1, -4]
+[-2, -3, -4]
+[-2, 3]
+[5, 6]
+[5, -6]
+[2, -5]
+[-3, -5]
+DELETING [1, -2, -3]
+[1, -4]
+[-2, -3, -4]
+[-2, 3]
+[5, 6]
+[5, -6]
+[2, -5]
+[-3, -5]
+DELETING [1, -4]
+[-2, -3, -4]
+[-2, 3]
+[5, 6]
+[5, -6]
+[2, -5]
+[-3, -5]
+
+----- dp1 called -----
+--- atoms ---
+{"1"=>true, "2"=>nil, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+--- v.atoms ---
+{"1"=>true, "2"=>nil, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+--- s.clauses ---
+[[1, 2, 3], [1, -2, -3], [1, -4], [-2, -3, -4], [-1, -2, 3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+---------------------------
+
+starting while loop
+checking if empty [[-2, -3, -4], [-2, 3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+checking for nil in [[-2, -3, -4], [-2, 3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+checking for pure literal in [[-2, -3, -4], [-2, 3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+breaking from while loop
+getting unbound atom from {"1"=>true, "2"=>nil, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+trying a true assignment
+trying 2 true
+propagating 2 to state:
+[-2, -3, -4]
+[-2, 3]
+[5, 6]
+[5, -6]
+[2, -5]
+[-3, -5]
+delete -2 from [-2, -3, -4]
+deleted -2 from [-3, -4]
+new_clause: [-3, -4]
+delete -2 from [-2, 3]
+deleted -2 from [3]
+new_clause: [3]
+About to delete:
+[[2, -5]]
+DELETING [2, -5]
+[-3, -4]
+[3]
+[5, 6]
+[5, -6]
+[-3, -5]
+
+----- dp1 called -----
+--- atoms ---
+{"1"=>true, "2"=>nil, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+--- v.atoms ---
+{"1"=>true, "2"=>true, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+--- s.clauses ---
+[[1, 2, 3], [1, -2, -3], [1, -4], [-2, -3, -4], [-1, -2, 3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+---------------------------
+
+starting while loop
+checking if empty [[-3, -4], [3], [5, 6], [5, -6], [-3, -5]]
+checking for nil in [[-3, -4], [3], [5, 6], [5, -6], [-3, -5]]
+checking for pure literal in [[-3, -4], [3], [5, 6], [5, -6], [-3, -5]]
+setting singleton_clause: [3]
+singleton clause. 3 must be true
+propagating 3 to state:
+[-3, -4]
+[3]
+[5, 6]
+[5, -6]
+[-3, -5]
+delete -3 from [-3, -4]
+deleted -3 from [-4]
+new_clause: [-4]
+delete -3 from [-3, -5]
+deleted -3 from [-5]
+new_clause: [-5]
+About to delete:
+[[3]]
+DELETING [3]
+[-4]
+[5, 6]
+[5, -6]
+[-5]
+propagated 3
+checking for nil in [[-4], [5, 6], [5, -6], [-5]]
+false
+about to repeat the while loop
+starting while loop
+checking if empty [[-4], [5, 6], [5, -6], [-5]]
+checking for nil in [[-4], [5, 6], [5, -6], [-5]]
+checking for pure literal in [[-4], [5, 6], [5, -6], [-5]]
+setting singleton_clause: [-4]
+singleton clause. 4 must be false
+propagating -4 to state:
+[-4]
+[5, 6]
+[5, -6]
+[-5]
+About to delete:
+[[-4]]
+DELETING [-4]
+[5, 6]
+[5, -6]
+[-5]
+propagated -4
+checking for nil in [[5, 6], [5, -6], [-5]]
+false
+about to repeat the while loop
+starting while loop
+checking if empty [[5, 6], [5, -6], [-5]]
+checking for nil in [[5, 6], [5, -6], [-5]]
+checking for pure literal in [[5, 6], [5, -6], [-5]]
+setting singleton_clause: [-5]
+singleton clause. 5 must be false
+propagating -5 to state:
+[5, 6]
+[5, -6]
+[-5]
+delete 5 from [5, 6]
+deleted 5 from [6]
+new_clause: [6]
+delete 5 from [5, -6]
+deleted 5 from [-6]
+new_clause: [-6]
+About to delete:
+[[-5]]
+DELETING [-5]
+[6]
+[-6]
+propagated -5
+checking for nil in [[6], [-6]]
+false
+about to repeat the while loop
+starting while loop
+checking if empty [[6], [-6]]
+checking for nil in [[6], [-6]]
+checking for pure literal in [[6], [-6]]
+setting singleton_clause: [6]
+singleton clause. 6 must be true
+propagating 6 to state:
+[6]
+[-6]
+delete -6 from [-6]
+ADD NIL TO LITERALS
+deleted -6 from [nil]
+new_clause: [nil]
+About to delete:
+[[6]]
+DELETING [6]
+[nil]
+propagated 6
+checking for nil in [[nil]]
+true
+about to repeat the while loop
+starting while loop
+checking if empty [[nil]]
+checking for nil in [[nil]]
+STATE HAS EMPTY CLAUSE
+returning 2 T
+trying a false assignment
+trying -2 false
+propagating -2 to state:
+[-2, -3, -4]
+[-2, 3]
+[5, 6]
+[5, -6]
+[2, -5]
+[-3, -5]
+delete 2 from [2, -5]
+deleted 2 from [-5]
+new_clause: [-5]
+About to delete:
+[[-2, -3, -4], [-2, 3]]
+DELETING [-2, -3, -4]
+[-2, 3]
+[5, 6]
+[5, -6]
+[-5]
+[-3, -5]
+DELETING [-2, 3]
+[5, 6]
+[5, -6]
+[-5]
+[-3, -5]
+
+----- dp1 called -----
+--- atoms ---
+{"1"=>true, "2"=>nil, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+--- v.atoms ---
+{"1"=>true, "2"=>false, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+--- s.clauses ---
+[[1, 2, 3], [1, -2, -3], [1, -4], [-2, -3, -4], [-1, -2, 3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+---------------------------
+
+starting while loop
+checking if empty [[5, 6], [5, -6], [-5], [-3, -5]]
+checking for nil in [[5, 6], [5, -6], [-5], [-3, -5]]
+checking for pure literal in [[5, 6], [5, -6], [-5], [-3, -5]]
+setting singleton_clause: [-5]
+singleton clause. 5 must be false
+propagating -5 to state:
+[5, 6]
+[5, -6]
+[-5]
+[-3, -5]
+delete 5 from [5, 6]
+deleted 5 from [6]
+new_clause: [6]
+delete 5 from [5, -6]
+deleted 5 from [-6]
+new_clause: [-6]
+About to delete:
+[[-5], [-3, -5]]
+DELETING [-5]
+[6]
+[-6]
+[-3, -5]
+DELETING [-3, -5]
+[6]
+[-6]
+propagated -5
+checking for nil in [[6], [-6]]
+false
+about to repeat the while loop
+starting while loop
+checking if empty [[6], [-6]]
+checking for nil in [[6], [-6]]
+checking for pure literal in [[6], [-6]]
+setting singleton_clause: [6]
+singleton clause. 6 must be true
+propagating 6 to state:
+[6]
+[-6]
+delete -6 from [-6]
+ADD NIL TO LITERALS
+deleted -6 from [nil]
+new_clause: [nil]
+About to delete:
+[[6]]
+DELETING [6]
+[nil]
+propagated 6
+checking for nil in [[nil]]
+true
+about to repeat the while loop
+starting while loop
+checking if empty [[nil]]
+checking for nil in [[nil]]
+STATE HAS EMPTY CLAUSE
+returning 2 F
+returning 1 T
+trying a false assignment
+trying -1 false
+propagating -1 to state:
+[1, 2, 3]
+[1, -2, -3]
+[1, -4]
+[-2, -3, -4]
+[-1, -2, 3]
+[5, 6]
+[5, -6]
+[2, -5]
+[-3, -5]
+delete 1 from [1, 2, 3]
+deleted 1 from [2, 3]
+new_clause: [2, 3]
+delete 1 from [1, -2, -3]
+deleted 1 from [-2, -3]
+new_clause: [-2, -3]
+delete 1 from [1, -4]
+deleted 1 from [-4]
+new_clause: [-4]
+About to delete:
+[[-1, -2, 3]]
+DELETING [-1, -2, 3]
+[2, 3]
+[-2, -3]
+[-4]
+[-2, -3, -4]
+[5, 6]
+[5, -6]
+[2, -5]
+[-3, -5]
+
+----- dp1 called -----
+--- atoms ---
+{"1"=>false, "2"=>nil, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+--- v.atoms ---
+{"1"=>false, "2"=>nil, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+--- s.clauses ---
+[[1, 2, 3], [1, -2, -3], [1, -4], [-2, -3, -4], [-1, -2, 3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+---------------------------
+
+starting while loop
+checking if empty [[2, 3], [-2, -3], [-4], [-2, -3, -4], [5, 6], [5, -6], [2, -5], [-3, -5]]
+checking for nil in [[2, 3], [-2, -3], [-4], [-2, -3, -4], [5, 6], [5, -6], [2, -5], [-3, -5]]
+checking for pure literal in [[2, 3], [-2, -3], [-4], [-2, -3, -4], [5, 6], [5, -6], [2, -5], [-3, -5]]
+setting singleton_clause: [-4]
+singleton clause. 4 must be false
+propagating -4 to state:
+[2, 3]
+[-2, -3]
+[-4]
+[-2, -3, -4]
+[5, 6]
+[5, -6]
+[2, -5]
+[-3, -5]
+About to delete:
+[[-4], [-2, -3, -4]]
+DELETING [-4]
+[2, 3]
+[-2, -3]
+[-2, -3, -4]
+[5, 6]
+[5, -6]
+[2, -5]
+[-3, -5]
+DELETING [-2, -3, -4]
+[2, 3]
+[-2, -3]
+[5, 6]
+[5, -6]
+[2, -5]
+[-3, -5]
+propagated -4
+checking for nil in [[2, 3], [-2, -3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+false
+about to repeat the while loop
+starting while loop
+checking if empty [[2, 3], [-2, -3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+checking for nil in [[2, 3], [-2, -3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+checking for pure literal in [[2, 3], [-2, -3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+breaking from while loop
+getting unbound atom from {"1"=>false, "2"=>nil, "3"=>nil, "4"=>false, "5"=>nil, "6"=>nil}
+trying a true assignment
+trying 2 true
+propagating 2 to state:
+[2, 3]
+[-2, -3]
+[5, 6]
+[5, -6]
+[2, -5]
+[-3, -5]
+delete -2 from [-2, -3]
+deleted -2 from [-3]
+new_clause: [-3]
+About to delete:
+[[2, 3], [2, -5]]
+DELETING [2, 3]
+[-3]
+[5, 6]
+[5, -6]
+[2, -5]
+[-3, -5]
+DELETING [2, -5]
+[-3]
+[5, 6]
+[5, -6]
+[-3, -5]
+
+----- dp1 called -----
+--- atoms ---
+{"1"=>false, "2"=>nil, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+--- v.atoms ---
+{"1"=>false, "2"=>true, "3"=>nil, "4"=>false, "5"=>nil, "6"=>nil}
+--- s.clauses ---
+[[1, 2, 3], [1, -2, -3], [1, -4], [-2, -3, -4], [-1, -2, 3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+---------------------------
+
+starting while loop
+checking if empty [[-3], [5, 6], [5, -6], [-3, -5]]
+checking for nil in [[-3], [5, 6], [5, -6], [-3, -5]]
+checking for pure literal in [[-3], [5, 6], [5, -6], [-3, -5]]
+setting singleton_clause: [-3]
+singleton clause. 3 must be false
+propagating -3 to state:
+[-3]
+[5, 6]
+[5, -6]
+[-3, -5]
+About to delete:
+[[-3], [-3, -5]]
+DELETING [-3]
+[5, 6]
+[5, -6]
+[-3, -5]
+DELETING [-3, -5]
+[5, 6]
+[5, -6]
+propagated -3
+checking for nil in [[5, 6], [5, -6]]
+false
+about to repeat the while loop
+starting while loop
+checking if empty [[5, 6], [5, -6]]
+checking for nil in [[5, 6], [5, -6]]
+checking for pure literal in [[5, 6], [5, -6]]
+breaking from while loop
+getting unbound atom from {"1"=>false, "2"=>true, "3"=>false, "4"=>false, "5"=>nil, "6"=>nil}
+trying a true assignment
+trying 5 true
+propagating 5 to state:
+[5, 6]
+[5, -6]
+About to delete:
+[[5, 6], [5, -6]]
+DELETING [5, 6]
+[5, -6]
+DELETING [5, -6]
+
+----- dp1 called -----
+--- atoms ---
+{"1"=>false, "2"=>nil, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+--- v.atoms ---
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "5"=>true, "6"=>nil}
+--- s.clauses ---
+[[1, 2, 3], [1, -2, -3], [1, -4], [-2, -3, -4], [-1, -2, 3], [5, 6], [5, -6], [2, -5], [-3, -5]]
+---------------------------
+
+starting while loop
+checking if empty []
+s is empty: []
+done recursion. v.atoms: {"1"=>false, "2"=>true, "3"=>false, "4"=>false, "5"=>true, "6"=>nil}
+nil_keys: ["6"] 1
+atoms: {"1"=>false, "2"=>nil, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+SETTING KEY 6
+finalized atoms. atoms: {"1"=>false, "2"=>nil, "3"=>nil, "4"=>nil, "5"=>nil, "6"=>nil}
+returning 5 T
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "5"=>true, "6"=>true}
+returning 2 T
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "5"=>true, "6"=>true}
+returning 1 F
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "5"=>true, "6"=>true}
+--- ending state ---
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "5"=>true, "6"=>true}
+.
+
+Finished tests in 0.014009s, 71.3827 tests/s, 71.3827 assertions/s.
+
+1 tests, 1 assertions, 0 failures, 0 errors, 0 skips

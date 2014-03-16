@@ -12,6 +12,7 @@ class State
   end
 
   def is_empty?
+    puts "checking if empty #{@clauses}"
     if @clauses.size == 0
       return true
     else
@@ -20,17 +21,23 @@ class State
   end
 
   def has_pure_literal?
+    puts "checking for pure literal in #{@clauses}"
     literals = Hash.new
+    literals_to_remove = []
     @clauses.each do |clause|
       clause.literals.each do |literal|
         if literals.has_key? literal.name
           if literals[literal.name] != literal.value
-            literals.delete(literal.name)
+            literals_to_remove << literal.name
           end
         else
           literals[literal.name] =  literal.value
         end
       end
+    end
+
+    literals_to_remove.each do |literal|
+      literals.delete(literal)
     end
 
     if literals.length > 1
@@ -59,7 +66,9 @@ class State
   end
 
   def has_empty_clause?
+    puts "checking for nil in #{@clauses}"
     @clauses.each do |clause|
+      return true if clause == nil
       return true if clause.contains? nil
     end
     return false
@@ -93,14 +102,25 @@ class State
   end
 
   def propagate(literal)
+    puts "propagating #{literal} to state:"
+    puts @clauses
     clauses_to_delete = []
+    clauses_to_dup_and_modify = []
 
-    @clauses.each do |clause|
+    @clauses.each_with_index do |clause, i|
       if clause.contains? literal
         clauses_to_delete << clause
       elsif clause.contains? literal.negate
-        clause.delete(literal.negate)
+        clauses_to_dup_and_modify << i
       end
+    end
+
+    clauses_to_dup_and_modify.each do |i|
+      new_clause = @clauses[i]
+      new_clause.delete(literal.negate)
+      puts "new_clause: #{new_clause}"
+      @clauses[i] = new_clause
+
     end
 
     puts "About to delete:"
@@ -112,5 +132,9 @@ class State
     end
 
     return self
+  end
+
+  def duplicate!
+    return Marshal.load(Marshal.dump(self))
   end
 end

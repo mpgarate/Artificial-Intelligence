@@ -52,4 +52,8 @@ class Clause
 
     puts "deleted #{target} from #{@literals}"
   end
+  
+  def duplicate!
+    return Marshal.load(Marshal.dump(self))
+  end
 end

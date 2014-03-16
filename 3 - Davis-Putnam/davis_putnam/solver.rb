@@ -23,7 +23,8 @@ class Solver
   def solve!
     v = Valuation.new(@atoms)
     s = State.new(@clauses)
-    dp1(@atoms,s,v)
+    vnew = dp1(@atoms,s,v)
+    @atoms = vnew.atoms
   end
 
   private
@@ -61,7 +62,7 @@ class Solver
         literal = s.singleton_clause.literals.first
         puts "singleton clause. #{literal.name} must be #{literal.value}"
         v.assign(literal.name, literal.value)
-        s.propagate(literal) #remove the dup?
+        s.propagate(literal)
         puts "propagated #{literal}"
         puts s.has_empty_clause?
       else
@@ -73,30 +74,33 @@ class Solver
 
 
     a = v.get_unbound_atom
-    
+
     puts "trying a true assignment"
     # try an assignment true
-    # return if a == nil
     a.value = true
     puts "trying #{a} true"
     v.assign(a.name, true)
 
-    s1 = s.dup.propagate(a)
-    vnew = dp1(atoms,s1,v)
-    puts "returning #{a.name} T #{vnew}"
+    s1 = s.duplicate!
+    s1.propagate(a)
+
+    vnew = dp1(atoms,s1,v.duplicate!)
+    puts "returning #{a.name} T"
+    puts vnew.atoms unless vnew == nil
     return vnew unless vnew == nil
 
     puts "trying a false assignment"
     # try an assignment false
-    # return if a == nil
     a.value = false
 
     puts "trying #{a} false"
     v.assign(a.name, false)
 
-    s1 = s.dup.propagate(a)
-    vnew = dp1(atoms,s1,v)
-    puts "returning #{a.name} F #{vnew}"
+    s1 = s.duplicate!
+    s1.propagate(a)
+    vnew = dp1(atoms,s1,v.duplicate!)
+    puts "returning #{a.name} F"
+    puts vnew.atoms unless vnew == nil
     return vnew
 
   end

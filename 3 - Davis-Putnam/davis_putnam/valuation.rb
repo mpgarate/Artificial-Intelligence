@@ -7,6 +7,7 @@ class Valuation
 
   def assign(key,val)
     @atoms[key] = val
+    return self
   end
 
   def get_unbound_atom
@@ -17,5 +18,9 @@ class Valuation
       end
     end
     return nil
+  end
+  
+  def duplicate!
+    return Marshal.load(Marshal.dump(self))
   end
 end
