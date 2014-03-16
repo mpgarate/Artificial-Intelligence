@@ -35,4 +35,15 @@ class TestDP < Test::Unit::TestCase
 
     assert FileUtils.compare_file(produced, solution)
   end
+
+  def test_hw5
+    input_path = "test/dp_hw5.txt"
+
+    produced = "dp_output.txt"
+    solution = "test/dp_hw5_out.txt"
+
+    DavisPutnam.solve_file(input_path)
+
+    assert FileUtils.compare_file(produced, solution)
+  end
 end
