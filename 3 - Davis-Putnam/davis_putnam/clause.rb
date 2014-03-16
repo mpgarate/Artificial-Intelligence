@@ -39,18 +39,14 @@ class Clause
 
   # delete a literal
   def delete(target)
-    puts "delete #{target} from #{@literals}"
     @literals.each_with_index do |literal, index|
       if target.to_s == literal.to_s
         @literals.delete literal
         if @literals.length == 0
-          puts "ADD NIL TO LITERALS"
           @literals << nil
         end
       end
     end
-
-    puts "deleted #{target} from #{@literals}"
   end
   
   def duplicate!

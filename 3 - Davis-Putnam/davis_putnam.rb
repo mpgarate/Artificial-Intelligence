@@ -16,17 +16,10 @@ require_relative 'davis_putnam/valuation'
 # Primary algorithm in davis_putnam/solver.rb
 class DavisPutnam
   def self.solve_file(path)
-    ### Instantiate and call Solver
-
     file = InputFile.new(path)
     solver = Solver.new(file.clauses)
-    puts "--- starting state ---"
-    puts solver.clauses
-    puts solver.atoms
+
     solver.solve!
-    puts "--- ending state ---"
-    puts solver.clauses
-    puts solver.atoms
 
     out_file = OutputFile.new(file,"dp_output.txt")
     out_file.write_atoms!(solver.atoms)

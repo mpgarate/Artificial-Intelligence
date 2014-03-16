@@ -12,7 +12,6 @@ class State
   end
 
   def is_empty?
-    puts "checking if empty #{@clauses}"
     if @clauses.size == 0
       return true
     else
@@ -21,7 +20,6 @@ class State
   end
 
   def has_pure_literal?
-    puts "checking for pure literal in #{@clauses}"
     literals = Hash.new
     literals_to_remove = []
     @clauses.each do |clause|
@@ -57,7 +55,6 @@ class State
   def has_singleton_clause?
     @clauses.each do |clause|
       if clause.is_singleton? then
-        puts "setting singleton_clause: #{clause}"
         @singleton_clause = clause
         return true
       end
@@ -66,7 +63,6 @@ class State
   end
 
   def has_empty_clause?
-    puts "checking for nil in #{@clauses}"
     @clauses.each do |clause|
       return true if clause == nil
       return true if clause.contains? nil
@@ -97,13 +93,9 @@ class State
     clauses_to_delete.each do |c|
       @clauses.delete(c)
     end
-
-    puts "deleted every #{literal} from #{@clauses}"
   end
 
   def propagate(literal)
-    puts "propagating #{literal} to state:"
-    puts @clauses
     clauses_to_delete = []
     clauses_to_dup_and_modify = []
 
@@ -118,17 +110,12 @@ class State
     clauses_to_dup_and_modify.each do |i|
       new_clause = @clauses[i]
       new_clause.delete(literal.negate)
-      puts "new_clause: #{new_clause}"
       @clauses[i] = new_clause
 
     end
 
-    puts "About to delete:"
-    puts "#{clauses_to_delete}"
     clauses_to_delete.each do |c|
-      puts "DELETING #{c}"
       @clauses.delete(c)
-      puts @clauses
     end
 
     return self

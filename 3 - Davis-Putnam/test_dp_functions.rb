@@ -61,10 +61,7 @@ class TestDP < Test::Unit::TestCase
 
     literal = Literal.new("-4")
 
-    puts "STATE: #{state.clauses}"
-    puts "DELETING #{literal}"
     state.delete_every literal
-    puts "STATE: #{state.clauses}"
 
     assert state.has_no_literal? literal
   end
