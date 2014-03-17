@@ -5,6 +5,11 @@ class AdventureGame
   attr_accessor :treasures, :nodes, :allowed_steps
 
   def initialize(file_path)
+    parse_attributes_from_file(file_path)
+
+  end
+
+  def parse_attributes_from_file(file_path)
     @nodes = []
     @treasures = []
 
@@ -24,7 +29,6 @@ class AdventureGame
     lines.each do |line|
       @nodes << Node.new(line)
     end
-
   end
 
 end
@@ -32,5 +36,5 @@ end
 # When running from command line
 if __FILE__ == $0 then
   file_path = ARGV.first
-  AdventureGame.solve_file(file_path)
+  game = AdventureGame.new(file_path)
 end

@@ -16,7 +16,6 @@ class Node
     # 2 is a treasure name or label "TOLLS"
     @treasures = []
     i = 2
-    puts "attrs: #{attrs}"
     while(attrs[i] != "TOLLS" && i < attrs.length)
       @treasures << attrs[i]
       i = i + 1
