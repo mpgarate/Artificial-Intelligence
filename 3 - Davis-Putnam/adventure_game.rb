@@ -1,6 +1,7 @@
 require_relative 'davis_putnam'
 require_relative 'adventure_game/node'
 require_relative 'adventure_game/atom_set'
+require_relative 'adventure_game/sentence_set'
 require_relative 'adventure_game/logic_builder'
 require_relative 'adventure_game/logic_atom'
 
@@ -25,7 +26,7 @@ class AdventureGame
     @treasures = lines[1].split
 
     # line 2 : allowed steps
-    @allowed_steps = lines[2]
+    @allowed_steps = Integer(lines[2])
 
     # lines 3-EOF : encoded maze nodes
     lines.slice!(0,2) # remove first two elements

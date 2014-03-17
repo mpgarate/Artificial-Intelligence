@@ -1,6 +1,8 @@
 class LogicAtom
+  attr_accessor :value, :a, :b, :type
+
   def initialize(type,a,b,value=nil)
-    @string = "#{type}(#{a.name},#{b.name})"
+    @string = "#{type}(#{a},#{b})"
     @type = type
     @a = a
     @b = b

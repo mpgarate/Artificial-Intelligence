@@ -4,50 +4,61 @@ class LogicBuilder
   # @logic_names keeps track of what digits represent
   # @logic_names[2] => "At(C,1)"
   # This means that 2 corresponds to the atom "At(C,1)"
-  @logic = []
-  @sentences
 
   def initialize(game)
     @game = game
+    @steps = game.allowed_steps
 
-    # @at_atoms
-    @at_atoms = AtomSet.new("at")
-    @available_atoms = AtomSet.new("available")
-    @has_atoms = AtomSet.new("has")
-    
+    @atom_set = AtomSet.new
+
+    @logic = []
+    @sentence_set = SentenceSet.new
+
     build_possible_atoms
   end
 
-  def build_possible_atoms
-    types = ["at","available","has"]
-    types.each do |type|
+  def one_place_at_a_time
+    moves = 0..@steps
+
+    for m in moves
       @game.nodes.each do |node_a|
         @game.nodes.each do |node_b|
-          atom = LogicAtom.new(type,node_a,node_b)
-          @at_atoms.add(atom)
-        end
-      end
-    end
-    puts @at_atoms.atoms
-  end
-
-  def one_place_at_a_time
-    @game.nodes.each do |node_a|
-      @game.nodes.each do |node_b|
-        for i in 0..@game.nodes.count
-          # looks like: 'At(C,2)'
           unless node_a == node_b
-=begin
-            atom_string_a = "At(#{node_a.name},#{i})"
-            atom_string_b = "At(#{node_b.name},#{i})"
-            @logic << atom_string_a
-            @logic << atom_string_b
-            sentence
-            @logic << LogicAtom.new(atom_string,false)
-=end
+            atom_1 = LogicAtom.new("at",node_a.name,m,false)
+            atom_2 = LogicAtom.new("at",node_b.name,m,false)
+
+
+            pair = [atom_1,atom_2]
+            @sentence_set.add(pair)
           end
         end
       end
     end
+    puts "---- made sentences: ----"
+    puts @sentence_set.to_s
   end
+
+  private
+
+  def build_possible_atoms
+    moves = 0..@steps
+
+    for m in moves
+      @game.nodes.each do |node|
+        atom = LogicAtom.new("at",node.name,m)
+        @atom_set.add(atom)
+      end
+
+      @game.treasures.each do |treasure|
+        atom = LogicAtom.new("available",treasure,m)
+        @atom_set.add(atom)
+
+        atom = LogicAtom.new("has",treasure,m)
+        @atom_set.add(atom)
+      end
+    end
+
+    puts @atom_set.to_s
+  end
+
 end
