@@ -2,6 +2,10 @@ class Node
   attr_accessor :name, :tolls, :treasures, :next_nodes
 
   def initialize(line)
+    parse_attributes(line)
+  end
+
+  def parse_attributes(line)
     puts "line: #{line}"
     attrs = line.split
 
