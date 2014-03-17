@@ -2,7 +2,7 @@ require_relative 'davis_putnam'
 require 'test/unit'
 require 'fileutils'
 
-class TestDP < Test::Unit::TestCase
+class TestDPCases < Test::Unit::TestCase
   def test_trivial
     input_path = "test/dp_trivial.txt"
 

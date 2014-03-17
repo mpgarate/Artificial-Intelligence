@@ -2,7 +2,7 @@ require_relative 'davis_putnam'
 require 'test/unit'
 require 'fileutils'
 
-class TestDP < Test::Unit::TestCase
+class TestDPFunctions < Test::Unit::TestCase
   def test_clause_contains_1
     clause = Clause.new("1 -2 3")
     assert clause.contains? "1"
