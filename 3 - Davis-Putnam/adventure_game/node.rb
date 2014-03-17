@@ -6,7 +6,6 @@ class Node
   end
 
   def parse_attributes(line)
-    puts "line: #{line}"
     attrs = line.split
 
     # 0 is name

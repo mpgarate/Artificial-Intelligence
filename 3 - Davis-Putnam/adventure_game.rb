@@ -1,5 +1,8 @@
 require_relative 'davis_putnam'
 require_relative 'adventure_game/node'
+require_relative 'adventure_game/atom_set'
+require_relative 'adventure_game/logic_builder'
+require_relative 'adventure_game/logic_atom'
 
 class AdventureGame
   attr_accessor :treasures, :nodes, :allowed_steps
@@ -29,6 +32,14 @@ class AdventureGame
     lines.each do |line|
       @nodes << Node.new(line)
     end
+  end
+
+  def generate_logic
+    lb = LogicBuilder.new(self)
+    lb.one_place_at_a_time
+  end
+
+  def write_logic(file)
   end
 
 end
