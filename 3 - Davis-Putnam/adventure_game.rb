@@ -37,7 +37,20 @@ class AdventureGame
 
   def generate_logic
     lb = LogicBuilder.new(self)
+
+    # creates a set of all possible atoms and atom types
+    # this is used for getting unique index numbers when
+    # generating output for davis_putnam
+    lb.build_possible_atoms
+
+    # proposition type 1 
     lb.one_place_at_a_time
+
+    # proposition type 2
+    lb.treasure_availability
+
+    # proposition type 3
+    lb.must_move_on_edges
   end
 
   def write_logic(file)
