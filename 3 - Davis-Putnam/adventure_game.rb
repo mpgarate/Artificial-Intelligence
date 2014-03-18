@@ -30,8 +30,6 @@ class AdventureGame
 
     # lines 3-EOF : encoded maze nodes
     lines.slice!(0,3) # remove first three lines
-    puts "slided lines to:"
-    puts lines
     lines.each do |line|
       @nodes << Node.new(line)
     end
@@ -96,6 +94,7 @@ class AdventureGame
       outfile.puts(sentence)
     end
     outfile.puts("0 ")
+    outfile.close
 
   end
 

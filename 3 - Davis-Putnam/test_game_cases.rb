@@ -1,5 +1,5 @@
-require_relative 'adventure_game'
 require_relative 'davis_putnam'
+require_relative 'adventure_game'
 require 'test/unit'
 require 'fileutils'
 

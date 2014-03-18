@@ -36,8 +36,6 @@ class LogicBuilder
       end
       @digit_sentences << new_sentence unless new_sentence == ""
     end
-    puts "made sentences"
-    puts @digit_sentences
     return @digit_sentences
   end
 
@@ -58,8 +56,6 @@ class LogicBuilder
         @atom_set.add(atom)
       end
     end
-    puts "BUILT:"
-    puts @atom_set
   end
 
   def one_place_at_a_time
