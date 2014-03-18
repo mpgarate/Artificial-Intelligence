@@ -81,7 +81,7 @@ class LogicBuilder
     end
   end
 
-  def player_pays_toll
+  def player_can_pay_toll
     moves = 0..@steps
     for m in moves
       @game.nodes.each do |node|
@@ -109,6 +109,20 @@ class LogicBuilder
       end
     end
 
+  end
+
+  def player_pays_toll
+    moves = 0..@steps
+    for m in moves
+      @game.nodes.each do |node|
+        node.tolls.each do |toll|
+          sentence = []
+          sentence << LogicAtom.new("at",node.name,m,false)
+          sentence << LogicAtom.new("has",toll,m,false)
+          @sentence_set.add(sentence)
+        end
+      end
+    end
     puts "---- made sentences: ----"
     puts @sentence_set.to_s
   end
