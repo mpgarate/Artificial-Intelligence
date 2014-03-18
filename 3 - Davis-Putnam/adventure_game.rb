@@ -51,6 +51,12 @@ class AdventureGame
 
     # proposition type 3
     lb.must_move_on_edges
+
+    # proposition type 4
+    lb.player_pays_toll
+
+    # proposition type 5
+    lb.player_picks_up_treasure
   end
 
   def write_logic(file)

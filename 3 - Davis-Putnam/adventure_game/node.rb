@@ -39,5 +39,9 @@ class Node
       @next_nodes << attrs[i]
       i = i + 1
     end
+
+    # GOAL node links to itself
+    @next_nodes << "GOAL" if @name == "GOAL"
+
   end
 end

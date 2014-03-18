@@ -71,7 +71,6 @@ class LogicBuilder
     moves = 0..@steps
     for m in moves
       @game.nodes.each do |node|
-        puts "NODE: #{node.name}"
         sentence = []
         sentence << LogicAtom.new("at",node.name,m,false)
         node.next_nodes.each do |next_node|
@@ -80,6 +79,36 @@ class LogicBuilder
         @sentence_set.add(sentence)
       end
     end
+  end
+
+  def player_pays_toll
+    moves = 0..@steps
+    for m in moves
+      @game.nodes.each do |node|
+        node.tolls.each do |toll|
+          sentence = []
+          sentence << LogicAtom.new("at",node.name,m,false)
+          sentence << LogicAtom.new("has",toll,m,true)
+          @sentence_set.add(sentence)
+        end
+      end
+    end
+  end
+
+  def player_picks_up_treasure
+    moves = 0..@steps
+    for m in moves
+      @game.nodes.each do |node|
+        node.treasures.each do |treasure|
+          sentence = []
+          sentence << LogicAtom.new("available",treasure,m,false)
+          sentence << LogicAtom.new("at",node.name,m+1,false)
+          sentence << LogicAtom.new("has",treasure,m+1,true)
+          @sentence_set.add(sentence)
+        end
+      end
+    end
+
     puts "---- made sentences: ----"
     puts @sentence_set.to_s
   end
