@@ -24,6 +24,10 @@ class Solver
     v = Valuation.new(@atoms)
     s = State.new(@clauses)
     vnew = dp1(s,v)
+    if vnew == nil
+      throw "impossible sentences"
+      return nil
+    end
     @atoms = vnew.atoms
   end
 

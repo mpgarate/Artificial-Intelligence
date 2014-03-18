@@ -95,6 +95,7 @@ class AdventureGame
     @sentences.each do |sentence|
       outfile.puts(sentence)
     end
+    outfile.puts("0 ")
 
   end
 

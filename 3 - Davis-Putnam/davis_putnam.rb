@@ -18,7 +18,8 @@ class DavisPutnam
   def self.solve_file(path)
     file = InputFile.new(path)
     solver = Solver.new(file.clauses)
-
+    puts "trying to solve:"
+    puts file.inspect
     solver.solve!
 
     out_file = OutputFile.new(file,"dp_output.txt")

@@ -19,14 +19,20 @@ class LogicBuilder
     @digit_sentences = []
     @sentence_set.sentences.each do |sentence|
       new_sentence = ""
-      sentence.each do |atom|
+      sentence.each_with_index do |atom,i|
         digit = @atom_set.find_atom(atom.type, atom.a, atom.b)
         if digit == nil
           puts "NIL: #{atom}"
           break
         end
+
+        # offset all digits by one so that the
+        # first is a 1 and not a 0
+        digit = digit + 1
+
         digit = -digit if atom.value == false
         new_sentence << "#{digit} "
+        #new_sentence << " " unless i == sentence.length
       end
       @digit_sentences << new_sentence unless new_sentence == ""
     end

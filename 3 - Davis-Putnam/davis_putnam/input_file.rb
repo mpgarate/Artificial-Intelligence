@@ -10,7 +10,7 @@ class InputFile
 
     @file = File.open(filename)
     @file.each_line do |line|
-      break if line.include? "0"
+      break if line.eql? "0 \n" 
       @clauses << Clause.new(line)
     end
   end
