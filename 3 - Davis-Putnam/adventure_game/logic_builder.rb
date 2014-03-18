@@ -60,7 +60,9 @@ class LogicBuilder
       end
     end
 
+    puts "-----------------"
     puts @atom_set.to_s
+    puts "-----------------"
   end
 
 
@@ -114,6 +116,7 @@ class LogicBuilder
   def player_can_pay_toll
     moves = 0..@steps
     for m in moves
+      break if m == @steps
       @game.nodes.each do |node|
         node.tolls.each do |toll|
           sentence = []
