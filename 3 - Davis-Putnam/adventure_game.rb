@@ -30,9 +30,14 @@ class AdventureGame
 
     # lines 3-EOF : encoded maze nodes
     lines.slice!(0,3) # remove first three lines
+    puts "slided lines to:"
+    puts lines
     lines.each do |line|
       @nodes << Node.new(line)
     end
+
+    # goal node links to itself
+    @nodes << Node.new("GOAL TREASURES TOLLS NEXT GOAL")
   end
 
   def generate_logic
@@ -70,10 +75,27 @@ class AdventureGame
     # proposition type 9
     lb.player_spends_treasure
 
-    
+    # proposition type 10
+    lb.player_carries_treasure
+
+    # proposition type 11
+    lb.player_starts_at_zero
+
+    # proposition type 12
+    lb.treasures_available_from_start
+
+    # proposition type 13
+    lb.player_reaches_goal
+
+    @sentences = lb.get_sentences_as_digits
   end
 
-  def write_logic(file)
+  def write_logic(file_path)
+    outfile = File.open(file_path,"w")
+    @sentences.each do |sentence|
+      outfile.puts(sentence)
+    end
+
   end
 
 end

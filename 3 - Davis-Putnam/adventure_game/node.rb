@@ -40,8 +40,5 @@ class Node
       i = i + 1
     end
 
-    # GOAL node links to itself
-    @next_nodes << "GOAL" if @name == "GOAL"
-
   end
 end

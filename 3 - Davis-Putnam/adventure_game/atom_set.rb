@@ -22,10 +22,12 @@ class AtomSet
   end
 
   def find_atom(type,a,b)
-    @atoms.each do |atom|
+    @atoms.each_with_index do |atom,i|
       if atom.a == a and atom.b == b and atom.type == type
-        return atom.duplicate
+        return i
       end
     end
+
+    return nil
   end
 end

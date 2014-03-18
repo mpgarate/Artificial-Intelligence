@@ -15,6 +15,25 @@ class LogicBuilder
     @sentence_set = SentenceSet.new
   end
 
+  def get_sentences_as_digits
+    @digit_sentences = []
+    @sentence_set.sentences.each do |sentence|
+      new_sentence = ""
+      sentence.each do |atom|
+        digit = @atom_set.find_atom(atom.type, atom.a, atom.b)
+        if digit == nil
+          puts "NIL: #{atom}"
+          break
+        end
+        digit = -digit if atom.value == false
+        new_sentence << "#{digit} "
+      end
+      @digit_sentences << new_sentence unless new_sentence == ""
+    end
+    puts "made sentences"
+    puts @digit_sentences
+    return @digit_sentences
+  end
 
   def build_possible_atoms
     moves = 0..@steps
@@ -33,8 +52,8 @@ class LogicBuilder
         @atom_set.add(atom)
       end
     end
-
-    puts @atom_set.to_s
+    puts "BUILT:"
+    puts @atom_set
   end
 
   def one_place_at_a_time
@@ -43,11 +62,10 @@ class LogicBuilder
       @game.nodes.each do |node_a|
         @game.nodes.each do |node_b|
           unless node_a == node_b
-            atom_1 = LogicAtom.new("at",node_a.name,m,false)
-            atom_2 = LogicAtom.new("at",node_b.name,m,false)
-
-            pair = [atom_1,atom_2]
-            @sentence_set.add(pair)
+            sentence = []
+            sentence << LogicAtom.new("at",node_a.name,m,false)
+            sentence << LogicAtom.new("at",node_b.name,m,false)
+            @sentence_set.add(sentence)
           end
         end
       end
@@ -58,11 +76,10 @@ class LogicBuilder
     moves = 0..@steps
     for m in moves
       @game.treasures.each do |treasure|
-        atom_1 = LogicAtom.new("has",treasure,m,false)
-        atom_2 = LogicAtom.new("available",treasure,m,false)
-
-        pair = [atom_1,atom_2]
-        @sentence_set.add(pair)
+        sentence = []
+        sentence << LogicAtom.new("has",treasure,m,false)
+        sentence << LogicAtom.new("available",treasure,m,false)
+        @sentence_set.add(sentence)
       end
     end
   end
@@ -70,6 +87,7 @@ class LogicBuilder
   def must_move_on_edges
     moves = 0..@steps
     for m in moves
+      break if m == @steps
       @game.nodes.each do |node|
         sentence = []
         sentence << LogicAtom.new("at",node.name,m,false)
@@ -98,6 +116,7 @@ class LogicBuilder
   def player_picks_up_treasure
     moves = 0..@steps
     for m in moves
+      break if m == @steps
       @game.nodes.each do |node|
         node.treasures.each do |treasure|
           sentence = []
@@ -128,6 +147,7 @@ class LogicBuilder
   def treasure_is_available
     moves = 0..@steps
     for m in moves
+      break if m == @steps
       @game.nodes.each do |node|
         node.treasures.each do |treasure|
           sentence = []
@@ -143,6 +163,7 @@ class LogicBuilder
   def treasure_is_picked_up
     moves = 0..@steps
     for m in moves
+      break if m == @steps
       @game.nodes.each do |node|
         node.treasures.each do |treasure|
           sentence = []
@@ -157,6 +178,7 @@ class LogicBuilder
   def player_spends_treasure
     moves = 0..@steps
     for m in moves
+      break if m == @steps
       @game.nodes.each do |node|
         node.treasures.each do |treasure|
           sentence = []
@@ -167,8 +189,40 @@ class LogicBuilder
         end
       end
     end
-    puts "---- made sentences: ----"
-    puts @sentence_set.to_s
   end
 
+  def player_carries_treasure
+    moves = 0..@steps
+    for m in moves
+      break if m == @steps
+      @game.nodes.each do |node|
+        node.treasures.each do |treasure|
+          sentence = []
+          sentence << LogicAtom.new("has",treasure,m,false)
+          sentence << LogicAtom.new("at",node.name,m+1,false)
+          sentence << LogicAtom.new("has",treasure,m+1,false)
+          @sentence_set.add(sentence)
+        end
+      end
+    end
+  end
+
+  def player_starts_at_zero
+    sentence = [LogicAtom.new("at","START",0,true)]
+    @sentence_set.add(sentence)
+  end
+
+  def treasures_available_from_start
+    @game.nodes.each do |node|
+      node.treasures.each do |treasure|
+        sentence = [LogicAtom.new("available",treasure,0,true)]
+        @sentence_set.add(sentence)
+      end
+    end
+  end
+
+  def player_reaches_goal
+    sentence = [LogicAtom.new("at","GOAL",@steps,true)]
+    @sentence_set.add(sentence)
+  end
 end

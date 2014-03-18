@@ -17,6 +17,6 @@ class LogicAtom
 
 
   def duplicate
-    new LogicAtom(@type,@a,@b,@value)
+    LogicAtom.new(@type,@a,@b,@value)
   end
 end
