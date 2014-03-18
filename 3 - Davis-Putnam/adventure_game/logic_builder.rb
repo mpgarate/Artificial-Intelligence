@@ -31,11 +31,12 @@ class LogicBuilder
         digit = digit + 1
 
         digit = -digit if atom.value == false
-        new_sentence << "#{digit} "
-        #new_sentence << " " unless i == sentence.length
+        new_sentence << "#{digit}"
+        new_sentence << " " unless i == sentence.length
       end
       @digit_sentences << new_sentence unless new_sentence == ""
     end
+
     return @digit_sentences
   end
 
@@ -58,6 +59,8 @@ class LogicBuilder
     end
   end
 
+
+  # proposition type 1
   def one_place_at_a_time
     moves = 0..@steps
     for m in moves
@@ -74,6 +77,7 @@ class LogicBuilder
     end
   end
 
+  # proposition type 2
   def treasure_availability
     moves = 0..@steps
     for m in moves
@@ -86,6 +90,7 @@ class LogicBuilder
     end
   end
 
+  # proposition type 3
   def must_move_on_edges
     moves = 0..@steps
     for m in moves
@@ -101,13 +106,14 @@ class LogicBuilder
     end
   end
 
+  # proposition type 4
   def player_can_pay_toll
     moves = 0..@steps
     for m in moves
       @game.nodes.each do |node|
         node.tolls.each do |toll|
           sentence = []
-          sentence << LogicAtom.new("at",node.name,m,false)
+          sentence << LogicAtom.new("at",node.name,m+1,false)
           sentence << LogicAtom.new("has",toll,m,true)
           @sentence_set.add(sentence)
         end
@@ -115,6 +121,7 @@ class LogicBuilder
     end
   end
 
+  # proposition type 5
   def player_picks_up_treasure
     moves = 0..@steps
     for m in moves
@@ -132,6 +139,7 @@ class LogicBuilder
 
   end
 
+  # proposition type 6
   def player_pays_toll
     moves = 0..@steps
     for m in moves
@@ -146,12 +154,13 @@ class LogicBuilder
     end
   end
 
+  # proposition type 7
   def treasure_is_available
     moves = 0..@steps
     for m in moves
       break if m == @steps
       @game.nodes.each do |node|
-        node.treasures.each do |treasure|
+        @game.treasures.each do |treasure|
           sentence = []
           sentence << LogicAtom.new("available",treasure,m,false)
           sentence << LogicAtom.new("at",node.name,m+1,false)
@@ -162,12 +171,13 @@ class LogicBuilder
     end
   end
 
+  # proposition type 8
   def treasure_is_picked_up
     moves = 0..@steps
     for m in moves
       break if m == @steps
       @game.nodes.each do |node|
-        node.treasures.each do |treasure|
+        @game.treasures.each do |treasure|
           sentence = []
           sentence << LogicAtom.new("available",treasure,m,true)
           sentence << LogicAtom.new("available",treasure,m+1,false)
@@ -177,12 +187,13 @@ class LogicBuilder
     end
   end
 
+  # proposition type 9
   def player_spends_treasure
     moves = 0..@steps
     for m in moves
       break if m == @steps
       @game.nodes.each do |node|
-        node.treasures.each do |treasure|
+        @game.treasures.each do |treasure|
           sentence = []
           sentence << LogicAtom.new("available",treasure,m,true)
           sentence << LogicAtom.new("has",treasure,m,true)
@@ -193,12 +204,13 @@ class LogicBuilder
     end
   end
 
+  # proposition type 10
   def player_carries_treasure
     moves = 0..@steps
     for m in moves
       break if m == @steps
       @game.nodes.each do |node|
-        node.treasures.each do |treasure|
+        @game.treasures.each do |treasure|
           sentence = []
           sentence << LogicAtom.new("has",treasure,m,false)
           sentence << LogicAtom.new("at",node.name,m+1,false)
@@ -209,20 +221,23 @@ class LogicBuilder
     end
   end
 
+  # proposition type 11
   def player_starts_at_zero
     sentence = [LogicAtom.new("at","START",0,true)]
     @sentence_set.add(sentence)
   end
 
+  # proposition type 12
   def treasures_available_from_start
     @game.nodes.each do |node|
-      node.treasures.each do |treasure|
+      @game.treasures.each do |treasure|
         sentence = [LogicAtom.new("available",treasure,0,true)]
         @sentence_set.add(sentence)
       end
     end
   end
 
+  # proposition type 13
   def player_reaches_goal
     sentence = [LogicAtom.new("at","GOAL",@steps,true)]
     @sentence_set.add(sentence)
