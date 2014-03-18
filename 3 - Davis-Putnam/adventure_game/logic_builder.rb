@@ -65,12 +65,23 @@ class LogicBuilder
         @sentence_set.add(pair)
       end
     end
-    puts "---- made sentences: ----"
-    puts @sentence_set.to_s
   end
 
   def must_move_on_edges
     moves = 0..@steps
+    for m in moves
+      @game.nodes.each do |node|
+        puts "NODE: #{node.name}"
+        sentence = []
+        sentence << LogicAtom.new("at",node.name,m,false)
+        node.next_nodes.each do |next_node|
+          sentence << LogicAtom.new("at",next_node,m+1,true)
+        end
+        @sentence_set.add(sentence)
+      end
+    end
+    puts "---- made sentences: ----"
+    puts @sentence_set.to_s
   end
 
 end

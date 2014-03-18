@@ -29,7 +29,7 @@ class AdventureGame
     @allowed_steps = Integer(lines[2])
 
     # lines 3-EOF : encoded maze nodes
-    lines.slice!(0,2) # remove first two elements
+    lines.slice!(0,3) # remove first three lines
     lines.each do |line|
       @nodes << Node.new(line)
     end
