@@ -32,10 +32,12 @@ class LogicBuilder
 
         digit = -digit if atom.value == false
         new_sentence << "#{digit}"
-        new_sentence << " " unless i == sentence.length
+        new_sentence << " " unless i == sentence.length-1
       end
       @digit_sentences << new_sentence unless new_sentence == ""
     end
+
+    puts @sentence_set
 
     return @digit_sentences
   end
@@ -57,6 +59,8 @@ class LogicBuilder
         @atom_set.add(atom)
       end
     end
+
+    puts @atom_set.to_s
   end
 
 
@@ -176,13 +180,11 @@ class LogicBuilder
     moves = 0..@steps
     for m in moves
       break if m == @steps
-      @game.nodes.each do |node|
         @game.treasures.each do |treasure|
           sentence = []
           sentence << LogicAtom.new("available",treasure,m,true)
           sentence << LogicAtom.new("available",treasure,m+1,false)
           @sentence_set.add(sentence)
-        end
       end
     end
   end
@@ -229,11 +231,9 @@ class LogicBuilder
 
   # proposition type 12
   def treasures_available_from_start
-    @game.nodes.each do |node|
-      @game.treasures.each do |treasure|
-        sentence = [LogicAtom.new("available",treasure,0,true)]
-        @sentence_set.add(sentence)
-      end
+    @game.treasures.each do |treasure|
+      sentence = [LogicAtom.new("available",treasure,0,true)]
+      @sentence_set.add(sentence)
     end
   end
 
