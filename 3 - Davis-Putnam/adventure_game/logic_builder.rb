@@ -152,6 +152,21 @@ class LogicBuilder
         end
       end
     end
+  end
+
+  def player_spends_treasure
+    moves = 0..@steps
+    for m in moves
+      @game.nodes.each do |node|
+        node.treasures.each do |treasure|
+          sentence = []
+          sentence << LogicAtom.new("available",treasure,m,true)
+          sentence << LogicAtom.new("has",treasure,m,true)
+          sentence << LogicAtom.new("has",treasure,m+1,false)
+          @sentence_set.add(sentence)
+        end
+      end
+    end
     puts "---- made sentences: ----"
     puts @sentence_set.to_s
   end

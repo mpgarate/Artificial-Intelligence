@@ -66,6 +66,11 @@ class AdventureGame
 
     # proposition type 8
     lb.treasure_is_picked_up
+
+    # proposition type 9
+    lb.player_spends_treasure
+
+    
   end
 
   def write_logic(file)
