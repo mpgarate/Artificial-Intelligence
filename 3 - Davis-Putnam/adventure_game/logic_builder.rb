@@ -123,6 +123,35 @@ class LogicBuilder
         end
       end
     end
+  end
+
+  def treasure_is_available
+    moves = 0..@steps
+    for m in moves
+      @game.nodes.each do |node|
+        node.treasures.each do |treasure|
+          sentence = []
+          sentence << LogicAtom.new("available",treasure,m,false)
+          sentence << LogicAtom.new("at",node.name,m+1,false)
+          sentence << LogicAtom.new("available",treasure,m+1,true)
+          @sentence_set.add(sentence)
+        end
+      end
+    end
+  end
+
+  def treasure_is_picked_up
+    moves = 0..@steps
+    for m in moves
+      @game.nodes.each do |node|
+        node.treasures.each do |treasure|
+          sentence = []
+          sentence << LogicAtom.new("available",treasure,m,true)
+          sentence << LogicAtom.new("available",treasure,m+1,false)
+          @sentence_set.add(sentence)
+        end
+      end
+    end
     puts "---- made sentences: ----"
     puts @sentence_set.to_s
   end
