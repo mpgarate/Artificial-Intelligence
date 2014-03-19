@@ -33,12 +33,45 @@ This is a simple example with 3 clauses and 3 atoms.
 ```
 
 ### Tests
-Run all tests with 
+
+Run all tests for the adventure game:
 ~~~sh
-ruby test_david_putnam.rb
+ruby test_game_cases.rb
 ~~~
 
-Run an individual test with
+
+Run tests individually:
 ~~~sh
-ruby test_dp_functions.rb -n test_clause_contains_1
+# simple example from assignment
+ruby test_game_cases.rb -n test_a_simple_case
+
+# primary example from assignment
+ruby test_game_cases.rb -n test_b_normal_case
+
+# custom long example. takes about 40 seconds
+ruby test_game_cases.rb -n test_c_bigger_case
+~~~
+
+
+Run tests for david putnam algorithm (without game):
+~~~sh
+ruby test_dp_cases.rb
+~~~
+
+Run tests individually:
+~~~sh
+# trivial example from assignment
+ruby test_dp_cases.rb -n test_trivial
+
+# another example from assignment
+ruby test_dp_cases.rb -n test_normal
+
+# example from sample midterm
+ruby test_dp_cases.rb -n test_sample_midterm
+
+# example from AI homework 5
+ruby test_dp_cases.rb -n test_hw5
+
+# example from midterm exam
+ruby test_dp_cases.rb -n test_midterm
 ~~~
