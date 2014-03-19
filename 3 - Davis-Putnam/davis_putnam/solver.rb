@@ -34,26 +34,39 @@ class Solver
   private
   
   def dp1(s,v)
+
+
     # loop as long as there are easy cases
     while true
+
       # base of recursion
       if s.is_empty?
-        #puts v.atoms
+        puts "s is empty"
+        puts v.atoms
         @clauses = s.clauses
         return finish_recursion(v)
       elsif s.has_empty_clause?
+        puts "empty clause in s:"
+        puts s.clauses
         return nil
       elsif s.has_pure_literal?
         literal = s.pure_literal
+        puts "pure literal #{literal}"
         v.assign(literal.name, literal.value)
         s.delete_every(literal)
       elsif s.has_singleton_clause?
         literal = s.singleton_clause.literals.first
+        puts "singleton clause #{literal}"
         v.assign(literal.name, literal.value)
         s.propagate(literal)
       else
+        puts "breaking"
         break
       end
+
+      puts "repeating while loop again"
+      puts v.atoms
+      puts s.clauses
     end
 
 

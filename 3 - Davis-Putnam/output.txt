@@ -1,0 +1,176 @@
+Run options: 
+
+# Running tests:
+
+-----------------
+1 : at(A,0) : nil 
+2 : at(START,0) : nil 
+3 : at(B,0) : nil 
+4 : at(GOAL,0) : nil 
+5 : available(WAND,0) : nil 
+6 : has(WAND,0) : nil 
+7 : at(A,1) : nil 
+8 : at(START,1) : nil 
+9 : at(B,1) : nil 
+10 : at(GOAL,1) : nil 
+11 : available(WAND,1) : nil 
+12 : has(WAND,1) : nil 
+13 : at(A,2) : nil 
+14 : at(START,2) : nil 
+15 : at(B,2) : nil 
+16 : at(GOAL,2) : nil 
+17 : available(WAND,2) : nil 
+18 : has(WAND,2) : nil 
+19 : at(A,3) : nil 
+20 : at(START,3) : nil 
+21 : at(B,3) : nil 
+22 : at(GOAL,3) : nil 
+23 : available(WAND,3) : nil 
+24 : has(WAND,3) : nil 
+25 : at(A,4) : nil 
+26 : at(START,4) : nil 
+27 : at(B,4) : nil 
+28 : at(GOAL,4) : nil 
+29 : available(WAND,4) : nil 
+30 : has(WAND,4) : nil 
+-----------------
+STEPS: 4
+[at(A,0) : false, at(START,0) : false]
+[at(A,0) : false, at(B,0) : false]
+[at(A,0) : false, at(GOAL,0) : false]
+[at(START,0) : false, at(A,0) : false]
+[at(START,0) : false, at(B,0) : false]
+[at(START,0) : false, at(GOAL,0) : false]
+[at(B,0) : false, at(A,0) : false]
+[at(B,0) : false, at(START,0) : false]
+[at(B,0) : false, at(GOAL,0) : false]
+[at(GOAL,0) : false, at(A,0) : false]
+[at(GOAL,0) : false, at(START,0) : false]
+[at(GOAL,0) : false, at(B,0) : false]
+[at(A,1) : false, at(START,1) : false]
+[at(A,1) : false, at(B,1) : false]
+[at(A,1) : false, at(GOAL,1) : false]
+[at(START,1) : false, at(A,1) : false]
+[at(START,1) : false, at(B,1) : false]
+[at(START,1) : false, at(GOAL,1) : false]
+[at(B,1) : false, at(A,1) : false]
+[at(B,1) : false, at(START,1) : false]
+[at(B,1) : false, at(GOAL,1) : false]
+[at(GOAL,1) : false, at(A,1) : false]
+[at(GOAL,1) : false, at(START,1) : false]
+[at(GOAL,1) : false, at(B,1) : false]
+[at(A,2) : false, at(START,2) : false]
+[at(A,2) : false, at(B,2) : false]
+[at(A,2) : false, at(GOAL,2) : false]
+[at(START,2) : false, at(A,2) : false]
+[at(START,2) : false, at(B,2) : false]
+[at(START,2) : false, at(GOAL,2) : false]
+[at(B,2) : false, at(A,2) : false]
+[at(B,2) : false, at(START,2) : false]
+[at(B,2) : false, at(GOAL,2) : false]
+[at(GOAL,2) : false, at(A,2) : false]
+[at(GOAL,2) : false, at(START,2) : false]
+[at(GOAL,2) : false, at(B,2) : false]
+[at(A,3) : false, at(START,3) : false]
+[at(A,3) : false, at(B,3) : false]
+[at(A,3) : false, at(GOAL,3) : false]
+[at(START,3) : false, at(A,3) : false]
+[at(START,3) : false, at(B,3) : false]
+[at(START,3) : false, at(GOAL,3) : false]
+[at(B,3) : false, at(A,3) : false]
+[at(B,3) : false, at(START,3) : false]
+[at(B,3) : false, at(GOAL,3) : false]
+[at(GOAL,3) : false, at(A,3) : false]
+[at(GOAL,3) : false, at(START,3) : false]
+[at(GOAL,3) : false, at(B,3) : false]
+[at(A,4) : false, at(START,4) : false]
+[at(A,4) : false, at(B,4) : false]
+[at(A,4) : false, at(GOAL,4) : false]
+[at(START,4) : false, at(A,4) : false]
+[at(START,4) : false, at(B,4) : false]
+[at(START,4) : false, at(GOAL,4) : false]
+[at(B,4) : false, at(A,4) : false]
+[at(B,4) : false, at(START,4) : false]
+[at(B,4) : false, at(GOAL,4) : false]
+[at(GOAL,4) : false, at(A,4) : false]
+[at(GOAL,4) : false, at(START,4) : false]
+[at(GOAL,4) : false, at(B,4) : false]
+[has(WAND,0) : false, available(WAND,0) : false]
+[has(WAND,1) : false, available(WAND,1) : false]
+[has(WAND,2) : false, available(WAND,2) : false]
+[has(WAND,3) : false, available(WAND,3) : false]
+[has(WAND,4) : false, available(WAND,4) : false]
+[at(A,0) : false, at(START,1) : true]
+[at(START,0) : false, at(B,1) : true]
+[at(B,0) : false, at(GOAL,1) : true]
+[at(GOAL,0) : false, at(GOAL,1) : true]
+[at(A,1) : false, at(START,2) : true]
+[at(START,1) : false, at(B,2) : true]
+[at(B,1) : false, at(GOAL,2) : true]
+[at(GOAL,1) : false, at(GOAL,2) : true]
+[at(A,2) : false, at(START,3) : true]
+[at(START,2) : false, at(B,3) : true]
+[at(B,2) : false, at(GOAL,3) : true]
+[at(GOAL,2) : false, at(GOAL,3) : true]
+[at(A,3) : false, at(START,4) : true]
+[at(START,3) : false, at(B,4) : true]
+[at(B,3) : false, at(GOAL,4) : true]
+[at(GOAL,3) : false, at(GOAL,4) : true]
+[at(B,1) : false, has(WAND,0) : true]
+[at(B,2) : false, has(WAND,1) : true]
+[at(B,3) : false, has(WAND,2) : true]
+[at(B,4) : false, has(WAND,3) : true]
+[available(WAND,0) : false, at(A,1) : false, has(WAND,1) : true]
+[available(WAND,1) : false, at(A,2) : false, has(WAND,2) : true]
+[available(WAND,2) : false, at(A,3) : false, has(WAND,3) : true]
+[available(WAND,3) : false, at(A,4) : false, has(WAND,4) : true]
+[at(B,0) : false, has(WAND,0) : false]
+[at(B,1) : false, has(WAND,1) : false]
+[at(B,2) : false, has(WAND,2) : false]
+[at(B,3) : false, has(WAND,3) : false]
+[at(B,4) : false, has(WAND,4) : false]
+[available(WAND,0) : false, at(START,1) : false, available(WAND,1) : true]
+[available(WAND,0) : false, at(B,1) : false, available(WAND,1) : true]
+[available(WAND,0) : false, at(GOAL,1) : false, available(WAND,1) : true]
+[available(WAND,1) : false, at(START,2) : false, available(WAND,2) : true]
+[available(WAND,1) : false, at(B,2) : false, available(WAND,2) : true]
+[available(WAND,1) : false, at(GOAL,2) : false, available(WAND,2) : true]
+[available(WAND,2) : false, at(START,3) : false, available(WAND,3) : true]
+[available(WAND,2) : false, at(B,3) : false, available(WAND,3) : true]
+[available(WAND,2) : false, at(GOAL,3) : false, available(WAND,3) : true]
+[available(WAND,3) : false, at(START,4) : false, available(WAND,4) : true]
+[available(WAND,3) : false, at(B,4) : false, available(WAND,4) : true]
+[available(WAND,3) : false, at(GOAL,4) : false, available(WAND,4) : true]
+[available(WAND,0) : true, available(WAND,1) : false]
+[available(WAND,1) : true, available(WAND,2) : false]
+[available(WAND,2) : true, available(WAND,3) : false]
+[available(WAND,3) : true, available(WAND,4) : false]
+[available(WAND,0) : true, has(WAND,0) : true, has(WAND,1) : false]
+[available(WAND,1) : true, has(WAND,1) : true, has(WAND,2) : false]
+[available(WAND,2) : true, has(WAND,2) : true, has(WAND,3) : false]
+[available(WAND,3) : true, has(WAND,3) : true, has(WAND,4) : false]
+[has(WAND,0) : false, at(START,1) : false, has(WAND,1) : true]
+[has(WAND,0) : false, at(B,1) : false, has(WAND,1) : true]
+[has(WAND,0) : false, at(GOAL,1) : false, has(WAND,1) : true]
+[has(WAND,1) : false, at(START,2) : false, has(WAND,2) : true]
+[has(WAND,1) : false, at(B,2) : false, has(WAND,2) : true]
+[has(WAND,1) : false, at(GOAL,2) : false, has(WAND,2) : true]
+[has(WAND,2) : false, at(START,3) : false, has(WAND,3) : true]
+[has(WAND,2) : false, at(B,3) : false, has(WAND,3) : true]
+[has(WAND,2) : false, at(GOAL,3) : false, has(WAND,3) : true]
+[has(WAND,3) : false, at(START,4) : false, has(WAND,4) : true]
+[has(WAND,3) : false, at(B,4) : false, has(WAND,4) : true]
+[has(WAND,3) : false, at(GOAL,4) : false, has(WAND,4) : true]
+[at(START,0) : true]
+[available(WAND,0) : true]
+[at(GOAL,4) : true]
+
+called dp1 with state:
+{"1"=>nil, "2"=>nil, "3"=>nil, "4"=>nil, "7"=>nil, "8"=>nil, "9"=>nil, "10"=>nil, "13"=>nil, "14"=>nil, "15"=>nil, "16"=>nil, "19"=>nil, "20"=>nil, "21"=>nil, "22"=>nil, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>nil, "5"=>nil, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+------------------------
+NO SOLUTION: impossible sentences
+.
+
+Finished tests in 0.029018s, 34.4614 tests/s, 0.0000 assertions/s.
+
+1 tests, 0 assertions, 0 failures, 0 errors, 0 skips

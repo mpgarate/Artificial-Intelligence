@@ -98,9 +98,8 @@ class LogicBuilder
 
   # proposition type 3
   def must_move_on_edges
-    moves = 0..@steps
+    moves = 0..@steps-1
     for m in moves
-      break if m == @steps
       @game.nodes.each do |node|
         sentence = []
         sentence << LogicAtom.new("at",node.name,m,false)
@@ -163,16 +162,17 @@ class LogicBuilder
 
   # proposition type 7
   def treasure_is_available
-    moves = 0..@steps
+    moves = 1..@steps
     for m in moves
-      break if m == @steps
       @game.nodes.each do |node|
         @game.treasures.each do |treasure|
-          sentence = []
-          sentence << LogicAtom.new("available",treasure,m,false)
-          sentence << LogicAtom.new("at",node.name,m+1,false)
-          sentence << LogicAtom.new("available",treasure,m+1,true)
-          @sentence_set.add(sentence)
+          unless node.treasures.include? treasure
+            sentence = []
+            sentence << LogicAtom.new("available",treasure,m-1,false)
+            sentence << LogicAtom.new("at",node.name,m,false)
+            sentence << LogicAtom.new("available",treasure,m,true)
+            @sentence_set.add(sentence)
+          end
         end
       end
     end
@@ -180,9 +180,8 @@ class LogicBuilder
 
   # proposition type 8
   def treasure_is_picked_up
-    moves = 0..@steps
+    moves = 0..@steps-1
     for m in moves
-      break if m == @steps
         @game.treasures.each do |treasure|
           sentence = []
           sentence << LogicAtom.new("available",treasure,m,true)
@@ -194,17 +193,14 @@ class LogicBuilder
 
   # proposition type 9
   def player_spends_treasure
-    moves = 0..@steps
+    moves = 0..@steps-1
     for m in moves
-      break if m == @steps
-      @game.nodes.each do |node|
-        @game.treasures.each do |treasure|
-          sentence = []
-          sentence << LogicAtom.new("available",treasure,m,true)
-          sentence << LogicAtom.new("has",treasure,m,true)
-          sentence << LogicAtom.new("has",treasure,m+1,false)
-          @sentence_set.add(sentence)
-        end
+      @game.treasures.each do |treasure|
+        sentence = []
+        sentence << LogicAtom.new("available",treasure,m,true)
+        sentence << LogicAtom.new("has",treasure,m,true)
+        sentence << LogicAtom.new("has",treasure,m+1,false)
+        @sentence_set.add(sentence)
       end
     end
   end
@@ -216,11 +212,13 @@ class LogicBuilder
       break if m == @steps
       @game.nodes.each do |node|
         @game.treasures.each do |treasure|
-          sentence = []
-          sentence << LogicAtom.new("has",treasure,m,false)
-          sentence << LogicAtom.new("at",node.name,m+1,false)
-          sentence << LogicAtom.new("has",treasure,m+1,false)
-          @sentence_set.add(sentence)
+          unless node.treasures.include? treasure
+            sentence = []
+            sentence << LogicAtom.new("has",treasure,m,false)
+            sentence << LogicAtom.new("at",node.name,m+1,false)
+            sentence << LogicAtom.new("has",treasure,m+1,true)
+            @sentence_set.add(sentence)
+          end
         end
       end
     end
@@ -242,6 +240,7 @@ class LogicBuilder
 
   # proposition type 13
   def player_reaches_goal
+    puts "STEPS: #{@steps}"
     sentence = [LogicAtom.new("at","GOAL",@steps,true)]
     @sentence_set.add(sentence)
   end
