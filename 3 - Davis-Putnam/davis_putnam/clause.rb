@@ -44,6 +44,7 @@ class Clause
         @literals.delete literal
         if @literals.length == 0
           @literals << nil
+          puts "MADE NIL: #{literal}"
         end
       end
     end

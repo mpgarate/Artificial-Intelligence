@@ -38,7 +38,6 @@ class Solver
 
     # loop as long as there are easy cases
     while true
-
       # base of recursion
       if s.is_empty?
         puts "s is empty"
@@ -64,8 +63,6 @@ class Solver
         break
       end
 
-      puts "repeating while loop again"
-      puts v.atoms
       #puts s.clauses
     end
 
