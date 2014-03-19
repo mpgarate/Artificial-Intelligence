@@ -11,4 +11,13 @@ class TestGameCases < Test::Unit::TestCase
     game.write_logic('io/game.txt')
     DavisPutnam.solve_file("io/game.txt")
   end
+
+
+  def test_normal_case
+    file_path = 'test/ag_normal.txt'
+    game = AdventureGame.new(file_path)
+    game.generate_logic
+    game.write_logic('io/game.txt')
+    DavisPutnam.solve_file("io/game.txt")
+  end
 end
