@@ -95,10 +95,14 @@ class AdventureGame
   end
 
   def print_dp_results(file_path)
+    puts "----------------"
     puts "RESULT:"
+    puts
     infile = File.open(file_path,"r")
+    step = 0
     infile.each_line do |line|
       break if line == "0\n" or line == "0 \n"
+
       # read line to a pair like [1,F] or [3,T]
       pair = line.split
       atom_index = pair[0].to_i
@@ -106,11 +110,15 @@ class AdventureGame
 
       if atom_value == 'T'
         atom = @lb.atom_set.atoms[atom_index - 1]
-        atom.value = true
-        puts atom.to_s if atom.type == "at"
+        if atom.type == "at"
+          atom.value = true
+          puts "Step #{step} | #{atom.a}"
+          step += 1
+        end
       end
-
     end
+    puts "----------------"
+
     infile.close
   end
 
