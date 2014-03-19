@@ -5,6 +5,8 @@ class LogicBuilder
   # @logic_names[2] => "At(C,1)"
   # This means that 2 corresponds to the atom "At(C,1)"
 
+  attr_accessor :atom_set
+
   def initialize(game)
     @game = game
     @steps = game.allowed_steps

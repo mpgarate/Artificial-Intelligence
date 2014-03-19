@@ -36,53 +36,53 @@ class AdventureGame
   end
 
   def generate_logic
-    lb = LogicBuilder.new(self)
+    @lb = LogicBuilder.new(self)
 
     # creates a set of all possible atoms and atom types
     # this is used for getting unique index numbers when
     # generating output for davis_putnam
-    lb.build_possible_atoms
+    @lb.build_possible_atoms
 
     # proposition type 1 
-    lb.one_place_at_a_time
+    @lb.one_place_at_a_time
 
     # proposition type 2
-    lb.treasure_availability
+    @lb.treasure_availability
 
     # proposition type 3
-    lb.must_move_on_edges
+    @lb.must_move_on_edges
 
     # proposition type 4
-    lb.player_can_pay_toll
+    @lb.player_can_pay_toll
 
     # proposition type 5
-    lb.player_picks_up_treasure
+    @lb.player_picks_up_treasure
 
     # proposition type 6
-    lb.player_pays_toll
+    @lb.player_pays_toll
 
     # proposition type 7
-    lb.treasure_is_available
+    @lb.treasure_is_available
 
     # proposition type 8
-    lb.treasure_is_picked_up
+    @lb.treasure_is_picked_up
 
     # proposition type 9
-    lb.player_spends_treasure
+    @lb.player_spends_treasure
 
     # proposition type 10
-    lb.player_carries_treasure
+    @lb.player_carries_treasure
 
     # proposition type 11
-    lb.player_starts_at_zero
+    @lb.player_starts_at_zero
 
     # proposition type 12
-    lb.treasures_available_from_start
+    @lb.treasures_available_from_start
 
     # proposition type 13
-    lb.player_reaches_goal
+    @lb.player_reaches_goal
 
-    @sentences = lb.get_sentences_as_digits
+    @sentences = @lb.get_sentences_as_digits
   end
 
   def write_logic(file_path)
@@ -92,7 +92,26 @@ class AdventureGame
     end
     outfile.puts("0 ")
     outfile.close
+  end
 
+  def print_dp_results(file_path)
+    puts "RESULT:"
+    infile = File.open(file_path,"r")
+    infile.each_line do |line|
+      break if line == "0\n" or line == "0 \n"
+      # read line to a pair like [1,F] or [3,T]
+      pair = line.split
+      atom_index = pair[0].to_i
+      atom_value = pair[1] # 'T' or 'F'
+
+      if atom_value == 'T'
+        atom = @lb.atom_set.atoms[atom_index - 1]
+        atom.value = true
+        puts atom.to_s if atom.type == "at"
+      end
+
+    end
+    infile.close
   end
 
 end

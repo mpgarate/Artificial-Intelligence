@@ -10,6 +10,7 @@ class TestGameCases < Test::Unit::TestCase
     game.generate_logic
     game.write_logic('io/game.txt')
     DavisPutnam.solve_file("io/game.txt")
+    game.print_dp_results('dp_output.txt')
   end
 
 
