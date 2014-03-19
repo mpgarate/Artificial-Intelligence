@@ -1,4 +1,4 @@
-Run options: 
+Run options: -n test_simple_case
 
 # Running tests:
 
@@ -101,21 +101,21 @@ STEPS: 4
 [has(WAND,3) : false, available(WAND,3) : false]
 [has(WAND,4) : false, available(WAND,4) : false]
 [at(A,0) : false, at(START,1) : true]
-[at(START,0) : false, at(B,1) : true]
+[at(START,0) : false, at(A,1) : true, at(B,1) : true]
 [at(B,0) : false, at(GOAL,1) : true]
-[at(GOAL,0) : false, at(GOAL,1) : true]
+[at(GOAL,0) : false, at(B,1) : true, at(GOAL,1) : true]
 [at(A,1) : false, at(START,2) : true]
-[at(START,1) : false, at(B,2) : true]
+[at(START,1) : false, at(A,2) : true, at(B,2) : true]
 [at(B,1) : false, at(GOAL,2) : true]
-[at(GOAL,1) : false, at(GOAL,2) : true]
+[at(GOAL,1) : false, at(B,2) : true, at(GOAL,2) : true]
 [at(A,2) : false, at(START,3) : true]
-[at(START,2) : false, at(B,3) : true]
+[at(START,2) : false, at(A,3) : true, at(B,3) : true]
 [at(B,2) : false, at(GOAL,3) : true]
-[at(GOAL,2) : false, at(GOAL,3) : true]
+[at(GOAL,2) : false, at(B,3) : true, at(GOAL,3) : true]
 [at(A,3) : false, at(START,4) : true]
-[at(START,3) : false, at(B,4) : true]
+[at(START,3) : false, at(A,4) : true, at(B,4) : true]
 [at(B,3) : false, at(GOAL,4) : true]
-[at(GOAL,3) : false, at(GOAL,4) : true]
+[at(GOAL,3) : false, at(B,4) : true, at(GOAL,4) : true]
 [at(B,1) : false, has(WAND,0) : true]
 [at(B,2) : false, has(WAND,1) : true]
 [at(B,3) : false, has(WAND,2) : true]
@@ -149,28 +149,103 @@ STEPS: 4
 [available(WAND,1) : true, has(WAND,1) : true, has(WAND,2) : false]
 [available(WAND,2) : true, has(WAND,2) : true, has(WAND,3) : false]
 [available(WAND,3) : true, has(WAND,3) : true, has(WAND,4) : false]
-[has(WAND,0) : false, at(START,1) : false, has(WAND,1) : true]
-[has(WAND,0) : false, at(B,1) : false, has(WAND,1) : true]
-[has(WAND,0) : false, at(GOAL,1) : false, has(WAND,1) : true]
-[has(WAND,1) : false, at(START,2) : false, has(WAND,2) : true]
-[has(WAND,1) : false, at(B,2) : false, has(WAND,2) : true]
-[has(WAND,1) : false, at(GOAL,2) : false, has(WAND,2) : true]
-[has(WAND,2) : false, at(START,3) : false, has(WAND,3) : true]
-[has(WAND,2) : false, at(B,3) : false, has(WAND,3) : true]
-[has(WAND,2) : false, at(GOAL,3) : false, has(WAND,3) : true]
-[has(WAND,3) : false, at(START,4) : false, has(WAND,4) : true]
-[has(WAND,3) : false, at(B,4) : false, has(WAND,4) : true]
-[has(WAND,3) : false, at(GOAL,4) : false, has(WAND,4) : true]
 [at(START,0) : true]
 [available(WAND,0) : true]
 [at(GOAL,4) : true]
-
-called dp1 with state:
-{"1"=>nil, "2"=>nil, "3"=>nil, "4"=>nil, "7"=>nil, "8"=>nil, "9"=>nil, "10"=>nil, "13"=>nil, "14"=>nil, "15"=>nil, "16"=>nil, "19"=>nil, "20"=>nil, "21"=>nil, "22"=>nil, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>nil, "5"=>nil, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
-------------------------
-NO SOLUTION: impossible sentences
+pure literal -1
+repeating while loop again
+{"1"=>false, "2"=>nil, "3"=>nil, "4"=>nil, "7"=>nil, "8"=>nil, "9"=>nil, "10"=>nil, "13"=>nil, "14"=>nil, "15"=>nil, "16"=>nil, "19"=>nil, "20"=>nil, "21"=>nil, "22"=>nil, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>nil, "5"=>nil, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+pure literal -3
+repeating while loop again
+{"1"=>false, "2"=>nil, "3"=>false, "4"=>nil, "7"=>nil, "8"=>nil, "9"=>nil, "10"=>nil, "13"=>nil, "14"=>nil, "15"=>nil, "16"=>nil, "19"=>nil, "20"=>nil, "21"=>nil, "22"=>nil, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>nil, "5"=>nil, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+pure literal -4
+repeating while loop again
+{"1"=>false, "2"=>nil, "3"=>false, "4"=>false, "7"=>nil, "8"=>nil, "9"=>nil, "10"=>nil, "13"=>nil, "14"=>nil, "15"=>nil, "16"=>nil, "19"=>nil, "20"=>nil, "21"=>nil, "22"=>nil, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>nil, "5"=>nil, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+pure literal -8
+repeating while loop again
+{"1"=>false, "2"=>nil, "3"=>false, "4"=>false, "7"=>nil, "8"=>false, "9"=>nil, "10"=>nil, "13"=>nil, "14"=>nil, "15"=>nil, "16"=>nil, "19"=>nil, "20"=>nil, "21"=>nil, "22"=>nil, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>nil, "5"=>nil, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+pure literal -10
+repeating while loop again
+{"1"=>false, "2"=>nil, "3"=>false, "4"=>false, "7"=>nil, "8"=>false, "9"=>nil, "10"=>false, "13"=>nil, "14"=>nil, "15"=>nil, "16"=>nil, "19"=>nil, "20"=>nil, "21"=>nil, "22"=>nil, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>nil, "5"=>nil, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+pure literal -13
+repeating while loop again
+{"1"=>false, "2"=>nil, "3"=>false, "4"=>false, "7"=>nil, "8"=>false, "9"=>nil, "10"=>false, "13"=>false, "14"=>nil, "15"=>nil, "16"=>nil, "19"=>nil, "20"=>nil, "21"=>nil, "22"=>nil, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>nil, "5"=>nil, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+pure literal -15
+repeating while loop again
+{"1"=>false, "2"=>nil, "3"=>false, "4"=>false, "7"=>nil, "8"=>false, "9"=>nil, "10"=>false, "13"=>false, "14"=>nil, "15"=>false, "16"=>nil, "19"=>nil, "20"=>nil, "21"=>nil, "22"=>nil, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>nil, "5"=>nil, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+singleton clause 2
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>nil, "8"=>false, "9"=>nil, "10"=>false, "13"=>false, "14"=>nil, "15"=>false, "16"=>nil, "19"=>nil, "20"=>nil, "21"=>nil, "22"=>nil, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>nil, "5"=>nil, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+singleton clause 5
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>nil, "8"=>false, "9"=>nil, "10"=>false, "13"=>false, "14"=>nil, "15"=>false, "16"=>nil, "19"=>nil, "20"=>nil, "21"=>nil, "22"=>nil, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>nil, "5"=>true, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+singleton clause -6
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>nil, "8"=>false, "9"=>nil, "10"=>false, "13"=>false, "14"=>nil, "15"=>false, "16"=>nil, "19"=>nil, "20"=>nil, "21"=>nil, "22"=>nil, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>false, "5"=>true, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+singleton clause -9
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>nil, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>nil, "15"=>false, "16"=>nil, "19"=>nil, "20"=>nil, "21"=>nil, "22"=>nil, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>false, "5"=>true, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+pure literal -16
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>nil, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>nil, "15"=>false, "16"=>false, "19"=>nil, "20"=>nil, "21"=>nil, "22"=>nil, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>false, "5"=>true, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+pure literal -20
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>nil, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>nil, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>nil, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>false, "5"=>true, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+pure literal -22
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>nil, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>nil, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>false, "25"=>nil, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>false, "5"=>true, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+pure literal -25
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>nil, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>nil, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>false, "25"=>false, "26"=>nil, "27"=>nil, "28"=>nil, "6"=>false, "5"=>true, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+pure literal -27
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>nil, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>nil, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>false, "25"=>false, "26"=>nil, "27"=>false, "28"=>nil, "6"=>false, "5"=>true, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+singleton clause 7
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>true, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>nil, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>false, "25"=>false, "26"=>nil, "27"=>false, "28"=>nil, "6"=>false, "5"=>true, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+singleton clause 14
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>true, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>true, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>false, "25"=>false, "26"=>nil, "27"=>false, "28"=>nil, "6"=>false, "5"=>true, "12"=>nil, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+singleton clause 12
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>true, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>true, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>false, "25"=>false, "26"=>nil, "27"=>false, "28"=>nil, "6"=>false, "5"=>true, "12"=>true, "11"=>nil, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+singleton clause -11
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>true, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>true, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>false, "25"=>false, "26"=>nil, "27"=>false, "28"=>nil, "6"=>false, "5"=>true, "12"=>true, "11"=>false, "18"=>nil, "17"=>nil, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+singleton clause -17
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>true, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>true, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>false, "25"=>false, "26"=>nil, "27"=>false, "28"=>nil, "6"=>false, "5"=>true, "12"=>true, "11"=>false, "18"=>nil, "17"=>false, "24"=>nil, "23"=>nil, "30"=>nil, "29"=>nil}
+pure literal -30
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>true, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>true, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>false, "25"=>false, "26"=>nil, "27"=>false, "28"=>nil, "6"=>false, "5"=>true, "12"=>true, "11"=>false, "18"=>nil, "17"=>false, "24"=>nil, "23"=>nil, "30"=>false, "29"=>nil}
+pure literal -24
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>true, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>true, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>false, "25"=>false, "26"=>nil, "27"=>false, "28"=>nil, "6"=>false, "5"=>true, "12"=>true, "11"=>false, "18"=>nil, "17"=>false, "24"=>false, "23"=>nil, "30"=>false, "29"=>nil}
+singleton clause -23
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>true, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>true, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>false, "25"=>false, "26"=>nil, "27"=>false, "28"=>nil, "6"=>false, "5"=>true, "12"=>true, "11"=>false, "18"=>nil, "17"=>false, "24"=>false, "23"=>false, "30"=>false, "29"=>nil}
+pure literal 18
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>true, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>true, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>false, "25"=>false, "26"=>nil, "27"=>false, "28"=>nil, "6"=>false, "5"=>true, "12"=>true, "11"=>false, "18"=>true, "17"=>false, "24"=>false, "23"=>false, "30"=>false, "29"=>nil}
+singleton clause -29
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>true, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>true, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>false, "25"=>false, "26"=>nil, "27"=>false, "28"=>nil, "6"=>false, "5"=>true, "12"=>true, "11"=>false, "18"=>true, "17"=>false, "24"=>false, "23"=>false, "30"=>false, "29"=>false}
+singleton clause 28
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>true, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>true, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>false, "25"=>false, "26"=>nil, "27"=>false, "28"=>true, "6"=>false, "5"=>true, "12"=>true, "11"=>false, "18"=>true, "17"=>false, "24"=>false, "23"=>false, "30"=>false, "29"=>false}
+singleton clause -26
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>true, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>true, "15"=>false, "16"=>false, "19"=>nil, "20"=>false, "21"=>nil, "22"=>false, "25"=>false, "26"=>false, "27"=>false, "28"=>true, "6"=>false, "5"=>true, "12"=>true, "11"=>false, "18"=>true, "17"=>false, "24"=>false, "23"=>false, "30"=>false, "29"=>false}
+singleton clause -19
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>true, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>true, "15"=>false, "16"=>false, "19"=>false, "20"=>false, "21"=>nil, "22"=>false, "25"=>false, "26"=>false, "27"=>false, "28"=>true, "6"=>false, "5"=>true, "12"=>true, "11"=>false, "18"=>true, "17"=>false, "24"=>false, "23"=>false, "30"=>false, "29"=>false}
+singleton clause 21
+repeating while loop again
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>true, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>true, "15"=>false, "16"=>false, "19"=>false, "20"=>false, "21"=>true, "22"=>false, "25"=>false, "26"=>false, "27"=>false, "28"=>true, "6"=>false, "5"=>true, "12"=>true, "11"=>false, "18"=>true, "17"=>false, "24"=>false, "23"=>false, "30"=>false, "29"=>false}
+s is empty
+{"1"=>false, "2"=>true, "3"=>false, "4"=>false, "7"=>true, "8"=>false, "9"=>false, "10"=>false, "13"=>false, "14"=>true, "15"=>false, "16"=>false, "19"=>false, "20"=>false, "21"=>true, "22"=>false, "25"=>false, "26"=>false, "27"=>false, "28"=>true, "6"=>false, "5"=>true, "12"=>true, "11"=>false, "18"=>true, "17"=>false, "24"=>false, "23"=>false, "30"=>false, "29"=>false}
 .
 
-Finished tests in 0.029018s, 34.4614 tests/s, 0.0000 assertions/s.
+Finished tests in 0.028017s, 35.6926 tests/s, 0.0000 assertions/s.
 
 1 tests, 0 assertions, 0 failures, 0 errors, 0 skips

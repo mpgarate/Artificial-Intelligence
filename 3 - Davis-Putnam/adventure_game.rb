@@ -33,9 +33,6 @@ class AdventureGame
     lines.each do |line|
       @nodes << Node.new(line)
     end
-
-    # goal node links to itself
-    @nodes << Node.new("GOAL TREASURES TOLLS NEXT GOAL")
   end
 
   def generate_logic

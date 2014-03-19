@@ -66,7 +66,7 @@ class Solver
 
       puts "repeating while loop again"
       puts v.atoms
-      puts s.clauses
+      #puts s.clauses
     end
 
 

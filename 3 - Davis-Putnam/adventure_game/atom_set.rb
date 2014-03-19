@@ -16,7 +16,7 @@ class AtomSet
   def to_s
     str = ""
     @atoms.each do |atom|
-      str << "#{get_index_of(atom)} : #{atom} \n"
+      str << "#{get_index_of(atom)+1} : #{atom} \n"
     end
     return str
   end
