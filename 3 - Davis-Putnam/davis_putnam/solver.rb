@@ -26,6 +26,7 @@ class Solver
     vnew = dp1(s,v)
     if vnew == nil
       puts "NO SOLUTION: impossible sentences"
+      throw :halt, "impossible sentences"
       return nil
     end
     @atoms = vnew.atoms
@@ -40,30 +41,21 @@ class Solver
     while true
       # base of recursion
       if s.is_empty?
-        puts "s is empty"
-        puts v.atoms
         @clauses = s.clauses
         return finish_recursion(v)
       elsif s.has_empty_clause?
-        puts "empty clause in s:"
-        puts s.clauses
         return nil
       elsif s.has_pure_literal?
         literal = s.pure_literal
-        puts "pure literal #{literal}"
         v.assign(literal.name, literal.value)
         s.delete_every(literal)
       elsif s.has_singleton_clause?
         literal = s.singleton_clause.literals.first
-        puts "singleton clause #{literal}"
         v.assign(literal.name, literal.value)
         s.propagate(literal)
       else
-        puts "breaking"
         break
       end
-
-      #puts s.clauses
     end
 
 
