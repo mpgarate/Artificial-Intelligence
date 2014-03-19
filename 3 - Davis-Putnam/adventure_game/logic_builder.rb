@@ -39,8 +39,6 @@ class LogicBuilder
       @digit_sentences << new_sentence unless new_sentence == ""
     end
 
-    puts @sentence_set
-
     return @digit_sentences
   end
 
@@ -61,10 +59,6 @@ class LogicBuilder
         @atom_set.add(atom)
       end
     end
-
-    puts "-----------------"
-    puts @atom_set.to_s
-    puts "-----------------"
   end
 
 
@@ -241,7 +235,6 @@ class LogicBuilder
 
   # proposition type 13
   def player_reaches_goal
-    puts "STEPS: #{@steps}"
     sentence = [LogicAtom.new("at","GOAL",@steps,true)]
     @sentence_set.add(sentence)
   end

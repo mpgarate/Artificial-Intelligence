@@ -19,6 +19,7 @@ class DavisPutnam
     file = InputFile.new(path)
     solver = Solver.new(file.clauses)
     
+    puts "DavisPutnam: Attempting to solve game logic..."
     solver.solve!
 
     out_file = OutputFile.new(file,"dp_output.txt")

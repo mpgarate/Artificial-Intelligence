@@ -14,6 +14,7 @@ class AdventureGame
   end
 
   def parse_attributes_from_file(file_path)
+    @file_path = file_path
     @nodes = []
     @treasures = []
 
@@ -36,6 +37,9 @@ class AdventureGame
   end
 
   def generate_logic
+    puts
+    puts "AdventureGame: Generating game logic for #{@file_path}..."
+
     @lb = LogicBuilder.new(self)
 
     # creates a set of all possible atoms and atom types

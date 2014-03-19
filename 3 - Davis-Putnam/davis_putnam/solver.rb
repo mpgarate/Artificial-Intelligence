@@ -94,6 +94,7 @@ class Solver
       v.atoms[key] = true # arbitrary
     end
 
+    puts "DavisPutnam: Got a solution. "
     return v
   end
 
