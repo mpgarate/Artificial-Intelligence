@@ -70,7 +70,7 @@ class LogicBuilder
 
   # proposition type 1
   def one_place_at_a_time
-    moves = 0..@steps
+    moves = 1..@steps
     for m in moves
       @game.nodes.each do |node_a|
         @game.nodes.each do |node_b|

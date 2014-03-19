@@ -95,11 +95,10 @@ class AdventureGame
   end
 
   def print_dp_results(file_path)
-    puts "----------------"
-    puts "RESULT:"
-    puts
     infile = File.open(file_path,"r")
-    step = 0
+
+    atoms = []
+
     infile.each_line do |line|
       break if line == "0\n" or line == "0 \n"
 
@@ -112,14 +111,26 @@ class AdventureGame
         atom = @lb.atom_set.atoms[atom_index - 1]
         if atom.type == "at"
           atom.value = true
-          puts "Step #{step} | #{atom.a}"
-          step += 1
+          atoms << atom
         end
       end
     end
+
+
+    atoms.sort_by! { |atom| atom.b }
+
+    puts "----------------"
+    puts "RESULT:"
+    puts
+
+    atoms.each do |atom|
+      puts "Step #{atom.b} | #{atom.a}"
+    end
+
     puts "----------------"
 
     infile.close
+    puts
   end
 
 end
