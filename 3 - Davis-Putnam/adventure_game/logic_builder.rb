@@ -207,11 +207,10 @@ class LogicBuilder
 
   # proposition type 10
   def player_carries_treasure
-    moves = 0..@steps
+    moves = 0..@steps-1
     for m in moves
-      break if m == @steps
       @game.nodes.each do |node|
-        @game.treasures.each do |treasure|
+        node.treasures.each do |treasure|
           unless node.treasures.include? treasure
             sentence = []
             sentence << LogicAtom.new("has",treasure,m,false)
