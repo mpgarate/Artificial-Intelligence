@@ -120,21 +120,24 @@ class AdventureGame
       end
     end
 
+    if atoms.size > 0
+      atoms.sort_by! { |atom| atom.b }
 
-    atoms.sort_by! { |atom| atom.b }
+      puts "----------------"
+      puts "RESULT:"
+      puts
 
-    puts "----------------"
-    puts "RESULT:"
-    puts
+      atoms.each do |atom|
+        puts "Step #{atom.b} | #{atom.a}"
+      end
 
-    atoms.each do |atom|
-      puts "Step #{atom.b} | #{atom.a}"
+      puts "----------------"
+
+      infile.close
+      puts
+    else
+      puts "AdventureGame: No solution. "
     end
-
-    puts "----------------"
-
-    infile.close
-    puts
   end
 
 end

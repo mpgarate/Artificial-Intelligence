@@ -25,8 +25,8 @@ class Solver
     s = State.new(@clauses)
     vnew = dp1(s,v)
     if vnew == nil
-      puts "NO SOLUTION: impossible sentences"
-      throw :halt, "impossible sentences"
+      puts "DavisPutnam: No solution. Impossible sentences."
+      @atoms = []
       return nil
     end
     @atoms = vnew.atoms

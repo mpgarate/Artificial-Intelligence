@@ -48,8 +48,11 @@ ruby test_game_cases.rb -n test_a_simple_case
 # primary example from assignment
 ruby test_game_cases.rb -n test_b_normal_case
 
-# custom long example. takes about 40 seconds
+# custom long example. takes about 45 seconds
 ruby test_game_cases.rb -n test_c_bigger_case
+
+# impossible example. should print "No solution."
+ruby test_game_cases.rb -n test_d_impossible_case
 ~~~
 
 
