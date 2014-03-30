@@ -3,10 +3,11 @@
 # lit.value => false
 # lit.to_s => "-4"
 class Literal
-  attr_accessor :name, :value, :int_val
+  attr_accessor :name, :value, :int_val, :string
 
   def initialize(str)
     @int_val = str.to_i
+    @string = str
     @name = str.delete("-")
 
     if str.include? '-' then
@@ -19,16 +20,18 @@ class Literal
   def to_s
     @string
   end
-
+  
   def ==(object)
+    return false if nil == object
     if @int_val == object.int_val
       return true
     else
       return false
     end
   end
-
+  
 =begin
+
   def ==(object)
     if object.is_a?(Literal) then
       if @string == object.string
