@@ -10,7 +10,7 @@ class AdventureGame
 
   def initialize(file_path)
     parse_attributes_from_file(file_path)
-
+    @solved = false
   end
 
   def parse_attributes_from_file(file_path)
@@ -121,6 +121,7 @@ class AdventureGame
     end
 
     if atoms.size > 0
+      @solved = true
       atoms.sort_by! { |atom| atom.b }
 
       puts "----------------"
@@ -138,6 +139,10 @@ class AdventureGame
     else
       puts "AdventureGame: No solution. "
     end
+  end
+
+  def is_solved?
+    @solved ? true : false
   end
 
 end
