@@ -29,7 +29,7 @@ class Clause
   # contains a literal?
   def contains?(target)
     @literals.each do |literal|
-      if target.to_s == literal.to_s
+      if target == literal
         return true
       end
     end

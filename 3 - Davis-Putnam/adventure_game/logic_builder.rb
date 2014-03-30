@@ -1,9 +1,7 @@
 class LogicBuilder
   # atoms are stored in the @logic[] array
   # as a string like "-1 -2"
-  # @logic_names keeps track of what digits represent
-  # @logic_names[2] => "At(C,1)"
-  # This means that 2 corresponds to the atom "At(C,1)"
+  
 
   attr_accessor :atom_set
 
