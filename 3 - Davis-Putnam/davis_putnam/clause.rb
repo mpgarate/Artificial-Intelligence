@@ -9,8 +9,10 @@ class Clause
 
   def initialize(line)
     @literals = []
+    @lit_hash = Hash.new
     line.split.each do |str|
       @literals << Literal.new(str)
+      @lit_hash[str.to_s] = true
     end
   end
 
@@ -28,13 +30,7 @@ class Clause
 
   # contains a literal?
   def contains?(target)
-    @literals.each do |literal|
-      if target.to_s == literal.to_s
-        return true
-      end
-    end
-
-    return false
+    return @lit_hash[target.to_s] == true
   end
 
   # delete a literal
@@ -43,7 +39,7 @@ class Clause
       if target.to_s == literal.to_s
         @literals.delete literal
         if @literals.length == 0
-          @literals << nil
+          @lit_hash[nil.to_s] = true
         end
       end
     end
