@@ -1,36 +1,30 @@
 # Adventure Game w/ Davis Putnam
 
-### Usage: Davis Putnam Algorithm
+Written in Ruby. 
 
-~~~sh
-  $ ruby davis_putnam.rb path/to/input_file.txt
+### Usage: Adventure Game
+
+~~~ruby
+    require_relative 'davis_putnam'
+    require_relative 'adventure_game'
+
+    file_path = 'test/ag_simple.txt'
+    game = AdventureGame.new(file_path)
+    game.generate_logic # game front end
+    game.write_logic('io/game.txt')
+    DavisPutnam.solve_file("io/game.txt")
+    game.print_dp_results('dp_output.txt') # game back end
+
 ~~~
 
-or
+
+### Usage: Davis Putnam Algorithm
 
 ~~~ruby
   require_relative 'davis_putnam'
   path = "path/to/input_file.txt"
   DavisPutnam.solve_file(path)
 ~~~
-
-Input file conventionally stored in ```dp_input.txt``` 
-```
-1 2 3 
--2 3 
--3 
-0 
-This is a simple example with 3 clauses and 3 atoms.
-```
-
-Produces the following output in ```dp_output.txt```
-```
-1 T
-2 F
-3 F
-0
-This is a simple example with 3 clauses and 3 atoms.
-```
 
 ### Tests
 
@@ -39,8 +33,13 @@ Run all tests for the adventure game:
 ruby test_game_cases.rb
 ~~~
 
+Run all tests for david putnam solver:
+~~~sh
+ruby test_dp_cases.rb
+~~~
 
-Run tests individually:
+
+Run game tests individually:
 ~~~sh
 # simple example from assignment
 ruby test_game_cases.rb -n test_a_simple_case
@@ -48,20 +47,18 @@ ruby test_game_cases.rb -n test_a_simple_case
 # primary example from assignment
 ruby test_game_cases.rb -n test_b_normal_case
 
-# custom long example. takes about 45 seconds
-ruby test_game_cases.rb -n test_c_bigger_case
-
 # impossible example. should print "No solution."
+ruby test_game_cases.rb -n test_c_impossible_case
+
+# custom long example. Takes about 1 minute to solve.
+ruby test_game_cases.rb -n test_d_bigger_case
+
+# long and difficult example. Takes 10+ minutes to solve.
 ruby test_game_cases.rb -n test_d_impossible_case
 ~~~
 
 
-Run tests for david putnam algorithm (without game):
-~~~sh
-ruby test_dp_cases.rb
-~~~
-
-Run tests individually:
+Run david putnam tests individually:
 ~~~sh
 # trivial example from assignment
 ruby test_dp_cases.rb -n test_trivial
