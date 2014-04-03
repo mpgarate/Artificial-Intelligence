@@ -1,3 +1,4 @@
+# set of sentences
 class SentenceSet
   attr_accessor :sentences
   def initialize
@@ -6,10 +7,6 @@ class SentenceSet
   
   def add(obj)
     @sentences << obj
-  end
-
-  def to_digits
-
   end
 
   def to_s

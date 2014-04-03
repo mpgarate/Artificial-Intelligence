@@ -1,3 +1,6 @@
+# write out atoms from dp algorithm and any
+# information from the bottom of the input file.
+
 class OutputFile
   def initialize(infile, out_path)
     @infile = infile

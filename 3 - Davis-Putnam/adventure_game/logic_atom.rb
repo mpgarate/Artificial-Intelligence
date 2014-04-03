@@ -1,4 +1,11 @@
 class LogicAtom
+  # atom = LogicAtom.new("has","WAND",3)
+  # atom.value
+  # => nil
+  # or
+  # atom = LogicAtom.new("at","B",3,true)
+  # atom.value
+  # => true
   attr_accessor :value, :a, :b, :type
 
   def initialize(type,a,b,value=nil)

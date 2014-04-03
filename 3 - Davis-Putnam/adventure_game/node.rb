@@ -1,3 +1,4 @@
+# give a nice interface for a line of the input file
 class Node
   attr_accessor :name, :tolls, :treasures, :next_nodes
 

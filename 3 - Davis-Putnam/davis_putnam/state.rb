@@ -1,5 +1,7 @@
 # state = State.new([1][-3,4])
 # state.clauses => [[1],[-3,4]]
+# 
+# handle propagation and some management of clause contents
 
 class State
   attr_accessor :clauses, :pure_literal, :singleton_clause

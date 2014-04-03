@@ -52,7 +52,7 @@ class TestGameCases < Test::Unit::TestCase
 
     assert game.is_solved?
   end
-  
+
   # beware: takes a 10+ minutes to solve
   def test_e_difficult_case
     puts
@@ -66,4 +66,5 @@ class TestGameCases < Test::Unit::TestCase
 
     assert game.is_solved?
   end
+  
 end

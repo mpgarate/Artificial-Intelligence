@@ -1,5 +1,5 @@
 # solver = Solver.new(clauses)
-# solver.state.clauses
+# solver.clauses
 #   => [1,2,3],[-2,3],[-3]
 # solver.atoms
 #   => ["1"=>nil,"2"=>nil,"3"=>nil]

@@ -1,3 +1,5 @@
+# parse an input file to clauses
+#
 # file = InputFile.new("dp_input.txt")
 # file.clauses
 #   => [[1,2,3],[-2,3],[-3]]

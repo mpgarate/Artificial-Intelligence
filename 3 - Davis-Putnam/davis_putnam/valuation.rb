@@ -1,3 +1,6 @@
+# store a current set of T/F values for given atoms
+# support assignment and retrieval of unbound atoms
+
 class Valuation
   attr_accessor :atoms
   
