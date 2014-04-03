@@ -146,9 +146,3 @@ class AdventureGame
   end
 
 end
-
-# When running from command line
-if __FILE__ == $0 then
-  file_path = ARGV.first
-  game = AdventureGame.new(file_path)
-end
