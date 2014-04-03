@@ -8,12 +8,17 @@ Written in Ruby.
     require_relative 'davis_putnam'
     require_relative 'adventure_game'
 
+    # game front end
     file_path = 'test/ag_simple.txt'
     game = AdventureGame.new(file_path)
-    game.generate_logic # game front end
+    game.generate_logic
     game.write_logic('io/game.txt')
+    
+    # Davis Putnam solver
     DavisPutnam.solve_file("io/game.txt")
-    game.print_dp_results('dp_output.txt') # game back end
+
+    # game back end
+    game.print_dp_results('dp_output.txt')
 
 ~~~
 
@@ -27,6 +32,8 @@ Written in Ruby.
 ~~~
 
 ### Tests
+
+Game and logic examples are stored in the ```test``` directory. 
 
 Run all tests for the adventure game:
 ~~~sh
