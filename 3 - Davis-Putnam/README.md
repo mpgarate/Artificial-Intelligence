@@ -82,3 +82,5 @@ ruby test_dp_cases.rb -n test_hw5
 # example from midterm exam
 ruby test_dp_cases.rb -n test_midterm
 ~~~
+
+You can examine the outputs of these when run individually by looking at the file ```dp_output.txt```. This should match the appropriate file in the ```test``` directory. For example, the output of running with ```-n test_normal``` should match ```test/dp_normal_out.txt```
