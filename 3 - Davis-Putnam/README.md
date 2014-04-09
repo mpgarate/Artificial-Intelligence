@@ -5,30 +5,29 @@ Written in Ruby.
 ### Usage: Adventure Game
 
 ~~~ruby
-    require_relative 'davis_putnam'
-    require_relative 'adventure_game'
+require_relative 'davis_putnam'
+require_relative 'adventure_game'
 
-    # game front end
-    file_path = 'test/ag_simple.txt'
-    game = AdventureGame.new(file_path)
-    game.generate_logic
-    game.write_logic('io/game.txt')
-    
-    # Davis Putnam solver
-    DavisPutnam.solve_file("io/game.txt")
+# game front end
+file_path = 'test/ag_simple.txt'
+game = AdventureGame.new(file_path)
+game.generate_logic
+game.write_logic('io/game.txt')
 
-    # game back end
-    game.print_dp_results('dp_output.txt')
+# Davis Putnam solver
+DavisPutnam.solve_file("io/game.txt")
 
+# game back end
+game.print_dp_results('dp_output.txt')
 ~~~
 
 
 ### Usage: Davis Putnam Algorithm
 
 ~~~ruby
-  require_relative 'davis_putnam'
-  path = "path/to/input_file.txt"
-  DavisPutnam.solve_file(path)
+require_relative 'davis_putnam'
+path = "path/to/input_file.txt"
+DavisPutnam.solve_file(path)
 ~~~
 
 ### Tests
