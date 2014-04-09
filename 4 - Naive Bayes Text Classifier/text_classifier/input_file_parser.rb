@@ -42,6 +42,7 @@ class InputFileParser
       elsif current_position == word_set_pos
         l.split.each do |word|
           word = word.delete "," "."
+          word = word.downcase
           word_set.add(word) unless @stopwords.include? word
         end
       end
