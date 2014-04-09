@@ -51,10 +51,11 @@ class TextClassifier
         category = nil
         word_set = Set.new
       elsif current_position == name_pos
-        name = l
+        words = l.split # remove trailing white space
+        name = "#{words[0]} #{words[1]}"
         current_position += 1
       elsif current_position == category_pos
-        category = l
+        category = l.split.first # remove trailing white space
         current_position += 1
       elsif current_position == word_set_pos
         l.split.each do |word|
