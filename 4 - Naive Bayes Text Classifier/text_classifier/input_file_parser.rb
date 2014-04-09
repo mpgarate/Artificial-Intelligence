@@ -43,7 +43,9 @@ class InputFileParser
         l.split.each do |word|
           word = word.delete "," "."
           word = word.downcase
-          word_set.add(word) unless @stopwords.include? word
+          if word.length > 2
+            word_set.add(word) unless @stopwords.include? word
+          end
         end
       end
     end
