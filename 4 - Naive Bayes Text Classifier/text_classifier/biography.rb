@@ -1,8 +1,10 @@
 class Biography
+  attr_accessor :category, :words
+
   def initialize(name,category,word_set)
     @name = name
     @category = category
-    @word_set = word_set
+    @words = word_set
   end
 
   def to_s
