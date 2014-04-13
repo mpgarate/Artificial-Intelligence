@@ -1,9 +1,11 @@
 class TrainingCategory
-  attr_accessor :words
+  attr_accessor :words, :count, :freqt, :prob
 
   def initialize(name)
     @name = name
     @count = 1
+
+    # "america" => 3
     @words = Hash.new
   end
 
@@ -25,4 +27,5 @@ class TrainingCategory
   def to_s
     return "#{@name} : #{@count} : #{@words}"
   end
+
 end
