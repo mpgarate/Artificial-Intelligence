@@ -9,6 +9,7 @@ class TrainingSet
     @categories = Hash.new
 
     @words = Hash.new
+    @word_count
 
     # class to calculate probabilities
     @prob_calc = ProbCalculator.new(@n,@categories,@biographies)
