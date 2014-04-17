@@ -18,8 +18,8 @@ class TextClassifier
       break if bio == nil # reached end of file before n
 
       bio = file_parser.get_next_bio
-
-      classifier.learn bio
+      
+      classifier.learn(bio.words, bio.category)
     end
   end
 
