@@ -33,10 +33,10 @@ class TextClassifier
     end
 
     while(bio != nil) do
-      bio = file_parser.get_next_bio
 
       # only give it the words! Cannot access category!
       @classifier.classify(bio.words)
+      bio = file_parser.get_next_bio
     end
   end
 end

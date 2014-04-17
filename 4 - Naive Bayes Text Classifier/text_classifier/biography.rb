@@ -10,4 +10,5 @@ class Biography
   def to_s
     return "#{@name} : #{@category} : #{@word_set.to_a}"
   end
+  
 end

@@ -38,7 +38,8 @@ class NaiveBayesClassifier
   def classify(words)
     best_match = nil
 
-    @categories.each do |cat|
+    @categories.each_key do |cat|
+      puts "cat is #{cat}"
       sum = 0
       words.each do |word|
         sum += get_l_of_w_given_c(word,cat)
@@ -51,7 +52,7 @@ class NaiveBayesClassifier
       end
     end
 
-    puts best_match
+    puts best_match[1]
   end
 
   private
