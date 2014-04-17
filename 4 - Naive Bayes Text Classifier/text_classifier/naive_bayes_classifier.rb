@@ -39,7 +39,6 @@ class NaiveBayesClassifier
     best_match = nil
 
     @categories.each_key do |cat|
-      puts "cat is #{cat}"
       sum = 0
       words.each do |word|
         sum += get_l_of_w_given_c(word,cat)
@@ -47,12 +46,14 @@ class NaiveBayesClassifier
 
       l_of_c_given_b = get_l_of_c(cat) + sum
 
+      puts "#{cat} : #{l_of_c_given_b}"
+
       if best_match == nil or best_match[0] > sum then
         best_match = [sum,cat]
       end
     end
 
-    puts best_match[1]
+    return best_match
   end
 
   private
@@ -63,7 +64,6 @@ class NaiveBayesClassifier
 
   # fraction of biographies of category C that contain W
   def get_freq_of_w_given_c(word,cat)
-    puts "#{word} #{cat}"
     @category_word_count[cat][word].to_f / @categories[cat].to_f
   end
 

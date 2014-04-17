@@ -35,7 +35,9 @@ class TextClassifier
     while(bio != nil) do
 
       # only give it the words! Cannot access category!
-      @classifier.classify(bio.words)
+      result = @classifier.classify(bio.words)
+
+      puts "#{bio.name}. Prediction #{result[1]} should be #{bio.category}"
       bio = file_parser.get_next_bio
     end
   end

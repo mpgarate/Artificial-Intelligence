@@ -1,5 +1,5 @@
 class Biography
-  attr_accessor :category, :words
+  attr_accessor :category, :words, :name
 
   def initialize(name,category,word_set)
     @name = name
@@ -10,5 +10,5 @@ class Biography
   def to_s
     return "#{@name} : #{@category} : #{@word_set.to_a}"
   end
-  
+
 end
