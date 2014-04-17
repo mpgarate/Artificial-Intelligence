@@ -1,4 +1,5 @@
 class NaiveBayesClassifier
+  EPSILON = 0.1
 
   def initialize
     # hash of words
@@ -15,8 +16,6 @@ class NaiveBayesClassifier
 
     # count how many biographies are learned
     @corpus_size = 0
-
-    EPSILON = 0.1
   end
   
   # takes a string array of words and a string for the category
@@ -26,12 +25,33 @@ class NaiveBayesClassifier
     @categories[cat] += 1
 
     # create the hash in which to store word counts
-    @category_word_count[cat] = Hash.new(0)
+    if @category_word_count[cat] == 0 then
+      @category_word_count[cat] = Hash.new(0)
+    end
 
     words.each do |word|
       @vocabulary[word] += 1
       @category_word_count[cat][word] += 1
     end
+  end
+
+  def classify(words)
+    best_match = nil
+
+    @categories.each do |cat|
+      sum = 0
+      words.each do |word|
+        sum += get_l_of_w_given_c(word,cat)
+      end
+
+      l_of_c_given_b = get_l_of_c(cat) + sum
+
+      if best_match == nil or best_match[0] > sum then
+        best_match = [sum,cat]
+      end
+    end
+
+    puts best_match
   end
 
   private
@@ -42,6 +62,7 @@ class NaiveBayesClassifier
 
   # fraction of biographies of category C that contain W
   def get_freq_of_w_given_c(word,cat)
+    puts "#{word} #{cat}"
     @category_word_count[cat][word].to_f / @categories[cat].to_f
   end
 
@@ -70,6 +91,14 @@ class NaiveBayesClassifier
     denominator = 1 + (2 * EPSILON)
 
     return numerator / denominator
+  end
+
+  def get_l_of_c(cat)
+    -Math.log(get_prob_of_category(cat),2)
+  end
+
+  def get_l_of_w_given_c(word,cat)
+    -Math.log(get_prob_of_word_given_cat(word,cat),2)
   end
 
 end
