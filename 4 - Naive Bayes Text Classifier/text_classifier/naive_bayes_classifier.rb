@@ -20,7 +20,7 @@ class NaiveBayesClassifier
   
   # takes a string array of words and a string for the category
   def learn(words,cat)
-    @corpus_size++
+    @corpus_size += 1
 
     @categories[cat] += 1
 
@@ -46,7 +46,7 @@ class NaiveBayesClassifier
 
       l_of_c_given_b = get_l_of_c(cat) + sum
 
-      puts "#{cat} : #{l_of_c_given_b}"
+      puts "#{cat} : #{2 ** l_of_c_given_b}"
 
       if best_match == nil or best_match[0] > sum then
         best_match = [sum,cat]
@@ -75,8 +75,10 @@ class NaiveBayesClassifier
 
   # P(C)
   def get_prob_of_category(cat)
+
+
     freq_of_c = get_category_frequency(cat)
-    
+
     numerator = freq_of_c + EPSILON
 
     denominator = 1 + (@categories.length * EPSILON)
