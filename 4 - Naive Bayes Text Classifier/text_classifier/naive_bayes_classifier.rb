@@ -46,14 +46,33 @@ class NaiveBayesClassifier
 
       l_of_c_given_b = get_l_of_c(cat) + sum
 
-      puts "#{cat} : #{2 ** l_of_c_given_b}"
-
       if best_match == nil or best_match[0] > sum then
         best_match = [sum,cat]
       end
     end
 
     return best_match
+  end
+
+  def print_contents
+    puts "------------------------------------"
+    puts "printing classifier contents"
+    puts "------------------------------------"
+
+    @vocabulary.each_key do |word|
+
+      printf("%15s", word)
+      @categories.each_key do |cat|
+        printf("%3d", @category_word_count[cat][word])
+      end
+
+      @categories.each_key do |cat|
+        printf("%15f", get_l_of_w_given_c(word,cat))
+      end
+      puts
+    end
+
+    puts "------------------------------------"
   end
 
   private
@@ -83,7 +102,7 @@ class NaiveBayesClassifier
 
     denominator = 1 + (@categories.length * EPSILON)
 
-    return numerator / denominator
+    return numerator.to_f / denominator.to_f
   end
 
   # 
@@ -93,7 +112,7 @@ class NaiveBayesClassifier
     numerator = freq_of_w_given_c + EPSILON
     denominator = 1 + (2 * EPSILON)
 
-    return numerator / denominator
+    return numerator.to_f / denominator.to_f
   end
 
   def get_l_of_c(cat)
