@@ -59,7 +59,7 @@ class NaiveBayesClassifier
     puts "printing classifier contents"
     puts "------------------------------------"
 
-    @vocabulary.each_key do |word|
+    Hash[@vocabulary.sort_by{|k,v| k}].each_key do |word|
 
       printf("%15s", word)
       @categories.each_key do |cat|
