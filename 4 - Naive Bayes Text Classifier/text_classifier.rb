@@ -15,7 +15,7 @@ class TextClassifier
     
     bio = file_parser.get_next_bio
     puts "FIRST BIO:"
-    (n-1).times do
+    (n).times do
       break if bio == nil # reached end of file before n
    
       @classifier.learn(bio.words, bio.category)
