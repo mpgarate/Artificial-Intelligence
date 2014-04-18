@@ -3,6 +3,8 @@ class NaiveBayesClassifier
 
   def initialize
     # hash of words
+    # Setting the default value to 0 makes incrementing simple:
+    # @vocabulary['word']++
     @vocabulary = Hash.new(0)
 
     # hash of categories
@@ -16,6 +18,10 @@ class NaiveBayesClassifier
 
     # count how many biographies are learned
     @corpus_size = 0
+
+    # store probabilities to avoid recalculation
+    @logs_of_w_given_c = Hash.new # double hash
+    @logs_of_c = Hash.new
   end
   
   # takes a string array of words and a string for the category
@@ -115,12 +121,32 @@ class NaiveBayesClassifier
     return numerator.to_f / denominator.to_f
   end
 
+  # Log probabilities are stored in a hash to avoid recalculation
+  # @logs_of_w_given_c = Hash.new
+  # @logs_of_c = Hash.new
+
   def get_l_of_c(cat)
-    -Math.log(get_prob_of_category(cat),2)
+    if @logs_of_c[cat] == nil then
+      value = -Math.log(get_prob_of_category(cat),2)
+      @logs_of_c[cat] = value
+      return value
+    else
+      return @logs_of_c[cat]
+    end
   end
 
   def get_l_of_w_given_c(word,cat)
-    -Math.log(get_prob_of_word_given_cat(word,cat),2)
+
+    # initialize or retrieve from double hash
+    if @logs_of_w_given_c[word] == nil then
+      @logs_of_w_given_c[word] = Hash.new
+    elsif @logs_of_w_given_c[word][cat] != nil
+      return @logs_of_w_given_c[word][cat]
+    end
+
+    value = -Math.log(get_prob_of_word_given_cat(word,cat),2)
+    @logs_of_w_given_c[word][cat] = value
+    return value
   end
 
 end
