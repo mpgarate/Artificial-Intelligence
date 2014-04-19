@@ -24,28 +24,7 @@ class TextClassifier
 
     @classifier.print_contents
   end
-
-  def classify_first(n)
-    @file_parser = InputFileParser.new(@path)
-
-    n.times do
-      bio = @file_parser.get_next_bio
-      break if bio == nil
-
-      c = @classifier.classify_with_details(bio.words)
-
-      c.print_detailed_and_compare_to(bio)
-    end
-
-
-
-      overall_accuracy = correct_match_count.to_f / @category_count.to_f
-      print "Overall accuracy: #{correct_match_count} out of #{@category_count}"
-      print " = #{overall_accuracy}\n"
-
-      puts
-  end
-
+  
   def classify_remaining
     
     total_correct = 0
