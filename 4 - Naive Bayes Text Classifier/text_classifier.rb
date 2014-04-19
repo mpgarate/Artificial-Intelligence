@@ -9,23 +9,34 @@ class TextClassifier
 
   def initialize(path)
     @classifier = NaiveBayesClassifier.new
+    @path = path
     @file_parser = InputFileParser.new(path)
   end
 
   def learn_first(n)
 
-    bios = []
-
     (n).times do
       bio = @file_parser.get_next_bio
       break if bio == nil # reached end of file before n
       
-      bios << bio
-
       @classifier.learn(bio.words, bio.category)
     end
 
     @classifier.print_contents
+  end
+
+  def classify_first(n)
+    @file_parser = InputFileParser.new(@path)
+
+    n.times do
+      bio = @file_parser.get_next_bio
+      break if bio == nil
+
+      c = @classifier.classify_with_details(bio.words)
+
+      c.print_detailed_and_compare_to(bio)
+      
+    end
   end
 
   def classify_remaining

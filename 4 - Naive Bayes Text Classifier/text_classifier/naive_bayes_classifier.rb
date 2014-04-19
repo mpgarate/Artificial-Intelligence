@@ -59,12 +59,19 @@ class NaiveBayesClassifier
     @categories.each_key do |cat|
       sum = 0
       words.each do |word|
-        sum += get_l_of_w_given_c(word,cat)
+        if @vocabulary.has_key? word then
+          word_prob = get_l_of_w_given_c(word,cat)
+          sum += word_prob
+        end
+
+      puts "#{word} w_prob: #{word_prob}"
       end
 
       l_of_c_given_b = get_l_of_c(cat) + sum
 
-      c.add(cat,sum)
+      puts "total : #{l_of_c_given_b}"
+
+      c.add(cat,l_of_c_given_b)
     end
 
     return c

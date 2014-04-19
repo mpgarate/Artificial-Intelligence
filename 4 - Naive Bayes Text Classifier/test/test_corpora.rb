@@ -12,6 +12,8 @@ class TestCorpora < Test::Unit::TestCase
     # train the classifier on the first n entries of a formatted file
     tc = TextClassifier.new(path)
     tc.learn_first(n)
+    #tc.classify_first(n)
+
     tc.classify_remaining
 
     # classify and write to output.txt

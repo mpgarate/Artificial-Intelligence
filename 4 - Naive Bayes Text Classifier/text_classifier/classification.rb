@@ -28,6 +28,7 @@ class Classification
     recovered_sum = 0
     recovered_matches = Hash.new
     @matches.each do |k,v|
+      puts "#{k} : #{v}"
       rp = recover_probability(v)
       recovered_matches[k] = rp
       recovered_sum += rp
@@ -36,6 +37,8 @@ class Classification
     recovered_matches.each_key do |k|
       val = recovered_matches[k]
       recovered_matches[k] = (val.to_f / recovered_sum.to_f)
+
+      puts "rec #{k} = #{val} / #{recovered_sum}"
     end
 
     if @best_match[0] == bio.category then
@@ -48,7 +51,7 @@ class Classification
 
       @matches.each_key do |cat|
         print("#{cat}: ")
-        printf("%.2f", recovered_matches[cat])
+        printf("%.2f", recovered_matches[cat].round(2))
         print("    ")
 
       end
@@ -58,9 +61,11 @@ class Classification
   end
 
   def recover_probability(val)
-    if val - @best_match[1] < 7 then
-      return 2 ** (@best_match[1] - val)
+    if val - @min_match[1] < 7 then
+      puts "recovering #{@best_match[1]} - #{val} = #{@best_match[1] - val}"
+      return 2 ** (@min_match[1] - val)
     else
+      puts "recovering 0"
       return 0
     end
   end
