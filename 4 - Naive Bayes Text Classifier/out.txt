@@ -1,0 +1,306 @@
+Run options: 
+
+# Running tests:
+
+Benjamin Disraeli.   Prediction: Writer.   Wrong.
+Government: 0.44    Music: 0.07    Writer: 0.49    
+
+George Eliot.   Prediction: Writer.   Right.
+Government: 0.01    Music: 0.08    Writer: 0.91    
+
+Barbara Jordan.   Prediction: Government.   Right.
+Government: 0.97    Music: 0.03    Writer: 0.00    
+
+Clara Schumann.   Prediction: Music.   Right.
+Government: 0.01    Music: 0.98    Writer: 0.01    
+
+Overall accuracy: 3 out of 4 = 0.75
+
+.
+
+Finished tests in 0.004002s, 249.8751 tests/s, 0.0000 assertions/s.
+
+1 tests, 0 assertions, 0 failures, 0 errors, 0 skips
+Thread ID: 15460740
+Fiber ID: 19136400
+Total: 0.033000
+Sort by: self_time
+
+ %self      total      self      wait     child     calls  name
+ 24.24      0.020     0.008     0.000     0.012       15  *Kernel#gem_original_require 
+  6.06      0.002     0.002     0.000     0.000       35   Hash#keys 
+  6.06      0.002     0.002     0.000     0.000       69   IO#write 
+  3.03      0.001     0.001     0.000     0.000      349   Hash#[]= 
+  3.03      0.001     0.001     0.000     0.000       54   <Class::BasicObject>#allocate 
+  3.03      0.001     0.001     0.000     0.000       28   Hash#invert 
+  3.03      0.001     0.001     0.000     0.000       30   MonitorMixin#mon_enter 
+  3.03      0.004     0.001     0.000     0.003        5  *Kernel#require_relative 
+  3.03      0.001     0.001     0.000     0.000        3   Module#public_instance_methods 
+  0.00      0.000     0.000     0.000     0.000       12   Classification#add 
+  0.00      0.000     0.000     0.000     0.000        2   Fixnum#/ 
+  0.00      0.000     0.000     0.000     0.000        1   MiniTest::Assertions#_assertions 
+  0.00      0.000     0.000     0.000     0.000        1   IO#print 
+  0.00      0.000     0.000     0.000     0.000        1   MiniTest::Unit#print 
+  0.00      0.000     0.000     0.000     0.000        2   Float#quo 
+  0.00      0.000     0.000     0.000     0.000        2   Time#- 
+  0.00      0.000     0.000     0.000     0.000        1   MiniTest::Unit::TestCase#teardown 
+  0.00      0.000     0.000     0.000     0.000        1   Array#reverse 
+  0.00      0.000     0.000     0.000     0.000        3  *<Class::MiniTest::Unit::TestCase>#teardown_hooks 
+  0.00      0.000     0.000     0.000     0.000        1   MiniTest::Unit::TestCase#run_teardown_hooks 
+  0.00      0.000     0.000     0.000     0.000        1   MiniTest::Unit::TestCase#io? 
+  0.00      0.000     0.000     0.000     0.000        1   Float#to_s 
+  0.00      0.000     0.000     0.000     0.000       15   Float#== 
+  0.00      0.000     0.000     0.000     0.000        4   Classification#is_right_for? 
+  0.00      0.000     0.000     0.000     0.000       12   Kernel#printf 
+  0.00      0.000     0.000     0.000     0.000       12   Float#round 
+  0.00      0.000     0.000     0.000     0.000       26   Kernel#print 
+  0.00      0.002     0.000     0.000     0.002       13   Kernel#puts 
+  0.00      0.000     0.000     0.000     0.000       12   Fixnum#** 
+  0.00      0.000     0.000     0.000     0.000       24   Float#- 
+  0.00      0.000     0.000     0.000     0.000       12   Classification#recover_probability 
+  0.00      0.000     0.000     0.000     0.000        4   Classification#get_recovered_probabilities 
+  0.00      0.002     0.000     0.000     0.002        4   Classification#print_detailed_and_compare_to 
+  0.00      0.000     0.000     0.000     0.000       20   Float#< 
+  0.00      0.000     0.000     0.000     0.000        8   Float#> 
+  0.00      0.000     0.000     0.000     0.000        2   String#% 
+  0.00      0.000     0.000     0.000     0.000        3   Hash#length 
+  0.00      0.000     0.000     0.000     0.000        3   NaiveBayesClassifier#get_category_frequency 
+  0.00      0.000     0.000     0.000     0.000        3   NaiveBayesClassifier#get_prob_of_category 
+  0.00      0.000     0.000     0.000     0.000       12   NaiveBayesClassifier#get_l_of_c 
+  0.00      0.000     0.000     0.000     0.000       27   Float#-@ 
+  0.00      0.000     0.000     0.000     0.000       27   <Module::Math>#log 
+  0.00      0.000     0.000     0.000     0.000       78   Float#to_f 
+  0.00      0.000     0.000     0.000     0.000       73   Float#+ 
+  0.00      0.000     0.000     0.000     0.000       69   Float#/ 
+  0.00      0.000     0.000     0.000     0.000       83   Fixnum#to_f 
+  0.00      0.000     0.000     0.000     0.000       24   NaiveBayesClassifier#get_freq_of_w_given_c 
+  0.00      0.000     0.000     0.000     0.000       24   NaiveBayesClassifier#get_prob_of_word_given_cat 
+  0.00      0.000     0.000     0.000     0.000       30   NaiveBayesClassifier#get_l_of_w_given_c 
+  0.00      0.000     0.000     0.000     0.000       51   Hash#has_key? 
+  0.00      0.000     0.000     0.000     0.000        4   Classification#initialize 
+  0.00      0.000     0.000     0.000     0.000        4   NaiveBayesClassifier#classify_with_details 
+  0.00      0.000     0.000     0.000     0.000       27   BasicObject#!= 
+  0.00      0.002     0.000     0.000     0.002        1   BioClassifier#classify_remaining 
+  0.00      0.000     0.000     0.000     0.000       24   Hash#== 
+  0.00      0.000     0.000     0.000     0.000       29  *Hash#each_key 
+  0.00      0.000     0.000     0.000     0.000       17   Set#each 
+  0.00      0.000     0.000     0.000     0.000        5   NaiveBayesClassifier#learn 
+  0.00      0.000     0.000     0.000     0.000        9   Biography#initialize 
+  0.00      0.000     0.000     0.000     0.000       45   Hash#include? 
+  0.00      0.000     0.000     0.000     0.000       45   Set#include? 
+  0.00      0.000     0.000     0.000     0.000       49   Fixnum#> 
+  0.00      0.000     0.000     0.000     0.000       48   String#delete 
+  0.00      0.000     0.000     0.000     0.000        9   String#capitalize 
+  0.00      0.000     0.000     0.000     0.000        9   Array#first 
+  0.00      0.000     0.000     0.000     0.000       70   Array#[] 
+  0.00      0.000     0.000     0.000     0.000       93   Fixnum#== 
+  0.00      0.000     0.000     0.000     0.000       36   Array#length 
+  0.00      0.000     0.000     0.000     0.000       10   InputFileParser#get_next_bio 
+  0.00      0.000     0.000     0.000     0.000        1   Integer#times 
+  0.00      0.000     0.000     0.000     0.000        1   BioClassifier#learn_first 
+  0.00      0.001     0.000     0.000     0.001      195   Set#add 
+  0.00      0.000     0.000     0.000     0.000       79   String#split 
+  0.00      0.001     0.000     0.000     0.001       11   IO#each_line 
+  0.00      0.000     0.000     0.000     0.000       11   NilClass#nil? 
+  0.00      0.000     0.000     0.000     0.000       11   Set#initialize 
+  0.00      0.001     0.000     0.000     0.001        1   InputFileParser#parse_stopwords_to_set 
+  0.00      0.000     0.000     0.000     0.000        2   File#initialize 
+  0.00      0.000     0.000     0.000     0.000        2   <Class::IO>#allocate 
+  0.00      0.000     0.000     0.000     0.000        2   <Class::IO>#open 
+  0.00      0.001     0.000     0.000     0.001        1   InputFileParser#initialize 
+  0.00      0.000     0.000     0.000     0.000        1   NaiveBayesClassifier#initialize 
+  0.00      0.001     0.000     0.000     0.001        1   BioClassifier#initialize 
+  0.00      0.003     0.000     0.000     0.003        1   TestCorpora#test_a_tiny_corpus 
+  0.00      0.000     0.000     0.000     0.000       10   Class#superclass 
+  0.00      0.000     0.000     0.000     0.000        3  *<Class::MiniTest::Unit::TestCase>#setup_hooks 
+  0.00      0.000     0.000     0.000     0.000        1   MiniTest::Unit::TestCase#run_setup_hooks 
+  0.00      0.000     0.000     0.000     0.000        1   MiniTest::Unit::TestCase#setup 
+  0.00      0.003     0.000     0.000     0.003        1   MiniTest::Unit::TestCase#run 
+  0.00      0.003     0.000     0.000     0.003        1   Test::Unit::TestCase#run 
+  0.00      0.000     0.000     0.000     0.000        1   MiniTest::Assertions#_assertions= 
+  0.00      0.000     0.000     0.000     0.000        1   MiniTest::Unit::TestCase#initialize 
+  0.00      0.000     0.000     0.000     0.000        2   Array#<< 
+  0.00      0.000     0.000     0.000     0.000        4   Enumerable#inject 
+  0.00      0.000     0.000     0.000     0.000        2   Array#size 
+  0.00      0.000     0.000     0.000     0.000        2   Array#sort 
+  0.00      0.000     0.000     0.000     0.000        2   <Class::Test::Unit::TestCase>#test_order 
+  0.00      0.001     0.000     0.000     0.001        2   <Class::MiniTest::Unit::TestCase>#test_methods 
+  0.00      0.000     0.000     0.000     0.000        2   Regexp#initialize 
+  0.00      0.000     0.000     0.000     0.000        2   <Class::Regexp>#allocate 
+  0.00      0.000     0.000     0.000     0.000        3   MiniTest::Unit#options 
+  0.00      0.004     0.000     0.000     0.004        2   MiniTest::Unit#_run_suite 
+  0.00      0.004     0.000     0.000     0.004        1   Test::Unit::Runner#_run_suites 
+  0.00      0.000     0.000     0.000     0.000        2   IO#sync= 
+  0.00      0.000     0.000     0.000     0.000        1   IO#sync 
+  0.00      0.000     0.000     0.000     0.000        4   Time#initialize 
+  0.00      0.000     0.000     0.000     0.000        4   <Class::Time>#allocate 
+  0.00      0.000     0.000     0.000     0.000        4   <Class::Time>#now 
+  0.00      0.000     0.000     0.000     0.000        1   String#<=> 
+  0.00      0.000     0.000     0.000     0.000        2   Module#name 
+  0.00      0.000     0.000     0.000     0.000        1   Enumerable#sort_by 
+  0.00      0.000     0.000     0.000     0.000        1   <Class::MiniTest::Unit::TestCase>#test_suites 
+  0.00      0.004     0.000     0.000     0.004        1   MiniTest::Unit#_run_anything 
+  0.00      0.004     0.000     0.000     0.004        1   MiniTest::Unit#run_tests 
+  0.00      0.000     0.000     0.000     0.000        7   Array#+ 
+  0.00      0.000     0.000     0.000     0.000        1   Enumerable#each_with_index 
+  0.00      0.000     0.000     0.000     0.000        1   <Class::MiniTest::Unit>#plugins 
+  0.00      0.000     0.000     0.000     0.000        1   Test::Unit::Runner#status 
+  0.00      0.002     0.000     0.000     0.002       22   IO#puts 
+  0.00      0.000     0.000     0.000     0.000       14   <Class::MiniTest::Unit>#output 
+  0.00      0.000     0.000     0.000     0.000       14   MiniTest::Unit#output 
+  0.00      0.000     0.000     0.000     0.000        8   MiniTest::Unit#puts 
+  0.00      0.000     0.000     0.000     0.000        1   Array#join 
+  0.00      0.000     0.000     0.000     0.000        1   <Module::RbConfig>#ruby 
+  0.00      0.000     0.000     0.000     0.000        1   Test::Unit::Options#non_options 
+  0.00      0.000     0.000     0.000     0.000        1   Array#flatten! 
+  0.00      0.000     0.000     0.000     0.000        1   Array#map! 
+  0.00      0.000     0.000     0.000     0.000        2   Array#uniq 
+  0.00      0.000     0.000     0.000     0.000        1   Test::Unit::GlobOption#non_options 
+  0.00      0.000     0.000     0.000     0.000        3   Hash#delete 
+  0.00      0.000     0.000     0.000     0.000        1   Test::Unit::GCStressOption#non_options 
+  0.00      0.000     0.000     0.000     0.000        1   Array#- 
+  0.00      0.000     0.000     0.000     0.000        1   Array#[]= 
+  0.00      0.000     0.000     0.000     0.000        1   Array#shift 
+  0.00      0.000     0.000     0.000     0.000        1   Kernel#catch 
+  0.00      0.000     0.000     0.000     0.000        1   OptionParser#parse_in_order 
+  0.00      0.000     0.000     0.000     0.000        1   OptionParser#order! 
+  0.00      0.000     0.000     0.000     0.000        1   OptionParser#permute! 
+  0.00      0.000     0.000     0.000     0.000        1   <Object::Object>#include? 
+  0.00      0.000     0.000     0.000     0.000        1   OptionParser#parse! 
+  0.00      0.000     0.000     0.000     0.000        2   Array#fetch 
+  0.00      0.000     0.000     0.000     0.000        2   Kernel#lambda 
+  0.00      0.000     0.000     0.000     0.000        2   Method#to_proc 
+  0.00      0.000     0.000     0.000     0.000        2   Kernel#method 
+  0.00      0.000     0.000     0.000     0.000        1   Array#hash 
+  0.00      0.000     0.000     0.000     0.000        8   <Class::OptionParser::Switch::NoArgument>#incompatible_argument_styles 
+  0.00      0.000     0.000     0.000     0.000        9   Module#>= 
+  0.00      0.000     0.000     0.000     0.000        9   String#=== 
+  0.00      0.000     0.000     0.000     0.000        9   <Class::OptionParser::Switch>#guess 
+  0.00      0.000     0.000     0.000     0.000       12   OptionParser#notwice 
+  0.00      0.000     0.000     0.000     0.000       43   Array#empty? 
+  0.00      0.000     0.000     0.000     0.000        4   <Class::OptionParser::Switch::NoArgument>#pattern 
+  0.00      0.000     0.000     0.000     0.000       69   String#downcase 
+  0.00      0.000     0.000     0.000     0.000      154   BasicObject#== 
+  0.00      0.000     0.000     0.000     0.000      103   Kernel#=== 
+  0.00      0.000     0.000     0.000     0.000      102   Symbol#=== 
+  0.00      0.000     0.000     0.000     0.000        1   MiniTest::Unit#status 
+  0.00      0.000     0.000     0.000     0.000      156   Hash#fetch 
+  0.00      0.000     0.000     0.000     0.000      156   OptionParser::List#search 
+  0.00      0.000     0.000     0.000     0.000       52   Array#reverse_each 
+  0.00      0.000     0.000     0.000     0.000       52   OptionParser#visit 
+  0.00      0.000     0.000     0.000     0.000       51   OptionParser#search 
+  0.00      0.003     0.000     0.000     0.003       13   OptionParser#make_switch 
+  0.00      0.004     0.000     0.000     0.004       13   OptionParser#define 
+  0.00      0.004     0.000     0.000     0.004       13   OptionParser#on 
+  0.00      0.000     0.000     0.000     0.000       27   Array#push 
+  0.00      0.000     0.000     0.000     0.000       14   Array#delete_if 
+  0.00      0.000     0.000     0.000     0.000       14   Hash#update 
+  0.00      0.000     0.000     0.000     0.000        1   Kernel#exit 
+  0.00      0.001     0.000     0.000     0.001       14   OptionParser::List#update 
+  0.00      0.001     0.000     0.000     0.001       14   OptionParser::List#append 
+  0.00      0.000     0.000     0.000     0.000       14   OptionParser#top 
+  0.00      0.000     0.000     0.000     0.000        1   OptionParser#separator 
+  0.00      0.004     0.000     0.000     0.004        1   Test::Unit::Options#setup_options 
+  0.00      0.004     0.000     0.000     0.004        1   Test::Unit::GlobOption#setup_options 
+  0.00      0.004     0.000     0.000     0.004        1   Test::Unit::LoadPathOption#setup_options 
+  0.00      0.004     0.000     0.000     0.004        1   Test::Unit::GCStressOption#setup_options 
+  0.00      0.000     0.000     0.000     0.000       85   Kernel#block_given? 
+  0.00      0.000     0.000     0.000     0.000      319   Module#=== 
+  0.00      0.000     0.000     0.000     0.000       18   OptionParser::Switch#initialize 
+  0.00      0.000     0.000     0.000     0.000        4   <Class::Proc>#new 
+  0.00      0.000     0.000     0.000     0.000        4   Proc#call 
+  0.00      0.000     0.000     0.000     0.000        5   Hash#each 
+  0.00      0.000     0.000     0.000     0.000        1   OptionParser#base 
+  0.00      0.000     0.000     0.000     0.000        1   OptionParser#add_officious 
+  0.00      0.000     0.000     0.000     0.000       40   Hash#initialize 
+  0.00      0.000     0.000     0.000     0.000       40   <Class::Hash>#allocate 
+  0.00      0.000     0.000     0.000     0.000        2   OptionParser::List#initialize 
+  0.00      0.000     0.000     0.000     0.000        1   OptionParser#initialize 
+  0.00      0.000     0.000     0.000     0.000        1   String#* 
+  0.00      0.000     0.000     0.000     0.000        1   Test::Unit::Options#option_parser 
+  0.00      0.000     0.000     0.000     0.000        1   Array#initialize_copy 
+  0.00      0.000     0.000     0.000     0.000        1   Kernel#initialize_dup 
+  0.00      0.000     0.000     0.000     0.000        1   <Class::Array>#allocate 
+  0.00      0.000     0.000     0.000     0.000        1   Kernel#dup 
+  0.00      0.004     0.000     0.000     0.004        1   Test::Unit::Options#process_args 
+  0.00      0.008     0.000     0.000     0.008        1   MiniTest::Unit#_run 
+  0.00      0.000     0.000     0.000     0.000        1   <Class::MiniTest::Unit>#runner 
+  0.00      0.000     0.000     0.000     0.000       18   Kernel#class 
+  0.00      0.008     0.000     0.000     0.008        1   MiniTest::Unit#run 
+  0.00      0.000     0.000     0.000     0.000      133   Fixnum#+ 
+  0.00      0.008     0.000     0.000     0.008        1   Test::Unit::RunCount#run 
+  0.00      0.000     0.000     0.000     0.000        2   MiniTest::Unit#initialize 
+  0.00      0.000     0.000     0.000     0.000        2   Test::Unit::Options#initialize 
+  0.00      0.000     0.000     0.000     0.000        1   Fixnum#zero? 
+  0.00      0.000     0.000     0.000     0.000        1   Numeric#nonzero? 
+  0.00      0.000     0.000     0.000     0.000        1   <Module::Test::Unit::RunCount>#have_run? 
+  0.00      0.008     0.000     0.000     0.008        1   Test::Unit::RunCount#run_once 
+  0.00      0.000     0.000     0.000     0.000        1   Kernel#at_exit 
+  0.00      0.008     0.000     0.000     0.008        2   <Class::Test::Unit::Runner>#autorun 
+  0.00      0.000     0.000     0.000     0.000        1   BasicObject#singleton_method_undefined 
+  0.00      0.000     0.000     0.000     0.000      346   Kernel#hash 
+  0.00      0.000     0.000     0.000     0.000        1   SystemExit#initialize 
+  0.00      0.000     0.000     0.000     0.000        2   <Class::MiniTest::Unit::TestCase>#inherited 
+  0.00      0.000     0.000     0.000     0.000        9   Module#alias_method 
+  0.00      0.000     0.000     0.000     0.000      504   String#== 
+  0.00      0.000     0.000     0.000     0.000       12   Array#include? 
+  0.00      0.000     0.000     0.000     0.000       12   String#<< 
+  0.00      0.000     0.000     0.000     0.000       12   String#[] 
+  0.00      0.000     0.000     0.000     0.000       14   String#to_s 
+  0.00      0.000     0.000     0.000     0.000        6   Enumerable#grep 
+  0.00      0.000     0.000     0.000     0.000       59   Symbol#to_s 
+  0.00      0.003     0.000     0.000     0.003        7   Array#map 
+  0.00      0.000     0.000     0.000     0.000        1   Module#instance_methods 
+  0.00      0.000     0.000     0.000     0.000        2   <Class::File>#join 
+  0.00      0.000     0.000     0.000     0.000       10   Module#class_eval 
+  0.00      0.000     0.000     0.000     0.000        3   Fixnum#to_s 
+  0.00      0.000     0.000     0.000     0.000       49   String#length 
+  0.00      0.000     0.000     0.000     0.000      504   Regexp#=== 
+  0.00      0.000     0.000     0.000     0.000        1   Kernel#inspect 
+  0.00      0.000     0.000     0.000     0.000        6   BasicObject#initialize 
+  0.00      0.000     0.000     0.000     0.000        1   Exception#initialize 
+  0.00      0.002     0.000     0.000     0.002       95  *Class#new 
+  0.00      0.000     0.000     0.000     0.000        1   Bignum#- 
+  0.00      0.000     0.000     0.000     0.000        1   Fixnum#<< 
+  0.00      0.000     0.000     0.000     0.000       28   Fixnum#* 
+  0.00      0.000     0.000     0.000     0.000        1   String#size 
+  0.00      0.000     0.000     0.000     0.000        1   Array#pack 
+  0.00      0.000     0.000     0.000     0.000        2   Module#module_function 
+  0.00      0.000     0.000     0.000     0.000       14   Module#included 
+  0.00      0.000     0.000     0.000     0.000       14   Module#append_features 
+  0.00      0.000     0.000     0.000     0.000       14   Module#include 
+  0.00      0.000     0.000     0.000     0.000        3   <Class::MiniTest::Unit::TestCase>#reset_setup_teardown_hooks 
+  0.00      0.000     0.000     0.000     0.000        1   <Class::MiniTest::Unit::TestCase>#reset 
+  0.00      0.000     0.000     0.000     0.000        1   <Module::Signal>#list 
+  0.00      0.000     0.000     0.000     0.000        7   Module#attr_reader 
+  0.00      0.000     0.000     0.000     0.000        1   Module#attr_writer 
+  0.00      0.000     0.000     0.000     0.000      318   Hash#[] 
+  0.00      0.000     0.000     0.000     0.000       37   BasicObject#singleton_method_added 
+  0.00      0.000     0.000     0.000     0.000        4   <Class::File>#dirname 
+  0.00      0.000     0.000     0.000     0.000        2   <Class::File>#expand_path 
+  0.00      0.000     0.000     0.000     0.000        4   String#=~ 
+  0.00      0.000     0.000     0.000     0.000        9   Module#attr_accessor 
+  0.00      0.000     0.000     0.000     0.000        6   Module#private 
+  0.00      0.000     0.000     0.000     0.000      274   Module#method_added 
+  0.00      0.000     0.000     0.000     0.000       23   Class#inherited 
+  0.00      0.000     0.000     0.000     0.000        9   <Class::Range>#allocate 
+  0.00      0.000     0.000     0.000     0.000        1   Exception#exception 
+  0.00      0.000     0.000     0.000     0.000       30   Mutex#unlock 
+  0.00      0.000     0.000     0.000     0.000       30   MonitorMixin#mon_check_owner 
+  0.00      0.000     0.000     0.000     0.000       30   MonitorMixin#mon_exit 
+  0.00      0.000     0.000     0.000     0.000       15   Hash#empty? 
+  0.00      0.000     0.000     0.000     0.000       15   <Class::Gem::Specification>#unresolved_deps 
+  0.00      0.006     0.000     0.000     0.006       99  *Array#each 
+  0.00      0.000     0.000     0.000     0.000       15   <Module::Gem>#suffixes 
+  0.00      0.000     0.000     0.000     0.000       15   <Module::Gem>#find_unresolved_default_spec 
+  0.00      0.000     0.000     0.000     0.000       53   Kernel#respond_to_missing? 
+  0.00      0.000     0.000     0.000     0.000       26   Kernel#respond_to? 
+  0.00      0.000     0.000     0.000     0.000       30   Mutex#lock 
+  0.00      0.000     0.000     0.000     0.000       90   <Class::Thread>#current 
+  0.00      0.000     0.000     0.000     0.000        1   Exception#backtrace 
+  0.00      0.021     0.000     0.000     0.021       15  *Kernel#require 
+  0.00      0.000     0.000     0.000     0.000        1   Exception#set_backtrace 
+  0.00      0.025     0.000     0.000     0.025        1   Global#[No method] 
+  0.00      0.000     0.000     0.000     0.000       24   IO#set_encoding 
+
+* indicates recursively called methods

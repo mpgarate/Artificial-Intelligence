@@ -27,10 +27,17 @@ class InputFileParser
 
     current_position = 0
 
+    previous_name = ""
+
     @input_file.each_line do |l|
       # if empty line
       if l.split.length == 0 then
+        if name == nil then # continue through blank lines
+          next
+        end
+
         bio = Biography.new(name, category, word_set)
+        name = nil
         return bio
       elsif current_position == name_pos
         words = l.split # remove trailing white space

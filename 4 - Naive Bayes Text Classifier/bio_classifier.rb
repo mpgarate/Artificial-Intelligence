@@ -7,7 +7,8 @@ require_relative 'bio_classifier/classification.rb'
 
 class BioClassifier
 
-  def initialize(path)
+  def initialize(path, verbose = false)
+    @verbose = verbose
     @classifier = NaiveBayesClassifier.new
     @path = path
     @file_parser = InputFileParser.new(path)
@@ -22,7 +23,7 @@ class BioClassifier
       @classifier.learn(bio.words, bio.category)
     end
 
-    @classifier.print_contents
+    @classifier.print_contents if @verbose
   end
 
   def classify_remaining
@@ -36,18 +37,16 @@ class BioClassifier
       # only give it the words! Cannot access category!
       c = @classifier.classify_with_details(bio.words)
 
-      c.print_detailed_and_compare_to(bio)
+      c.print_detailed_comparison(bio)
 
       total_correct += 1 if c.is_right_for?(bio)
 
       bio = @file_parser.get_next_bio
     end
 
-
-
     overall_accuracy = total_correct.to_f / total_considered.to_f
-    print "Overall accuracy: #{total_correct} out of #{@total_considered}"
-    print "= #{overall_accuracy}\n"
+    print "Overall accuracy: #{total_correct} out of #{total_considered}"
+    print " = #{overall_accuracy}\n"
 
     puts
   end

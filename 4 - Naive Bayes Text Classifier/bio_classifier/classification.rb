@@ -27,7 +27,7 @@ class Classification
     end
   end
 
-  def print_detailed_and_compare_to(bio)
+  def print_detailed_comparison(bio)
     recovered_matches = get_recovered_probabilities
 
     if @best_match[0] == bio.category then

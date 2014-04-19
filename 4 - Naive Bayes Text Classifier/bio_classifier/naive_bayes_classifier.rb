@@ -83,6 +83,8 @@ class NaiveBayesClassifier
     puts "    printing classifier contents"
     puts "------------------------------------"
 
+    # titles of columns
+
     printf("%15s", "Word")
 
     @categories.each_key do |cat|
@@ -97,6 +99,9 @@ class NaiveBayesClassifier
 
     puts
 
+    # column contents
+
+    # print words w/ values in alpha order
     Hash[@vocabulary.sort_by{|k,v| k}].each_key do |word|
 
       printf("%15s", word)
@@ -112,7 +117,10 @@ class NaiveBayesClassifier
     end
 
     puts
-    # # # # # # # #
+
+    # footer table
+
+    # print header
 
     printf("%15s","")
 
@@ -127,6 +135,8 @@ class NaiveBayesClassifier
     end
 
     puts
+
+    # print values
 
     printf("%15s","")
 
