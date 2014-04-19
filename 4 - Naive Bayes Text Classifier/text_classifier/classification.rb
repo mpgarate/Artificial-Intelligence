@@ -35,7 +35,7 @@ class Classification
 
     recovered_matches.each_key do |k|
       val = recovered_matches[k]
-      recovered_matches[k] = (val / recovered_sum)
+      recovered_matches[k] = (val.to_f / recovered_sum.to_f)
     end
 
     if @best_match[0] == bio.category then
@@ -58,8 +58,8 @@ class Classification
   end
 
   def recover_probability(val)
-    if val - @min_match[1] < 7 then
-      return 2 ** (@min_match[1] - val)
+    if val - @best_match[1] < 7 then
+      return 2 ** (@best_match[1] - val)
     else
       return 0
     end
