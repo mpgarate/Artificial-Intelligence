@@ -65,6 +65,20 @@ class NaiveBayesClassifier
     puts "printing classifier contents"
     puts "------------------------------------"
 
+    printf("%15s", "Word")
+
+    @categories.each_key do |cat|
+      cat = cat.slice(0..1)
+      printf("%3s", cat)
+    end
+
+    @categories.each_key do |cat|
+      cat = cat.slice(0..1)
+      printf("%15s", "-log(P(W|#{cat}))")
+    end
+
+    puts
+
     Hash[@vocabulary.sort_by{|k,v| k}].each_key do |word|
 
       printf("%15s", word)
@@ -73,7 +87,8 @@ class NaiveBayesClassifier
       end
 
       @categories.each_key do |cat|
-        printf("%15f", get_l_of_w_given_c(word,cat))
+        val = get_l_of_w_given_c(word,cat).round(4)
+        printf("%15.4f", val)
       end
       puts
     end
