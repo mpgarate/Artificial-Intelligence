@@ -41,8 +41,20 @@ class NaiveBayesClassifier
     end
   end
 
+  # just return the best match category
   def classify(words)
+    return classify_with_details(words).best_category
+  end
+
+  # return the best match and all match calculations
+  def classify_with_details(words)
     best_match = nil
+
+    # classification object keeps track of best
+    # and values for all categories. This is helpful
+    # for printing out extra information beyond the best
+    # match. 
+    c = Classification.new
 
     @categories.each_key do |cat|
       sum = 0
@@ -52,12 +64,10 @@ class NaiveBayesClassifier
 
       l_of_c_given_b = get_l_of_c(cat) + sum
 
-      if best_match == nil or best_match[0] > sum then
-        best_match = [sum,cat]
-      end
+      c.add(cat,sum)
     end
 
-    return best_match
+    return c
   end
 
   def print_contents
@@ -128,7 +138,7 @@ class NaiveBayesClassifier
   private
 
   #
-  # Probabilities. Ideally all of these run in constant time. 
+  # Probabilities. These run in constant time. 
   #
 
   # fraction of biographies of category C that contain W
