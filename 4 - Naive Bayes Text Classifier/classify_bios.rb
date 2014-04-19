@@ -1,4 +1,4 @@
-require_relative 'text_classifier.rb'
+require_relative 'bio_classifier.rb'
 
 # defaults
 verbose = false
@@ -19,6 +19,6 @@ puts "path: #{path}"
 puts "verbose: #{verbose} "
 
 
-bc = TextClassifier.new(path)
+bc = BioClassifier.new(path)
 bc.learn_first(n)
 bc.classify_remaining

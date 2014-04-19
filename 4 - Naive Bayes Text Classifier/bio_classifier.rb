@@ -1,11 +1,11 @@
 require 'set'
 
-require_relative 'text_classifier/naive_bayes_classifier.rb'
-require_relative 'text_classifier/input_file_parser.rb'
-require_relative 'text_classifier/biography.rb'
-require_relative 'text_classifier/classification.rb'
+require_relative 'bio_classifier/naive_bayes_classifier.rb'
+require_relative 'bio_classifier/input_file_parser.rb'
+require_relative 'bio_classifier/biography.rb'
+require_relative 'bio_classifier/classification.rb'
 
-class TextClassifier
+class BioClassifier
 
   def initialize(path)
     @classifier = NaiveBayesClassifier.new
@@ -24,7 +24,7 @@ class TextClassifier
 
     @classifier.print_contents
   end
-  
+
   def classify_remaining
     
     total_correct = 0

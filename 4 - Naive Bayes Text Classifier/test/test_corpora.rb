@@ -1,4 +1,4 @@
-require_relative '../text_classifier.rb'
+require_relative '../bio_classifier.rb'
 require 'test/unit'
 require 'fileutils'
 
@@ -10,11 +10,11 @@ class TestCorpora < Test::Unit::TestCase
     n = 5
 
     # train the classifier on the first n entries of a formatted file
-    tc = TextClassifier.new(path)
-    tc.learn_first(n)
+    bc = BioClassifier.new(path)
+    bc.learn_first(n)
     #tc.classify_first(n)
 
-    tc.classify_remaining
+    bc.classify_remaining
 
     # classify and write to output.txt
     
