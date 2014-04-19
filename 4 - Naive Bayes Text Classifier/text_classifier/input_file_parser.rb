@@ -38,6 +38,7 @@ class InputFileParser
         current_position += 1
       elsif current_position == category_pos
         category = l.split.first # remove trailing white space
+        category = category.downcase.capitalize # downcase all and then capitalize first letter
         current_position += 1
       elsif current_position == word_set_pos
         l.split.each do |word|
