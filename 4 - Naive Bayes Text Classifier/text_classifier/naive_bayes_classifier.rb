@@ -1,3 +1,6 @@
+# I have made an effort to keep this algorithm
+# generic, not tied to the biography problem
+
 class NaiveBayesClassifier
   EPSILON = 0.1
 
@@ -7,7 +10,7 @@ class NaiveBayesClassifier
     # @vocabulary['word']++
     @vocabulary = Hash.new(0)
 
-    # hash of categories
+    # hash of category names mapped to number of occurrences
     # Occ_T(C)
     @categories = Hash.new(0)
 
@@ -41,12 +44,14 @@ class NaiveBayesClassifier
     end
   end
 
-  # just return the best match category
+  # just return the best match category as a string
   def classify(words)
     return classify_with_details(words).best_category
   end
 
-  # return the best match and all match calculations
+  # return a classification object which can provide the
+  # best match, detailed information about runnerups, and
+  # restore original probabilities for these. 
   def classify_with_details(words)
     best_match = nil
 
@@ -63,15 +68,11 @@ class NaiveBayesClassifier
           word_prob = get_l_of_w_given_c(word,cat)
           sum += word_prob
         end
-
-      puts "#{word} w_prob: #{word_prob}"
       end
 
       l_of_c_given_b = get_l_of_c(cat) + sum
 
-      puts "total : #{l_of_c_given_b}"
-
-      c.add(cat,l_of_c_given_b)
+      c.add(cat, l_of_c_given_b)
     end
 
     return c
@@ -79,7 +80,7 @@ class NaiveBayesClassifier
 
   def print_contents
     puts "------------------------------------"
-    puts "printing classifier contents"
+    puts "    printing classifier contents"
     puts "------------------------------------"
 
     printf("%15s", "Word")

@@ -1,5 +1,9 @@
+# a classification object can provide the
+# best match, detailed information about runnerups, and
+# restore original probabilities for these. 
 class Classification
-  def initialize
+
+  def initialize()
     @best_match = []
     @min_match = []
     @matches = Hash.new
@@ -24,22 +28,7 @@ class Classification
   end
 
   def print_detailed_and_compare_to(bio)
-
-    recovered_sum = 0
-    recovered_matches = Hash.new
-    @matches.each do |k,v|
-      puts "#{k} : #{v}"
-      rp = recover_probability(v)
-      recovered_matches[k] = rp
-      recovered_sum += rp
-    end
-
-    recovered_matches.each_key do |k|
-      val = recovered_matches[k]
-      recovered_matches[k] = (val.to_f / recovered_sum.to_f)
-
-      puts "rec #{k} = #{val} / #{recovered_sum}"
-    end
+    recovered_matches = get_recovered_probabilities
 
     if @best_match[0] == bio.category then
         right_or_wrong = "Right"
@@ -47,7 +36,7 @@ class Classification
         right_or_wrong = "Wrong"
       end
 
-      puts "#{bio.name}. Prediction: #{@best_match[0]}. #{right_or_wrong}."
+      puts "#{bio.name}.   Prediction: #{@best_match[0]}.   #{right_or_wrong}."
 
       @matches.each_key do |cat|
         print("#{cat}: ")
@@ -60,12 +49,31 @@ class Classification
       puts
   end
 
+  def is_right_for?(bio)
+    return @best_match[0] == bio.category
+  end
+
+  private
+
+  def get_recovered_probabilities
+    recovered_sum = 0
+    recovered_matches = Hash.new
+    @matches.each do |k,v|
+      rp = recover_probability(v)
+      recovered_matches[k] = rp
+      recovered_sum += rp
+    end
+
+    recovered_matches.each_key do |k|
+      val = recovered_matches[k]
+      recovered_matches[k] = (val.to_f / recovered_sum.to_f)
+    end
+  end
+
   def recover_probability(val)
     if val - @min_match[1] < 7 then
-      puts "recovering #{@best_match[1]} - #{val} = #{@best_match[1] - val}"
       return 2 ** (@min_match[1] - val)
     else
-      puts "recovering 0"
       return 0
     end
   end
