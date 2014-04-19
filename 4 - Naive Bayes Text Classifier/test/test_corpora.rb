@@ -10,9 +10,9 @@ class TestCorpora < Test::Unit::TestCase
     n = 5
 
     # train the classifier on the first n entries of a formatted file
-    tc = TextClassifier.new
-    tc.learn(path,n)
-    tc.classify(path,n)
+    tc = TextClassifier.new(path)
+    tc.learn_first(n)
+    tc.classify_remaining
 
     # classify and write to output.txt
     

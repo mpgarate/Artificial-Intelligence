@@ -93,6 +93,35 @@ class NaiveBayesClassifier
       puts
     end
 
+    puts
+    # # # # # # # #
+
+    printf("%15s","")
+
+    @categories.each_key do |cat|
+      cat = cat.slice(0..1)
+      printf("%3s", cat)
+    end
+
+    @categories.each_key do |cat|
+      cat = cat.slice(0..1)
+      printf("%15s","-log(P(#{cat})) ")
+    end
+
+    puts
+
+    printf("%15s","")
+
+    @categories.each_value do |val|
+      printf("%3s",val)
+    end
+
+    @categories.each_key do |cat|
+      printf("%15.4f", get_l_of_c(cat))
+    end
+    
+    puts
+
     puts "------------------------------------"
   end
 
