@@ -32,10 +32,9 @@ class InputFileParser
     @input_file.each_line do |l|
       # if empty line
       if l.split.length == 0 then
-        if name == nil then # continue through blank lines
+        if name == nil then # continue through multiple blank lines
           next
         end
-
         bio = Biography.new(name, category, word_set)
         name = nil
         return bio
@@ -55,8 +54,11 @@ class InputFileParser
             word_set.add(word) unless @stopwords.include? word
           end
         end
+      end  
+      if @input_file.eof? then
+        return Biography.new(name, category, word_set)
       end
     end
-      return nil
+    return nil
   end
 end
