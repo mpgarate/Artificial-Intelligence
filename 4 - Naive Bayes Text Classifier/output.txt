@@ -1,0 +1,184 @@
+n: 5
+path: test/corpora/bioCorpus.txt
+verbose: false 
+
+french writer intellectual existentialist philosopher political activist feminist social theorist not consider herself significant influence existentialism theory 
+Simone de.   Prediction: Government.   Wrong.
+Government: 0.95    Music: 0.04    Writer: 0.00    Scientist: 0.01    
+
+french general statesman led forces during world war later founded fifth republic served first president 
+Charles de.   Prediction: Writer.   Wrong.
+Government: 0.00    Music: 0.01    Writer: 0.91    Scientist: 0.08    
+
+british conservative politician writer aristocrat twice served prime minister played central role creation modern party defining policies broad outreach 
+Benjamin Disraeli.   Prediction: Music.   Wrong.
+Government: 0.00    Music: 0.99    Writer: 0.00    Scientist: 0.00    
+
+english novelist journalist translator leading writers victorian era author novels including adam bede mill floss silas marner middlemarch daniel deronda them set provincial england known their realism psychological insight 
+George Eliot.   Prediction: Writer.   Right.
+Government: 0.01    Music: 0.04    Writer: 0.95    Scientist: 0.00    
+
+british biophysicist x-ray crystallographer made critical contributions understanding fine molecular structures dna rna viruses coal graphite work achieved fame plays essential role cell metabolism genetics discovery structure helped co-workers understand genetic passed parents their offspring 
+Rosalind Franklin.   Prediction: Writer.   Wrong.
+Government: 0.04    Music: 0.43    Writer: 0.48    Scientist: 0.04    
+
+american recording artist activist record producer businesswoman fashion designer philanthropist actress born raised lives york city 
+Lady Gaga.   Prediction: Government.   Wrong.
+Government: 0.63    Music: 0.31    Writer: 0.06    Scientist: 0.01    
+
+burmese opposition politician chairperson national league democracy burma 
+Aung San.   Prediction: Government.   Right.
+Government: 0.75    Music: 0.11    Writer: 0.07    Scientist: 0.07    
+
+american politician civil rights leader representative georgias fifth congressional district dean georgia delegation 
+John Lewis.   Prediction: Government.   Right.
+Government: 0.98    Music: 0.01    Writer: 0.01    Scientist: 0.00    
+
+egyptian writer won nobel prize literature regarded first contemporary writers arabic tawfiq el-hakim explore themes existentialism 
+Naguid Mahfouz.   Prediction: Scientist.   Wrong.
+Government: 0.00    Music: 0.01    Writer: 0.01    Scientist: 0.98    
+
+english writer whose work ranges subject personal memoir short story historical fiction essay twice awarded booker prize 
+Hilary Mantel.   Prediction: Writer.   Right.
+Government: 0.01    Music: 0.07    Writer: 0.85    Scientist: 0.08    
+
+american scientist world's distinguished cytogeneticists nobel laureate physiology medicine mcclintock received phd botany cornell university started career leader development maize cytogenetics focus research rest life 
+Barbara McClintock.   Prediction: Government.   Wrong.
+Government: 0.32    Music: 0.03    Writer: 0.32    Scientist: 0.32    
+
+american novelist editor professor novels known their epic themes vivid dialogue richly detailed characters best bluest eye sula song solomon beloved 
+Toni Morrison.   Prediction: Writer.   Right.
+Government: 0.01    Music: 0.01    Writer: 0.98    Scientist: 0.00    
+
+french physicist studies brownian motion minute particles suspended liquids verified albert einsteinâ€™s explanation phenomenon thereby confirmed atomic nature matter 
+Jean Perrin.   Prediction: Scientist.   Right.
+Government: 0.01    Music: 0.01    Writer: 0.01    Scientist: 0.97    
+
+french politician president poitou charentes regional council former member national assembly government minister prominent socialist party 
+Segolene Royal.   Prediction: Government.   Right.
+Government: 0.45    Music: 0.07    Writer: 0.04    Scientist: 0.45    
+
+french composer pianist satie colourful figure early twentieth century parisian avant garde work precursor later artistic movements such minimalism repetitive music theatre absurd 
+Erik Satie.   Prediction: Music.   Right.
+Government: 0.00    Music: 1.00    Writer: 0.00    Scientist: 0.00    
+
+japanese physicist influential development quantum electrodynamics work jointly awarded nobel prize physics richard feynman julian schwinger 
+Sin Itiro.   Prediction: Scientist.   Right.
+Government: 0.00    Music: 0.00    Writer: 0.08    Scientist: 0.91    
+
+Overall accuracy: 9 out of 16 = 0.56
+
+Thread ID: 2255232
+Fiber ID: 20211120
+Total: 0.079000
+Sort by: self_time
+
+ %self      total      self      wait     child     calls  name
+  5.06      0.013     0.004     0.000     0.009       95   Array#each 
+  5.06      0.005     0.004     0.000     0.001      585   Set#add 
+  3.80      0.018     0.003     0.000     0.015       23   IO#each_line 
+  3.80      0.027     0.003     0.000     0.024        5  *Kernel#require_relative 
+  3.80      0.026     0.003     0.000     0.023      133  *Hash#each_key 
+  3.80      0.003     0.003     0.000     0.000      733   String#delete 
+  2.53      0.002     0.002     0.000     0.000      152   <Module::Math>#log 
+  2.53      0.002     0.002     0.000     0.000      274   String#split 
+  2.53      0.002     0.002     0.000     0.000     1179   Hash#[]= 
+  2.53      0.002     0.002     0.000     0.000     1220   Hash#has_key? 
+  2.53      0.002     0.002     0.000     0.000     1974   Hash#[] 
+  1.27      0.001     0.001     0.000     0.000      222   Kernel#respond_to_missing? 
+  1.27      0.001     0.001     0.000     0.000        4   Mutex#lock 
+  1.27      0.006     0.001     0.000     0.005       16   Classification#print_detailed_comparison 
+  1.27      0.002     0.001     0.000     0.001       64   Kernel#printf 
+  1.27      0.002     0.001     0.000     0.001       69   Kernel#puts 
+  1.27      0.001     0.001     0.000     0.000      148   NaiveBayesClassifier#get_freq_of_w_given_c 
+  1.27      0.001     0.001     0.000     0.000       69   IO#puts 
+  1.27      0.001     0.001     0.000     0.000      587   IO#write 
+  1.27      0.001     0.001     0.000     0.000      603   Set#include? 
+  1.27      0.005     0.001     0.000     0.004      164  *Class#new 
+  1.27      0.001     0.001     0.000     0.000       63   <Class::BasicObject>#allocate 
+  1.27      0.001     0.001     0.000     0.000      432   Float#to_f 
+  1.27      0.001     0.001     0.000     0.000      529   Fixnum#+ 
+  1.27      0.001     0.001     0.000     0.000      484   Float#+ 
+  1.27      0.001     0.001     0.000     0.000      369   Float#/ 
+  1.27      0.002     0.001     0.000     0.001      200   Hash#== 
+  1.27      0.001     0.001     0.000     0.000        2   File#initialize 
+  1.27      0.002     0.001     0.000     0.001       64   Classification#add 
+  1.27      0.010     0.001     0.000     0.009      236   NaiveBayesClassifier#get_l_of_w_given_c 
+  0.00      0.000     0.000     0.000     0.000        3   Fixnum#to_s 
+  0.00      0.000     0.000     0.000     0.000       16   Classification#initialize 
+  0.00      0.021     0.000     0.000     0.021       16   NaiveBayesClassifier#classify_with_details 
+  0.00      0.000     0.000     0.000     0.000      216   BasicObject#!= 
+  0.00      0.041     0.000     0.000     0.041        1   BioClassifier#classify_remaining 
+  0.00      0.000     0.000     0.000     0.000      458   Fixnum#to_f 
+  0.00      0.000     0.000     0.000     0.000      152   Fixnum#* 
+  0.00      0.000     0.000     0.000     0.000       85   Kernel#block_given? 
+  0.00      0.021     0.000     0.000     0.021       85   Set#each 
+  0.00      0.000     0.000     0.000     0.000      152   Float#-@ 
+  0.00      0.002     0.000     0.000     0.002        5   NaiveBayesClassifier#learn 
+  0.00      0.000     0.000     0.000     0.000      324   BasicObject#== 
+  0.00      0.000     0.000     0.000     0.000       21   Biography#initialize 
+  0.00      0.000     0.000     0.000     0.000      603   Hash#include? 
+  0.00      0.001     0.000     0.000     0.001       64   NaiveBayesClassifier#get_l_of_c 
+  0.00      0.000     0.000     0.000     0.000      733   Fixnum#> 
+  0.00      0.000     0.000     0.000     0.000      733   String#length 
+  0.00      0.000     0.000     0.000     0.000        4   NaiveBayesClassifier#get_prob_of_category 
+  0.00      0.000     0.000     0.000     0.000       21   String#capitalize 
+  0.00      0.000     0.000     0.000     0.000      754   String#downcase 
+  0.00      0.000     0.000     0.000     0.000       21   Array#first 
+  0.00      0.000     0.000     0.000     0.000      118   IO#eof? 
+  0.00      0.000     0.000     0.000     0.000        4   NaiveBayesClassifier#get_category_frequency 
+  0.00      0.000     0.000     0.000     0.000      435   Fixnum#== 
+  0.00      0.000     0.000     0.000     0.000      140   Array#length 
+  0.00      0.019     0.000     0.000     0.019       22   InputFileParser#get_next_bio 
+  0.00      0.008     0.000     0.000     0.008        1   Integer#times 
+  0.00      0.008     0.000     0.000     0.008        1   BioClassifier#learn_first 
+  0.00      0.000     0.000     0.000     0.000        4   Hash#length 
+  0.00      0.000     0.000     0.000     0.000      128   Array#empty? 
+  0.00      0.000     0.000     0.000     0.000       48   Float#> 
+  0.00      0.000     0.000     0.000     0.000      112   Float#< 
+  0.00      0.000     0.000     0.000     0.000       23   NilClass#nil? 
+  0.00      0.000     0.000     0.000     0.000       23   Set#initialize 
+  0.00      0.001     0.000     0.000     0.001        1   InputFileParser#parse_stopwords_to_set 
+  0.00      0.000     0.000     0.000     0.000      435   Kernel#print 
+  0.00      0.000     0.000     0.000     0.000        2   <Class::IO>#allocate 
+  0.00      0.001     0.000     0.000     0.001        2   <Class::IO>#open 
+  0.00      0.002     0.000     0.000     0.002        1   InputFileParser#initialize 
+  0.00      0.000     0.000     0.000     0.000      101   Hash#initialize 
+  0.00      0.000     0.000     0.000     0.000      101   <Class::Hash>#allocate 
+  0.00      0.000     0.000     0.000     0.000        1   NaiveBayesClassifier#initialize 
+  0.00      0.003     0.000     0.000     0.003        1   BioClassifier#initialize 
+  0.00      0.001     0.000     0.000     0.001       16   Classification#get_recovered_probabilities 
+  0.00      0.001     0.000     0.000     0.001       16   Hash#each 
+  0.00      0.000     0.000     0.000     0.000        1   FalseClass#to_s 
+  0.00      0.000     0.000     0.000     0.000       64   Classification#recover_probability 
+  0.00      0.000     0.000     0.000     0.000      128   Float#- 
+  0.00      0.000     0.000     0.000     0.000       64   Fixnum#** 
+  0.00      0.004     0.000     0.000     0.004      148   NaiveBayesClassifier#get_prob_of_word_given_cat 
+  0.00      0.000     0.000     0.000     0.000       54   String#== 
+  0.00      0.000     0.000     0.000     0.000        1   String#to_i 
+  0.00      0.000     0.000     0.000     0.000      316   Array#[] 
+  0.00      0.000     0.000     0.000     0.000        1   Module#attr_accessor 
+  0.00      0.000     0.000     0.000     0.000        3   Module#private 
+  0.00      0.000     0.000     0.000     0.000       32   Module#method_added 
+  0.00      0.000     0.000     0.000     0.000        5   Class#inherited 
+  0.00      0.000     0.000     0.000     0.000        4   <Class::Range>#allocate 
+  0.00      0.000     0.000     0.000     0.000        2   Kernel#gem_original_require 
+  0.00      0.000     0.000     0.000     0.000        4   Mutex#unlock 
+  0.00      0.000     0.000     0.000     0.000        4   MonitorMixin#mon_check_owner 
+  0.00      0.000     0.000     0.000     0.000        4   MonitorMixin#mon_exit 
+  0.00      0.000     0.000     0.000     0.000        2   Hash#empty? 
+  0.00      0.000     0.000     0.000     0.000        2   <Class::Gem::Specification>#unresolved_deps 
+  0.00      0.000     0.000     0.000     0.000       65   Float#round 
+  0.00      0.000     0.000     0.000     0.000        2   <Module::Gem>#suffixes 
+  0.00      0.000     0.000     0.000     0.000        2   <Module::Gem>#find_unresolved_default_spec 
+  0.00      0.000     0.000     0.000     0.000       16   Classification#is_right_for? 
+  0.00      0.000     0.000     0.000     0.000        2   Kernel#respond_to? 
+  0.00      0.000     0.000     0.000     0.000      148   Float#== 
+  0.00      0.000     0.000     0.000     0.000       12   <Class::Thread>#current 
+  0.00      0.001     0.000     0.000     0.001        4   MonitorMixin#mon_enter 
+  0.00      0.001     0.000     0.000     0.001        2   Kernel#require 
+  0.00      0.000     0.000     0.000     0.000        1   Float#to_s 
+  0.00      0.079     0.000     0.000     0.079        2   Global#[No method] 
+  0.00      0.000     0.000     0.000     0.000       12   IO#set_encoding 
+
+* indicates recursively called methods

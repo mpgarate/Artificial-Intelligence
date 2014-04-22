@@ -39,8 +39,7 @@ class InputFileParser
         name = nil
         return bio
       elsif current_position == name_pos
-        words = l.split # remove trailing white space
-        name = "#{words[0]} #{words[1]}"
+        name = l.to_s
         current_position += 1
       elsif current_position == category_pos
         category = l.split.first # remove trailing white space

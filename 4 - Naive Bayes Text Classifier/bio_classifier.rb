@@ -37,8 +37,8 @@ class BioClassifier
       # only give it the words! Cannot access category!
       c = @classifier.classify_with_details(bio.words)
 
-      #bio.words.each { |w| print "#{w} " }
-      #puts
+      bio.words.each { |w| print "#{w} " }
+      puts
 
       c.print_detailed_comparison(bio)
 
