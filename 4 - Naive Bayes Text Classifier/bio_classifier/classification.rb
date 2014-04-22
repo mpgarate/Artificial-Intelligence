@@ -34,7 +34,7 @@ class Classification
         right_or_wrong = "Right"
       else
         right_or_wrong = "Wrong"
-      end
+    end
 
       puts "#{bio.name}.   Prediction: #{@best_match[0]}.   #{right_or_wrong}."
 

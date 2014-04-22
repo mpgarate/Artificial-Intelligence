@@ -34,11 +34,15 @@ class BioClassifier
     bio = @file_parser.get_next_bio
     while(bio != nil) do
       total_considered += 1
+
       # only give it the words! Cannot access category!
+      # c is a 'Classification' object which keeps information
+      # about runnerups and can restore original probabilities
       c = @classifier.classify_with_details(bio.words)
 
-      bio.words.each { |w| print "#{w} " }
-      puts
+      # handy to inspect which words are considered for a bio
+      # bio.words.each { |w| print "#{w} " }
+      # puts
 
       c.print_detailed_comparison(bio)
 
@@ -48,12 +52,11 @@ class BioClassifier
     end
 
     overall_accuracy = total_correct.to_f / total_considered.to_f
+
     print "Overall accuracy: #{total_correct} out of #{total_considered}"
     print " = #{overall_accuracy.round(2)}\n"
 
     puts
   end
-
-  private
 
 end

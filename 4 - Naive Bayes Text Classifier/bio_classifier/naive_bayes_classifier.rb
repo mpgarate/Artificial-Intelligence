@@ -7,7 +7,7 @@ class NaiveBayesClassifier
   def initialize
     # hash of words
     # Setting the default value to 0 makes incrementing simple:
-    # @vocabulary['word']++
+    # @vocabulary['word'] += 1
     @vocabulary = Hash.new(0)
 
     # hash of category names mapped to number of occurrences

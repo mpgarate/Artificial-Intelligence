@@ -39,7 +39,7 @@ class InputFileParser
         name = nil
         return bio
       elsif current_position == name_pos
-        name = l.to_s
+        name = l.to_s.delete("\n")
         current_position += 1
       elsif current_position == category_pos
         category = l.split.first # remove trailing white space
