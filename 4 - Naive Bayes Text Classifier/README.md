@@ -1,6 +1,8 @@
 Naive Bayes Text Classifier
 =======================
 
+Biography classifyer using Naive Bayes, written in Ruby. 
+
 ### Usage
 
 
@@ -56,3 +58,5 @@ Each bio after ```n``` is passed into an instance of ```NaiveBayesClassifier``` 
 A ```Classification``` object is returned, which keeps information beyond the best match. For example, this class can produce runnerups and original probabilities.
 
 ### Under the Hood
+
+```NaiveBayesClassifier``` uses hashes to maintain information about the learned words and categories. Probabilities are calculated from these on the fly during classification. 
