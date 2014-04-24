@@ -3,6 +3,9 @@ Naive Bayes Text Classifier
 
 Biography classifyer using Naive Bayes, written in Ruby. 
 
+Use the Naive Bayes method to learn a classiﬁer for text from training data, and use a test set to evaluate the quality of the classiﬁer. 
+
+
 ### Usage
 
 
