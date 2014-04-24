@@ -17,28 +17,42 @@ The verbose flag toggles printing a word probability chart similar to the one pr
 
 ### Examples:
 
-Run on the tiny corpus with sample size 5.
+Run on the **tiny corpus** with sample size **5**.
 
 ```sh
 ruby classify_bios.rb 5 test/corpora/tinyCorpus.txt
 ```
 
 
-Run with verbose output on the tiny corpus with sample size 5. 
+Run on the **tiny corpus** with sample size **5** with **verbose** output. 
 
 ```sh
 ruby classify_bios.rb 5 test/corpora/tinyCorpus.txt -v
 ```
 
-Run on the larger corpus with sample size 5. 
+Run on the **larger corpus** with sample size **5**. 
 
 ```sh
 ruby classify_bios.rb 5 test/corpora/bioCorpus.txt
 ```
 
-Run on the larger corpus with sample size 10. 
+Run on the **larger corpus** with sample size **10**. 
 
 ```sh
 ruby classify_bios.rb 10 test/corpora/bioCorpus.txt
 ```
 
+### Structural Overview
+
+```classify_bios.rb``` is the command line interface for ```BioClassifier```.
+
+
+```BioClassifier``` uses ```InputFileParser``` to generate ```Biography``` objects.
+
+Each bio up to ```n``` is passed into an instance of ```NaiveBayesClassifier``` for learning.
+
+Each bio after ```n``` is passed into an instance of ```NaiveBayesClassifier``` for classification. 
+
+A ```Classification``` object is returned, which keeps information beyond the best match. For example, this class can produce runnerups and original probabilities.
+
+### Under the Hood
