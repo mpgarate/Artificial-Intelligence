@@ -60,3 +60,8 @@ A ```Classification``` object is returned, which keeps information beyond the be
 ### Under the Hood
 
 ```NaiveBayesClassifier``` uses hashes to maintain information about the learned words and categories. Probabilities are calculated from these on the fly during classification. 
+
+
+I have made an effort to keep ```NaiveBayesClassifier``` not tied to the biography problem.
+
+The corpus file is not read into memory all at once, rather done incrementally, line by line, as each bio is learned or classsified. 
