@@ -8,13 +8,13 @@ We were allowed to use a language of our choice for these assignments. This is a
 See subdirectories for more detailed READMEs. 
 
 #### 1 - CYK Parser
-* CYK Parser for a provided context-free grammar and lexicon written in Javascript.
+CYK Parser for a provided context-free grammar and lexicon written in Javascript.
 
 #### 2 - Travelling Salesman
-* Salesman Hill Climbing written in Javascript. 
+Salesman Hill Climbing written in Javascript. 
 
 #### 3 - Davis-Putnam
-* Logic generator and solver for a basic strategy game, written in Ruby. 
+Logic generator and solver for a basic strategy game, written in Ruby. 
 
 #### 4 - Naive Bayes Text Classifier
-* Biography classifyer using Naive Bayes, written in Ruby.
+Biography classifyer using Naive Bayes, written in Ruby.
