@@ -17,4 +17,4 @@ Salesman Hill Climbing written in Javascript.
 Logic generator and solver for a basic strategy game, written in Ruby. 
 
 #### 4 - Naive Bayes Text Classifier
-Biography classifyer using Naive Bayes, written in Ruby.
+Biography classifier using Naive Bayes, written in Ruby.
